@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#F7F1E8">
-<title>Whatsvp! — Your city. Your people. Your world.</title>
-<meta name="description" content="Whatsvp! is a community social OS that connects cities and communities. Discover people, join groups, host events, go live, and build real connections — together.">
-<meta property="og:title" content="Whatsvp! — Your city. Your people. Your world.">
+<title>Whatsup! — Your city. Your people. Your world.</title>
+<meta name="description" content="Whatsup! is a community social OS that connects cities and communities. Discover people, join groups, host events, go live, and build real connections — together.">
+<meta property="og:title" content="Whatsup! — Your city. Your people. Your world.">
 <meta property="og:description" content="Discover people, join groups, host events, go live, and move money with your community. One app.">
 <meta property="og:type" content="website">
 <link rel="icon" href="public/assets/illustrations/logo-mark.svg">
@@ -21,8 +21,9 @@
   --paper:#F7F1E8; --panel:#FFFAF2; --muted:#65708C;
   --line:rgba(15,46,138,.14); --line-soft:rgba(15,46,138,.08);
   --on-navy:rgba(247,241,232,.78); --line-navy:rgba(247,241,232,.16);
-  --sh:0 14px 34px -20px rgba(11,31,85,.45);
-  --sh-lg:0 24px 60px -30px rgba(11,31,85,.5);
+  --sh:0 12px 30px -12px rgba(11,31,85,.16), 0 4px 10px -6px rgba(11,31,85,.10);
+  --sh-lg:0 34px 66px -22px rgba(11,31,85,.30), 0 10px 24px -12px rgba(11,31,85,.14);
+  --r-lg:24px; --r-md:18px;
   --disp:"Space Grotesk","Segoe UI",system-ui,sans-serif;
   --body:"DM Sans","Segoe UI",system-ui,sans-serif;
   --pad:clamp(24px,4.8vw,74px); --max:1680px;
@@ -105,7 +106,7 @@ a{color:inherit;text-decoration:none}
 .trust span{font-size:12px;color:var(--muted)}
 .hero__floats{position:absolute;inset:0;z-index:3;pointer-events:none}
 .hero__floats > *{pointer-events:auto}
-.fw{position:absolute;z-index:5;background:var(--panel);border:1px solid var(--line);border-radius:16px;box-shadow:var(--sh);padding:12px 14px}
+.fw{position:absolute;z-index:5;background:var(--panel);border:1px solid var(--line);border-radius:18px;box-shadow:var(--sh);padding:13px 15px}
 .fw__lbl{font-family:var(--disp);font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
 .fw__sub{font-size:11px;color:var(--muted)}
 .pinchip{display:flex;flex-direction:column;align-items:center;gap:5px;position:absolute;z-index:5}
@@ -155,11 +156,23 @@ a{color:inherit;text-decoration:none}
 .fchips button{background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:8px 15px;font-family:var(--disp);font-size:12px;font-weight:600;color:var(--navy);box-shadow:var(--sh);transition:background-color .15s,color .15s}
 .fchips button[aria-pressed="true"]{background:var(--navy);color:var(--paper)}
 .fchips button:hover:not([aria-pressed="true"]){background:#FFF}
-.mapev{position:absolute;z-index:5;display:flex;align-items:center;gap:9px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:9px 13px;box-shadow:var(--sh);color:var(--navy)}
+.mapev{position:absolute;z-index:5;display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:10px 15px 10px 11px;box-shadow:var(--sh);color:var(--navy)}
 .mapev b{font-family:var(--disp);font-size:13px;font-weight:600;display:block}
 .mapev span{font-size:11px;color:var(--muted)}
+.mapev .av{width:36px;height:36px}
+/* map photo pins */
+.ppin{position:absolute;z-index:5;transform:translate(-50%,-100%)}
+.ppin__av{display:block;position:relative;width:48px;height:48px;border-radius:50%;overflow:hidden;border:3px solid #fff;box-shadow:var(--sh)}
+.ppin__av img{width:100%;height:100%;object-fit:cover;object-position:50% 26%}
+.ppin::after{content:"";position:absolute;left:50%;bottom:-4px;width:14px;height:14px;background:#fff;transform:translateX(-50%) rotate(45deg);border-radius:0 0 3px 0;z-index:-1;box-shadow:var(--sh)}
+.ppin .dot{position:absolute;right:0;bottom:5px;width:12px;height:12px;border-radius:50%;background:#8CAD17;border:2.5px solid #fff;z-index:2}
+.youpin{position:absolute;z-index:4;transform:translate(-50%,-50%)}
+.youpin i{display:block;width:20px;height:20px;border-radius:50%;background:#2F80ED;border:3px solid #fff;box-shadow:0 0 0 6px rgba(47,128,237,.22)}
+.bcastpin{position:absolute;z-index:5;transform:translate(-50%,-100%)}
+.bcastpin__b{width:42px;height:42px;border-radius:50% 50% 50% 5px;transform:rotate(-45deg);background:var(--coral);display:flex;align-items:center;justify-content:center;box-shadow:var(--sh)}
+.bcastpin__b svg{width:19px;height:19px;color:#fff;transform:rotate(45deg)}
 .maprail{position:absolute;top:76px;right:16px;bottom:16px;z-index:6;width:min(252px,46%);display:flex;flex-direction:column;gap:12px;overflow:hidden}
-.railcard{background:var(--panel);border:1px solid var(--line);border-radius:16px;box-shadow:var(--sh);padding:13px 15px;color:var(--navy)}
+.railcard{background:var(--panel);border:1px solid var(--line);border-radius:var(--r-md);box-shadow:var(--sh);padding:15px 17px;color:var(--navy)}
 .railcard h4{font-family:var(--disp);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:flex;align-items:center;justify-content:space-between}
 .railcard h4 a{font-size:11px;color:var(--coral);letter-spacing:0;text-transform:none}
 .prow{display:flex;align-items:center;gap:9px;padding:6px 0;border-top:1px solid var(--line-soft)}
@@ -177,7 +190,7 @@ a{color:inherit;text-decoration:none}
 
 /* events (02) */
 .eventwrap{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:16px}
-.featured{position:relative;border-radius:20px;overflow:hidden;min-height:380px;box-shadow:var(--sh-lg);display:flex;flex-direction:column;justify-content:flex-end}
+.featured{position:relative;border-radius:var(--r-lg);overflow:hidden;min-height:380px;box-shadow:var(--sh-lg);display:flex;flex-direction:column;justify-content:flex-end}
 .featured > img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .featured::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,31,85,0) 30%,rgba(11,31,85,.82) 82%)}
 .featured .chip{position:absolute;top:14px;left:14px;z-index:3}
@@ -187,7 +200,7 @@ a{color:inherit;text-decoration:none}
 .featured__body .meta{font-family:var(--disp);font-size:12.5px;font-weight:600;margin-top:10px;color:var(--lime)}
 .featured__foot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;flex-wrap:wrap}
 .going{display:inline-flex;align-items:center;gap:8px;background:var(--lime);color:var(--navy);border-radius:10px;padding:8px 14px;font-family:var(--disp);font-size:12.5px;font-weight:700}
-.uplist{background:var(--panel);border:1px solid var(--line);border-radius:20px;box-shadow:var(--sh);padding:16px 18px;display:flex;flex-direction:column}
+.uplist{background:var(--panel);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--sh);padding:18px 20px;display:flex;flex-direction:column}
 .uplist h4{font-family:var(--disp);font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:space-between}
 .uplist h4 a{font-size:11.5px;color:var(--coral);font-weight:600}
 .uprow{display:flex;align-items:center;gap:11px;padding:12px 0;border-top:1px solid var(--line-soft)}
@@ -197,7 +210,7 @@ a{color:inherit;text-decoration:none}
 .uprow .mid{flex:1;min-width:0}
 .uprow b{display:block;font-family:var(--disp);font-size:13.5px;font-weight:600;line-height:1.3}
 .uprow span{font-size:11px;color:var(--muted)}
-.steps{margin-top:16px;background:var(--panel);border:1px solid var(--line);border-radius:20px;box-shadow:var(--sh);padding:18px 22px}
+.steps{margin-top:16px;background:var(--panel);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--sh);padding:20px 24px}
 .steps h4{font-family:var(--disp);font-size:14.5px;font-weight:700}
 .steps__row{display:grid;grid-template-columns:repeat(4,1fr) auto;gap:14px;margin-top:14px;align-items:center}
 .step{display:flex;gap:10px;align-items:flex-start}
@@ -210,7 +223,7 @@ a{color:inherit;text-decoration:none}
 
 /* community (03) */
 .cwrap{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:16px}
-.guild{background:var(--panel);border:1px solid var(--line);border-radius:20px;box-shadow:var(--sh);overflow:hidden}
+.guild{background:var(--panel);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--sh);overflow:hidden}
 .guild__head{display:flex;align-items:center;gap:12px;padding:16px 18px;border-bottom:1px solid var(--line-soft)}
 .guild__head .lg{width:44px;height:44px;border-radius:12px;background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .guild__head .lg img{width:26px;height:26px}
@@ -255,7 +268,7 @@ a{color:inherit;text-decoration:none}
 .finance{position:relative;overflow:hidden}
 .finance > img.bg{position:absolute;left:0;right:0;bottom:0;width:100%;height:52%;object-fit:cover;object-position:50% 20%;opacity:.4;mask-image:linear-gradient(180deg,transparent,black 55%);-webkit-mask-image:linear-gradient(180deg,transparent,black 55%)}
 .fingrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.fincard{background:rgba(8,28,72,.5);border:1px solid rgba(247,241,232,.15);color:var(--paper);border-radius:20px;box-shadow:var(--sh-lg);padding:22px 24px;display:flex;flex-direction:column}
+.fincard{background:rgba(8,28,72,.5);border:1px solid rgba(247,241,232,.15);color:var(--paper);border-radius:var(--r-lg);box-shadow:var(--sh-lg);padding:24px 26px;display:flex;flex-direction:column}
 .fincard h4{font-family:var(--disp);font-size:15px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--paper);display:flex;align-items:center;justify-content:space-between}
 .fincard h4 svg{color:rgba(247,241,232,.7)}
 .fincard .fw__sub{color:rgba(247,241,232,.66);margin-top:8px}
@@ -301,7 +314,7 @@ a{color:inherit;text-decoration:none}
 .story--add{flex:0 0 auto;width:56px;height:56px;align-self:center;border-radius:50%;background:var(--panel);border:1px solid var(--line);box-shadow:var(--sh);display:flex;align-items:center;justify-content:center;color:var(--navy);font-size:26px;font-weight:400;padding:0}
 .story--add::after{display:none}
 .story--add:hover{border-color:var(--navy);color:var(--coral)}
-.liveplayer{position:relative;border-radius:20px;overflow:hidden;min-height:340px;box-shadow:var(--sh-lg);display:flex;flex-direction:column;justify-content:flex-end}
+.liveplayer{position:relative;border-radius:var(--r-lg);overflow:hidden;min-height:340px;box-shadow:var(--sh-lg);display:flex;flex-direction:column;justify-content:flex-end}
 .liveplayer > img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .liveplayer::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,31,85,0) 34%,rgba(11,31,85,.8) 84%)}
 .liveplayer .top{position:absolute;top:14px;left:14px;z-index:3;display:flex;gap:8px;align-items:center}
@@ -407,9 +420,9 @@ a{color:inherit;text-decoration:none}
 <!-- ================= NAV ================= -->
 <header class="nav">
   <div class="nav__in">
-    <a class="brand" href="#top" aria-label="Whatsvp! home">
+    <a class="brand" href="#top" aria-label="Whatsup! home">
       <img src="public/assets/illustrations/logo-mark.svg" alt="" width="34" height="38">
-      <b>Whatsvp!</b>
+      <b>Whatsup!</b>
     </a>
     <nav aria-label="Primary" style="margin-left:auto">
       <ul class="nav__links">
@@ -428,13 +441,13 @@ a{color:inherit;text-decoration:none}
 
 <main id="main">
 <!-- ================= HERO ================= -->
-<section class="hero" id="top" aria-label="Whatsvp! introduction">
+<section class="hero" id="top" aria-label="Whatsup! introduction">
   <img class="hero__city" src="public/assets/backgrounds/hero-kl-social-city.webp" alt="Illustrated Kuala Lumpur community — skyline, rooftop gatherings, parks and a rail line." width="1568" height="960" fetchpriority="high">
   <div class="hero__inner">
     <div class="hero__copy">
       <p class="eyebrow">A SOCIAL OS FOR REAL LIFE</p>
       <h1 class="h1">Your city.<br>Your people.<br><span class="clay">Your world.</span></h1>
-      <p class="hero__sub">Whatsvp! is a community social OS that connects cities and communities. Discover people, join groups, host events, go live, and build real connections — together.</p>
+      <p class="hero__sub">Whatsup! is a community social OS that connects cities and communities. Discover people, join groups, host events, go live, and build real connections — together.</p>
       <div class="hero__cta"><button class="btn btn--lime" data-toast="The app is almost here — join the waitlist from the footer.">Get the app <span class="arr">→</span></button></div>
       <div class="trust">
         <div><svg class="ic"><use href="public/assets/icons/whatsvp-icons.svg#live-local"/></svg><div><b>Live &amp; Local</b><span>Real-time updates</span></div></div>
@@ -499,17 +512,21 @@ a{color:inherit;text-decoration:none}
         <div class="searchbar">
           <span class="field"><svg width="15" height="15" style="flex-shrink:0"><use href="public/assets/icons/whatsvp-icons.svg#search"/></svg>Search places, people, or events…</span>
           <span class="fchips" role="group" aria-label="Filter map">
-            <button aria-pressed="true">All</button><button aria-pressed="false">People</button><button aria-pressed="false">Events</button><button aria-pressed="false">Places</button><button aria-pressed="false">Guilds</button>
+            <button aria-pressed="true">All</button><button aria-pressed="false">People</button><button aria-pressed="false">Events</button><button aria-pressed="false">Places</button><button aria-pressed="false">Guides</button>
           </span>
         </div>
-        <div class="mapev" style="top:37%;left:7%">
-          <span class="av av--sm"><img src="public/art/avatar-6.webp" alt=""></span>
+        <div class="mapev" style="top:34%;left:8%">
+          <span class="av"><img src="public/art/avatar-6.webp" alt=""></span>
           <div><b>Coffee Meetup</b><span>Now</span></div>
         </div>
-        <div class="mapev" style="bottom:18%;left:26%">
-          <span class="av av--sm"><img src="public/art/avatar-7.webp" alt=""></span>
-          <div><b>Workshop Space</b><span>Sat · 3 PM</span></div>
+        <div class="mapev" style="bottom:22%;left:30%">
+          <span class="av"><img src="public/art/avatar-7.webp" alt=""></span>
+          <div><b>Workshop Space</b><span>Sat · 7 PM</span></div>
         </div>
+        <div class="ppin" style="top:44%;left:33%"><span class="ppin__av"><img src="public/art/avatar-3.webp" alt=""></span><span class="dot"></span></div>
+        <div class="ppin" style="top:56%;left:15%"><span class="ppin__av"><img src="public/art/avatar-9.webp" alt=""></span><span class="dot"></span></div>
+        <div class="youpin" style="top:41%;left:44%"><i></i></div>
+        <div class="bcastpin" style="top:52%;left:63%"><span class="bcastpin__b"><svg><use href="public/assets/icons/whatsvp-icons.svg#go-live"/></svg></span></div>
         <div class="maprail">
           <div class="railcard">
             <h4>Nearby <a href="#" data-toast="The full nearby radar lives in the app — consented, fuzzy location only.">See all</a></h4>
@@ -520,7 +537,7 @@ a{color:inherit;text-decoration:none}
             <div class="prow"><span class="av av--sm"><img src="public/art/avatar-3.webp" alt=""><span class="dot"></span></span><b>Nova</b><span>650 m</span></div>
           </div>
           <div class="railcard liveroom">
-            <img class="lg" src="public/assets/illustrations/logo-mark.svg" alt="" style="background:var(--navy);padding:7px;border-radius:10px">
+            <span class="lg" style="background:var(--lime);display:flex;align-items:center;justify-content:center"><svg width="20" height="20" style="color:var(--navy)"><use href="public/assets/icons/whatsvp-icons.svg#go-live"/></svg></span>
             <div style="flex:1"><b>Live room · Crypto 101</b><span>122 watching</span></div>
             <span class="chip-live"><span class="p"></span>LIVE</span>
           </div>
@@ -811,18 +828,18 @@ a{color:inherit;text-decoration:none}
   <div class="footer__in">
     <div class="footer__grid">
       <div class="footer__brand">
-        <a class="brand" href="#top"><img src="public/assets/illustrations/logo-mark.svg" alt="" width="34" height="38"><b>Whatsvp!</b></a>
-        <p>Whatsvp! is a community social OS that connects cities and communities. Discover. Connect. Create. More together.</p>
+        <a class="brand" href="#top"><img src="public/assets/illustrations/logo-mark.svg" alt="" width="34" height="38"><b>Whatsup!</b></a>
+        <p>Whatsup! is a community social OS that connects cities and communities. Discover. Connect. Create. More together.</p>
         <div class="socials">
-          <a href="#" aria-label="Whatsvp! on Instagram" data-toast="Socials go live with the app."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
-          <a href="#" aria-label="Whatsvp! on Facebook" data-toast="Socials go live with the app."><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 10-11.6 9.9v-7h-2.5V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0022 12z"/></svg></a>
-          <a href="#" aria-label="Whatsvp! on X" data-toast="Socials go live with the app."><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.7 3H21l-7.3 8.3L22.2 21h-6.7l-5.3-6.4L4.2 21H1l7.8-8.9L1.8 3h6.9l4.8 5.8L17.7 3zm-1.2 16h1.9L7.1 4.9H5.1L16.5 19z"/></svg></a>
-          <a href="#" aria-label="Whatsvp! on YouTube" data-toast="Socials go live with the app."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="6" width="19" height="12.5" rx="3.5"/><path d="M10.2 9.7l4.6 2.6-4.6 2.6z" fill="currentColor" stroke="none"/></svg></a>
-          <a href="#" aria-label="Whatsvp! on LinkedIn" data-toast="Socials go live with the app."><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.9 8.4H3.6V21h3.3V8.4zM5.2 3a1.9 1.9 0 100 3.8 1.9 1.9 0 000-3.8zM21 21h-3.3v-6.5c0-1.6-.6-2.6-2-2.6-1.1 0-1.7.7-2 1.4-.1.3-.1.6-.1 1V21H10.3s.04-11.4 0-12.6h3.3v1.8c.4-.7 1.2-1.7 3-1.7 2.2 0 3.9 1.4 3.9 4.5V21z"/></svg></a>
+          <a href="#" aria-label="Whatsup! on Instagram" data-toast="Socials go live with the app."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="Whatsup! on Facebook" data-toast="Socials go live with the app."><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 10-11.6 9.9v-7h-2.5V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0022 12z"/></svg></a>
+          <a href="#" aria-label="Whatsup! on X" data-toast="Socials go live with the app."><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.7 3H21l-7.3 8.3L22.2 21h-6.7l-5.3-6.4L4.2 21H1l7.8-8.9L1.8 3h6.9l4.8 5.8L17.7 3zm-1.2 16h1.9L7.1 4.9H5.1L16.5 19z"/></svg></a>
+          <a href="#" aria-label="Whatsup! on YouTube" data-toast="Socials go live with the app."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="6" width="19" height="12.5" rx="3.5"/><path d="M10.2 9.7l4.6 2.6-4.6 2.6z" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="Whatsup! on LinkedIn" data-toast="Socials go live with the app."><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.9 8.4H3.6V21h3.3V8.4zM5.2 3a1.9 1.9 0 100 3.8 1.9 1.9 0 000-3.8zM21 21h-3.3v-6.5c0-1.6-.6-2.6-2-2.6-1.1 0-1.7.7-2 1.4-.1.3-.1.6-.1 1V21H10.3s.04-11.4 0-12.6h3.3v1.8c.4-.7 1.2-1.7 3-1.7 2.2 0 3.9 1.4 3.9 4.5V21z"/></svg></a>
         </div>
       </div>
       <div><h5>Product</h5><ul><li><a href="#explore">Explore</a></li><li><a href="#events">Events</a></li><li><a href="#community">Community</a></li><li><a href="#finance">Finance</a></li><li><a href="#live">Live</a></li></ul></div>
-      <div><h5>Company</h5><ul><li><a href="#" data-toast="Coming with the beta.">About us</a></li><li><a href="#" data-toast="Coming with the beta.">Careers</a></li><li><a href="#" data-toast="Coming with the beta.">Press</a></li><li><a href="#" data-toast="Coming with the beta.">Blog</a></li><li><a href="#" data-toast="hello@whatsvp.io">Contact</a></li></ul></div>
+      <div><h5>Company</h5><ul><li><a href="#" data-toast="Coming with the beta.">About us</a></li><li><a href="#" data-toast="Coming with the beta.">Careers</a></li><li><a href="#" data-toast="Coming with the beta.">Press</a></li><li><a href="#" data-toast="Coming with the beta.">Blog</a></li><li><a href="#" data-toast="hello@whatsup.io">Contact</a></li></ul></div>
       <div><h5>Resources</h5><ul><li><a href="#" data-toast="Coming with the beta.">Help Center</a></li><li><a href="#" data-toast="Coming with the beta.">Guides</a></li><li><a href="#" data-toast="Coming with the beta.">Developer Docs</a></li><li><a href="#" data-toast="Coming with the beta.">Status</a></li><li><a href="#" data-toast="Coming with the beta.">News</a></li></ul></div>
       <div><h5>Legal</h5><ul><li><a href="#" data-toast="Coming with the beta.">Terms of Service</a></li><li><a href="#" data-toast="Coming with the beta.">Privacy Policy</a></li><li><a href="#" data-toast="Coming with the beta.">Cookie Policy</a></li><li><a href="#" data-toast="Coming with the beta.">Licenses</a></li></ul></div>
       <div><h5>Connect</h5><ul class="connectlist">
@@ -838,7 +855,7 @@ a{color:inherit;text-decoration:none}
       <div class="footbenefit"><svg class="ic"><use href="public/assets/icons/whatsvp-icons.svg#shield"/></svg><div><b>Bank-grade security</b><span>Your data is protected</span></div></div>
       <div class="footbenefit"><svg class="ic"><use href="public/assets/icons/whatsvp-icons.svg#fees"/></svg><div><b>Instant &amp; low fees</b><span>More value to you</span></div></div>
       <div class="footbenefit"><svg class="ic"><use href="public/assets/icons/whatsvp-icons.svg#check"/></svg><div><b>You control</b><span>We never hold your funds</span></div></div>
-      <span class="footcopy">© 2026 Whatsvp! All rights reserved.</span>
+      <span class="footcopy">© 2026 Whatsup! All rights reserved.</span>
     </div>
   </div>
   <img class="footplant" src="public/assets/illustrations/plant-corner.svg" alt="" aria-hidden="true">
