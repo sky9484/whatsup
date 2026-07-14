@@ -1,134 +1,81 @@
 ---
 name: whatsvp-design
-description: Whatsvp! design system — painted-city editorial. Tokens, texture recipe, art-placement rules, and layout grammar for the Whatsvp! landing page. Use whenever building or reviewing Whatsvp! UI so every section reads as one hand-made object; art comes from /public/art/, UI lives in its negative space.
+description: Build or review the Whatsup! full-bleed builder-city experience. Use for Whatsup! landing-page, responsive-art, Web3 community, wallet, map, event, live-stream, or 53-asset interaction work so the product stays Sui-first, chain-agnostic, watercolor-led, accessible, and edge-to-edge.
 ---
 
-# Whatsvp! design system — "painted city, printed UI"
+# Whatsup! builder-city system
 
-The page is a **paper dossier laid over a painted city**. Organic, painterly life comes
-exclusively from the WebP illustrations in `/public/art/`. Everything the user can read or
-click is **printed matter**: paper-white panels, 1px ink hairlines, mono eyebrows, one lime
-action color. SVG never draws illustrations — it is only for icons, hairlines, dot grids,
-and the grain filter. The tension between loose paint and strict print is the identity.
+Create a living protocol atlas for Web3 developers, Web2 engineers, AI builders, founders, and communities. Treat the watercolor city as the interface, not as decoration behind centered marketing cards.
 
-## 1 · Tokens (single source of truth)
+## Preserve the product thesis
 
-Define once on `:root`; never hard-code a hex twice.
+- Lead with `Sui-first, chain-agnostic` and show Solana, Ethereum, and Bitcoin as supported networks.
+- Use USDC, USDT, and MYRC as primary settlement currencies.
+- Use SUI, SOL, ETH, and BTC as primary crypto assets.
+- Write about shipping, protocols, AI agents, contributor work, founder rooms, guilds, demos, and community decisions. Do not drift toward designer-focused copy.
+- Keep money actions simulated in the static experience. Never imply a transaction was broadcast.
+
+## Compose full bleed
+
+- Use the full viewport width. Anchor copy and actions to responsive edge gutters with `clamp()`.
+- Avoid a centered max-width container as the dominant section shape.
+- Make the hero at least `100svh` minus navigation and let the art cover the viewport.
+- Alternate edge relationships: copy against one edge, product surface or art bleeding to another.
+- Recompose below tablet widths. Do not merely shrink desktop grids.
+- Permit horizontal overflow only inside deliberate snap or drag rails.
+
+## Art direct images
+
+- Use `<picture>` with mobile, tablet, and desktop sources for hero-scale art.
+- Give every supplied reference asset a 480px and 960px responsive derivative plus the original fallback.
+- Set `srcset`, `sizes`, explicit dimensions, descriptive alt text, lazy loading below the fold, and `decoding="async"`.
+- Change crop or source on mobile for major map, finance, live, and footer scenes.
+- Keep `community-pavilion-transparent.webp` large, bottom-left, and section-covering in Events. Let it become in-flow art on narrow mobile.
+
+## Make every asset do work
+
+- Keep all 53 reference assets visible.
+- Make each surface keyboard focusable with native or equivalent button semantics.
+- Open one reusable accessible dialog/drawer with surface title, domain, description, responsive image, previous/next controls, asset selector, save action, and one domain action.
+- Map action families by domain: discovery, people, settlement, guild, live, and events.
+- Support pointer drag and keyboard access on horizontal asset rails.
+- Provide visible focus, status announcements, reduced motion, and touch targets at least 44px.
+
+## Use the visual language
+
+Use these core tokens:
 
 ```css
 :root{
-  /* surfaces */
-  --paper:      #F6F3EC;   /* page background */
-  --panel:      #FCFAF4;   /* paper-white UI panels (cards, chips, stats) */
-  --panel-2:    #EFEAE0;   /* recessed wells, table stripes */
-  /* ink */
-  --ink:        #1E2A3A;   /* body text, default ink */
-  --primary:    #0F3361;   /* headings, borders, key UI, links */
-  --primary-soft: rgba(15,51,97,.62);
-  /* action + accents */
-  --cta:        #A6C10B;   /* THE action color. Buttons, live confirmations only */
-  --terra:      #D66A3A;   /* accent — italics, underline swashes, hot labels */
-  --coral:      #E7785A;   /* lighter companion accent — dots, tags, hovers */
-  /* lines */
-  --rule:       rgba(15,51,97,.18);  /* hairlines */
-  --rule-soft:  rgba(15,51,97,.09);
-  /* type */
-  --font-display:"Fraunces", Georgia, serif;
-  --font-sans:  "Space Grotesk", "Segoe UI", system-ui, sans-serif;
-  --font-mono:  "IBM Plex Mono", Consolas, monospace;
-  /* rhythm */
-  --pad: clamp(20px, 4.2vw, 56px);
-  --section-gap: clamp(96px, 10vw, 140px);   /* NEVER below 96px */
-  --plate-max: 1360px;
-  --ease-out: cubic-bezier(.22,.9,.28,1);
+  --navy:#0F2E8A;
+  --navy-deep:#062660;
+  --paper:#F7F1E8;
+  --panel:#FFFAF2;
+  --lime:#B7FF2A;
+  --coral:#D96A4A;
+  --edge:clamp(18px,4.2vw,72px);
+  --ease:cubic-bezier(.22,.9,.28,1);
 }
 ```
 
-Color duties are strict:
-- `--cta` appears **only** on primary actions and success/live states. If lime shows up in
-  decoration, it stops meaning "act here."
-- `--terra`/`--coral` are warmth, never actions and never body text (contrast ≈3:1 — display
-  sizes and decoration only).
-- Text on `--cta` fills is always `--primary` (≈6:1). Text on `--paper`/`--panel` is `--ink`
-  or `--primary`. Never white text on lime, never terracotta body copy.
+- Use watercolor scenes as atmosphere and strict UI geometry for controls.
+- Reserve lime for actions, active Sui state, live state, and successful completion.
+- Use Space Grotesk for display and DM Sans for body.
+- Prefer hard edge relationships, oversized type, hairlines, and directional movement over repeated rounded cards.
+- Use one signature motion system: slow scene depth, rail drag, and cause-and-effect dialog transitions.
 
-## 2 · Typography
+## NFT identity stamps
 
-| Role | Face | Rules |
-|---|---|---|
-| Display / H1 / plate titles | Fraunces | weight 540–640, `opsz` high, letter-spacing −0.02em, line-height ≤1.05. Italic swashes in `--terra` for the one emphasized word. |
-| UI, body, buttons | Space Grotesk | 400–700. Body 15–17px, line-height 1.6. |
-| Eyebrows, labels, data | IBM Plex Mono | 10–13px, 500–600, letter-spacing .10–.18em, UPPERCASE. Every section opens with a mono eyebrow. |
+- Include Pudgy Penguins, Bored Ape Yacht Club, and a current Sui-native collection as optional identity stamps.
+- Verify the current Sui choice from a live marketplace or official ecosystem source before changing it.
+- Use original emoji or abstract identity treatments. Do not copy proprietary NFT artwork from the web.
+- Make each stamp interactive and describe its chain/context.
 
-Scale: H1 `clamp(46px, 6.4vw, 92px)` · plate titles `clamp(34px, 4.6vw, 66px)` ·
-card titles 15–21px · mono meta 10–12px.
+## Verify before handoff
 
-## 3 · Texture recipe
-
-1. **Grain, site-wide**: fixed full-viewport SVG `feTurbulence` (fractalNoise, baseFrequency
-   ≈0.9, 2 octaves, desaturated) at **opacity .035**, `mix-blend-mode:multiply`,
-   `pointer-events:none`, above content (z-index ~2000). One element, once.
-2. **Paint**: the WebP art itself — never recreate its look with CSS filters or SVG blobs.
-3. **Print**: 1px `--rule` hairlines, corner tick marks on plates, dot grids
-   (`radial-gradient(var(--rule) 1px, transparent 1px)` at 18–24px spacing) as quiet fields.
-4. **Shadows**: hard offsets only — `0 2px 0 var(--primary)` on lime buttons, `-5px 7px 0
-   rgba(15,51,97,.14)` on hover lifts. **No soft/heavy blur shadows, no glows.**
-5. **Gradients**: banned on interactive elements. Allowed only as ≤8% scrims over art to
-   protect text legibility.
-
-## 4 · Art usage — /public/art/ is the only paintbrush
-
-Mapping (see `public/art/mapping.csv` for provenance):
-
-| Asset | Home | Treatment |
-|---|---|---|
-| `hero-city.webp` | Hero collage | Full-bleed inside a 1.5px `--primary` bordered, 18px-radius frame, slight rotate (≤1deg). HTML pins/cards overlay it. |
-| `map-wash.webp` | `#explore` map panel | `object-fit:cover` underlay at **opacity .16–.30, multiply**, so printed pins/legend stay dominant. |
-| `community-scene.webp` | Community plate | Framed feature image beside the paths list. |
-| `wallet-scene.webp` | `#wallet` | Framed scene paired with (not behind) the navy wallet panel. |
-| `about-collage.webp` | About band | Background at low opacity or side collage; text on `--panel` chips above it. |
-| `spot-*.webp` | Feature cards / steps | Small emblems ~64–96px, transparent-feel crop, one per card. |
-| `shape-*.webp` | Section corners | Decorative, `z-index:0`, opacity .5–.8, never overlapping text blocks. |
-| `banner-*.webp` | Ticker/dividers | Very-wide strips as section separators, height ≤120px, `object-fit:cover`. |
-
-Placement laws:
-- Art always sits in a **printed frame** (1–1.5px `--primary` border, radius 14–20px) or
-  bleeds behind a plate at ≤30% opacity — never floats naked at 100% over `--paper`.
-- UI overlays the art's **negative space**; if the art has none, put UI on `--panel` chips
-  with 1px `--rule` borders on top of it.
-- `loading="lazy"` below the fold; explicit `width`/`height` or `aspect-ratio` to prevent
-  CLS; meaningful `alt` on scene images, `alt=""` + `aria-hidden` on decoration.
-- Never draw new illustrations in SVG. Icons stay 24px-grid stroke icons in `currentColor`.
-
-## 5 · Layout grammar
-
-- **Plates**: each numbered section is a bordered plate — 1.5px `--primary` border, 20px
-  radius, corner tick marks, `--paper` fill. Head row = mono eyebrow + Fraunces title
-  (+ italic terra word) + right-aligned mono note. Hairline under the head.
-- **Panels**: cards/chips/stats are `--panel` with 1px `--rule` borders, radius 12–16px,
-  13–16px padding. Hover: border→`--primary` + translateY(−2…−3px) + hard offset shadow.
-- **Spacing**: `--section-gap` (≥96px) between plates; inside plates `clamp(22px,3.4vw,46px)`.
-- **Buttons**: pill (999px), min-height 48px (44px+ tap targets everywhere). Primary =
-  `--cta` fill / `--primary` text+border / `0 2px 0 --primary`. Ghost = transparent,
-  `--primary` text+border. Flat fills only.
-- **Responsive**: two-column grids collapse to one column ≤880px; art frames keep
-  `aspect-ratio` and move above their copy; ≥375px must be horizontal-scroll-free (except
-  intentional snap rows), type floors: body ≥15px, mono ≥10px.
-- **Motion**: 150–300ms `--ease-out` micro-moves; ≤8s ambient float on collage cards only.
-  Everything inside `@media (prefers-reduced-motion: no-preference)` or neutralized by a
-  `reduce` block. Focus: `:focus-visible` 2px `--primary` outline, 3px offset — always visible.
-
-## 6 · Voice
-
-Mono eyebrows are wayfinding (`COMMUNITY · CITY · CHAIN`). Titles state a benefit in plain
-words with one italic terra word (`Money that moves like a message.`). Buttons say what
-happens: "Get started — it's free", "Explore the map". Numbers get mono treatment. No
-crypto jargon above the fold; "no seed phrase, ever" is the promise.
-
-## 7 · Definition of done (per section)
-
-1. Art placed per §4 map; UI in negative space; zero SVG illustrations remain.
-2. All hexes are `var(--…)` tokens; lime only on actions.
-3. Screenshot at **1440px and 375px**; list top-3 gaps vs reference; fix; re-screenshot.
-4. Focus rings visible, reduced-motion respected, no horizontal scroll at 375px.
-5. Grain at .035 present exactly once.
+1. Run the production build and `git diff --check`.
+2. Confirm exactly 53 asset surfaces and 106 responsive derivatives.
+3. Check desktop around 1440px, tablet around 834px, and mobile around 390px.
+4. Open an asset using pointer and keyboard; test next/previous, token switching, save, and action feedback.
+5. Confirm no unintended horizontal page overflow and no blocking console errors.
+6. Confirm mobile loads the mobile hero source and desktop loads the desktop source.

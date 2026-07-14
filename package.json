@@ -4,11 +4,14 @@
   "version": "1.0.0",
   "description": "Whatsup! — community social OS landing page (static, illustrated).",
   "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
     "build:css": "tailwindcss -i ./src/tailwind.css -o ./public/tailwind.css --minify",
     "watch:css": "tailwindcss -i ./src/tailwind.css -o ./public/tailwind.css --watch",
     "serve": "npx http-server -p 4173 -c-1 ."
   },
   "devDependencies": {
-    "tailwindcss": "^3.4.17"
+    "tailwindcss": "^3.4.17",
+    "vite": "^5.4.21"
   }
 }
