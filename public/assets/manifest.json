@@ -1,0 +1,19 @@
+{
+  "name": "Whatsvp! Complete Landing Page Asset Pack",
+  "version": "1.0.0",
+  "palette": {
+    "navy": "#0F2E8A",
+    "lime": "#B7FF2A",
+    "peach": "#F4B08A",
+    "coral": "#D96A4A",
+    "clay": "#C95A3A",
+    "paper": "#F7F1E8"
+  },
+  "formats": ["svg", "webp"],
+  "sections": ["hero", "explore", "events", "community", "finance", "live", "footer"],
+  "transparent": {
+    "svgOuterCanvas": true,
+    "communityPavilionWebp": true,
+    "fullBleedBackgrounds": false
+  }
+}

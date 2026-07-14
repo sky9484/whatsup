@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="430" viewBox="0 0 360 430" fill="none">
+  <rect x="1" y="1" width="358" height="428" rx="18" fill="#123E83" fill-opacity=".94" stroke="#F7F1E8" stroke-opacity=".28"/>
+  <text x="24" y="38" fill="#F7F1E8" font-family="Inter,Arial" font-size="13">My wallet</text>
+  <text x="24" y="68" fill="#F7F1E8" font-family="Inter,Arial" font-size="12" opacity=".65">Total balance</text>
+  <text x="24" y="108" fill="#F7F1E8" font-family="Space Grotesk,Arial" font-size="30" font-weight="700">RM 1,245.30</text>
+  <g font-family="Inter,Arial" font-size="14" fill="#F7F1E8">
+    <circle cx="34" cy="150" r="12" fill="#B7FF2A"/><text x="30" y="155" fill="#0F2E8A" font-weight="700">M</text><text x="58" y="155">MYR</text><text x="276" y="155">620.50</text>
+    <circle cx="34" cy="198" r="12" fill="#6CB94E"/><text x="30" y="203" fill="white" font-weight="700">$</text><text x="58" y="203">USD</text><text x="276" y="203">345.00</text>
+    <circle cx="34" cy="246" r="12" fill="#768CF4"/><path d="M34 235l7 11-7 4-7-4 7-11Z" fill="white"/><text x="58" y="251">ETH</text><text x="285" y="251">0.245</text>
+    <circle cx="34" cy="294" r="12" fill="#55B4E8"/><path d="M34 283c5 8 7 10 7 14a7 7 0 0 1-14 0c0-4 2-6 7-14Z" fill="white"/><text x="58" y="299">SUI</text><text x="285" y="299">12.40</text>
+    <circle cx="34" cy="342" r="12" fill="#8F72F0"/><path d="M27 335h14l-3 5H24l3-5Zm-3 7h14l-3 5H21l3-5Z" fill="white"/><text x="58" y="347">SOL</text><text x="292" y="347">2.10</text>
+  </g>
+  <path d="M24 376h312" stroke="#F7F1E8" stroke-opacity=".2"/>
+  <text x="24" y="406" fill="#F7F1E8" font-family="Inter,Arial" font-size="13">View all assets</text><path d="m318 401 6 5-6 5" stroke="#B7FF2A" stroke-width="2"/>
+</svg>

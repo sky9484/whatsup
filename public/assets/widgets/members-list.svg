@@ -1,0 +1,11 @@
+<svg width="280" height="330" viewBox="0 0 280 330" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="1" y="1" width="278" height="328" rx="18" fill="#FFFAF2" stroke="#0F2E8A" stroke-opacity=".18"/>
+  <text x="18" y="31" fill="#0F2E8A" font-family="Space Grotesk,Arial" font-size="13" font-weight="700">Members</text><text x="239" y="31" fill="#65708C" font-family="Inter,Arial" font-size="9">See all</text>
+  <g font-family="Inter,Arial" font-size="10">
+    <g transform="translate(0 49)"><circle cx="36" cy="18" r="16" fill="#F4B08A"/><text x="36" y="22" fill="#0F2E8A" font-weight="700" text-anchor="middle">A</text><text x="62" y="17" fill="#0F2E8A" font-weight="700">Aisha</text><text x="222" y="19" fill="#D96A4A" font-size="8">Admin</text></g>
+    <g transform="translate(0 97)"><circle cx="36" cy="18" r="16" fill="#DCE7F7"/><text x="36" y="22" fill="#0F2E8A" font-weight="700" text-anchor="middle">T</text><text x="62" y="17" fill="#0F2E8A" font-weight="700">Tom</text><text x="205" y="19" fill="#65708C" font-size="8">Moderator</text></g>
+    <g transform="translate(0 145)"><circle cx="36" cy="18" r="16" fill="#D8DEC3"/><text x="36" y="22" fill="#0F2E8A" font-weight="700" text-anchor="middle">R</text><text x="62" y="17" fill="#0F2E8A" font-weight="700">Rae</text><text x="205" y="19" fill="#65708C" font-size="8">Moderator</text></g>
+    <g transform="translate(0 193)"><circle cx="36" cy="18" r="16" fill="#E7B7AA"/><text x="36" y="22" fill="#0F2E8A" font-weight="700" text-anchor="middle">M</text><text x="62" y="17" fill="#0F2E8A" font-weight="700">Marcus</text><text x="216" y="19" fill="#65708C" font-size="8">Member</text></g>
+    <g transform="translate(0 241)"><circle cx="36" cy="18" r="16" fill="#F7F1E8" stroke="#0F2E8A" stroke-opacity=".2"/><text x="36" y="22" fill="#0F2E8A" font-weight="700" text-anchor="middle">L</text><text x="62" y="17" fill="#0F2E8A" font-weight="700">Lina</text><text x="216" y="19" fill="#65708C" font-size="8">Member</text></g>
+  </g>
+</svg>

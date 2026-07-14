@@ -1,0 +1,8 @@
+<svg width="250" height="92" viewBox="0 0 250 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="1" y="1" width="248" height="90" rx="16" fill="#FFFAF2" stroke="#0F2E8A" stroke-opacity=".18"/>
+  <circle cx="48" cy="46" r="29" fill="#F4B08A" stroke="#0F2E8A" stroke-width="2"/><text x="48" y="52" fill="#0F2E8A" font-family="Space Grotesk,Arial" font-size="18" font-weight="700" text-anchor="middle">A</text>
+  <circle cx="68" cy="25" r="6" fill="#B7FF2A" stroke="#FFFAF2" stroke-width="3"/>
+  <text x="88" y="38" fill="#0F2E8A" font-family="Space Grotesk,Arial" font-size="14" font-weight="700">Ava</text>
+  <text x="88" y="58" fill="#65708C" font-family="Inter,Arial" font-size="11">Nearby · location shared</text>
+  <path d="M218 40v16m-8-8h16" stroke="#D96A4A" stroke-width="2" stroke-linecap="round"/>
+</svg>

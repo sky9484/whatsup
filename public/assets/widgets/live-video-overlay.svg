@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" fill="none">
+  <rect x=".5" y=".5" width="959" height="539" rx="20" stroke="#F7F1E8" stroke-opacity=".45"/>
+  <rect x="24" y="24" width="68" height="30" rx="15" fill="#D96A4A"/><text x="58" y="44" text-anchor="middle" fill="white" font-family="Inter,Arial" font-size="12" font-weight="700">LIVE</text><rect x="102" y="24" width="72" height="30" rx="15" fill="#0F2E8A" fill-opacity=".75"/><text x="138" y="44" text-anchor="middle" fill="white" font-family="Inter,Arial" font-size="12">◉ 142</text>
+  <rect x="0" y="340" width="960" height="200" fill="url(#g)"/>
+  <text x="30" y="402" fill="white" font-family="Space Grotesk,Arial" font-size="30" font-weight="700">Creative Flow: Building</text><text x="30" y="438" fill="white" font-family="Space Grotesk,Arial" font-size="30" font-weight="700">in Public</text><text x="30" y="470" fill="white" font-family="Inter,Arial" font-size="14">with Farah · Design · Community</text>
+  <rect x="30" y="492" width="150" height="36" rx="7" fill="#B7FF2A"/><text x="105" y="515" text-anchor="middle" fill="#0F2E8A" font-family="Inter,Arial" font-size="13" font-weight="700">Join live room</text>
+  <defs><linearGradient id="g" x1="480" y1="340" x2="480" y2="540" gradientUnits="userSpaceOnUse"><stop stop-color="#0F2E8A" stop-opacity="0"/><stop offset="1" stop-color="#061D59" stop-opacity=".95"/></linearGradient></defs>
+</svg>

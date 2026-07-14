@@ -1,0 +1,11 @@
+<svg width="280" height="330" viewBox="0 0 280 330" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="1" y="1" width="278" height="328" rx="18" fill="#FFFAF2" stroke="#0F2E8A" stroke-opacity=".18"/>
+  <text x="18" y="31" fill="#D96A4A" font-family="Space Grotesk,Arial" font-size="12" font-weight="700">DM</text><text x="55" y="31" fill="#65708C" font-family="Inter,Arial" font-size="9"># general</text>
+  <path d="M16 48h248" stroke="#0F2E8A" stroke-opacity=".1"/>
+  <g font-family="Inter,Arial">
+    <circle cx="36" cy="77" r="16" fill="#F4B08A"/><text x="36" y="81" fill="#0F2E8A" font-size="9" font-weight="700" text-anchor="middle">M</text><text x="62" y="71" fill="#0F2E8A" font-size="9" font-weight="700">Maya</text><text x="62" y="85" fill="#65708C" font-size="8">Planning our next event</text>
+    <circle cx="36" cy="128" r="16" fill="#DCE7F7"/><text x="36" y="132" fill="#0F2E8A" font-size="9" font-weight="700" text-anchor="middle">J</text><text x="62" y="122" fill="#0F2E8A" font-size="9" font-weight="700">Jordan</text><text x="62" y="136" fill="#65708C" font-size="8">Count me in.</text>
+    <circle cx="36" cy="179" r="16" fill="#D8DEC3"/><text x="36" y="183" fill="#0F2E8A" font-size="9" font-weight="700" text-anchor="middle">D</text><text x="62" y="173" fill="#0F2E8A" font-size="9" font-weight="700">Dev</text><text x="62" y="187" fill="#65708C" font-size="8">Let’s make it impactful.</text>
+  </g>
+  <rect x="14" y="268" width="252" height="46" rx="12" fill="#F7F1E8" stroke="#0F2E8A" stroke-opacity=".14"/><text x="29" y="295" fill="#65708C" font-family="Inter,Arial" font-size="9">Type a message...</text><path d="m231 282 21-8-8 21-4-9-9-4Z" stroke="#0F2E8A" stroke-width="1.7" stroke-linejoin="round"/>
+</svg>

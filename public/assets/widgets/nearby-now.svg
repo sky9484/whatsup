@@ -1,0 +1,16 @@
+<svg width="360" height="156" viewBox="0 0 360 156" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="1" y="1" width="358" height="154" rx="18" fill="#FFFAF2" stroke="#0F2E8A" stroke-opacity=".18"/>
+  <text x="22" y="31" fill="#0F2E8A" font-family="Space Grotesk,Arial" font-size="11" font-weight="700" letter-spacing="1.2">NEARBY NOW</text>
+  <circle cx="102" cy="28" r="4" fill="#8CAD17"/><text x="113" y="32" fill="#65708C" font-family="Inter,Arial" font-size="10">Location shared</text>
+  <g font-family="Inter,Arial" font-size="11" font-weight="700" text-anchor="middle">
+    <circle cx="45" cy="77" r="24" fill="#F4B08A" stroke="#FFF" stroke-width="3"/><text x="45" y="81" fill="#0F2E8A">A</text>
+    <circle cx="93" cy="77" r="24" fill="#DCE7F7" stroke="#FFF" stroke-width="3"/><text x="93" y="81" fill="#0F2E8A">D</text>
+    <circle cx="141" cy="77" r="24" fill="#D8DEC3" stroke="#FFF" stroke-width="3"/><text x="141" y="81" fill="#0F2E8A">W</text>
+    <circle cx="189" cy="77" r="24" fill="#E7B7AA" stroke="#FFF" stroke-width="3"/><text x="189" y="81" fill="#0F2E8A">M</text>
+    <circle cx="237" cy="77" r="24" fill="#F7F1E8" stroke="#FFF" stroke-width="3"/><text x="237" y="81" fill="#0F2E8A">N</text>
+    <circle cx="296" cy="77" r="22" fill="#0F2E8A"/><text x="296" y="81" fill="#B7FF2A">+24</text>
+  </g>
+  <path d="M22 123h316" stroke="#0F2E8A" stroke-opacity=".12"/>
+  <text x="22" y="143" fill="#0F2E8A" font-family="Inter,Arial" font-size="10" font-weight="700">See all nearby</text>
+  <path d="M319 139h15m-5-5 5 5-5 5" stroke="#D96A4A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

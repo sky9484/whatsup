@@ -1,0 +1,12 @@
+<svg width="520" height="650" viewBox="0 0 520 650" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="g" x1="260" y1="180" x2="260" y2="650" gradientUnits="userSpaceOnUse"><stop stop-color="#061B53" stop-opacity="0"/><stop offset=".45" stop-color="#061B53" stop-opacity=".5"/><stop offset="1" stop-color="#061B53" stop-opacity=".98"/></linearGradient></defs>
+  <rect x="1" y="1" width="518" height="648" rx="24" stroke="#0F2E8A" stroke-opacity=".2"/>
+  <rect x="1" y="1" width="518" height="648" rx="24" fill="url(#g)"/>
+  <rect x="22" y="22" width="93" height="30" rx="15" fill="#FFF9F1"/><circle cx="39" cy="37" r="5" fill="#D96A4A"/><text x="51" y="41" fill="#D96A4A" font-family="Inter,Arial" font-size="10" font-weight="800">FEATURED</text>
+  <text x="28" y="462" fill="#FFFFFF" font-family="Space Grotesk,Arial" font-size="30" font-weight="700">Designers Connect KL</text>
+  <text x="28" y="492" fill="#F7F1E8" font-family="Inter,Arial" font-size="13">Design talk &amp; networking</text>
+  <text x="28" y="526" fill="#F7F1E8" font-family="Inter,Arial" font-size="12">Thu, May 29 · 7:00 PM</text>
+  <text x="28" y="549" fill="#F7F1E8" font-family="Inter,Arial" font-size="12">Komune, Bangsar</text>
+  <circle cx="40" cy="588" r="15" fill="#F4B08A"/><circle cx="64" cy="588" r="15" fill="#DCE7F7"/><circle cx="88" cy="588" r="15" fill="#D8DEC3"/><text x="116" y="593" fill="#FFFFFF" font-family="Inter,Arial" font-size="11" font-weight="700">+36 going</text>
+  <path d="M24 618h472" stroke="#FFFFFF" stroke-opacity=".24"/><text x="28" y="639" fill="#B7FF2A" font-family="Inter,Arial" font-size="10" font-weight="700">You’re going</text><path d="m474 632 6 6 11-13" stroke="#B7FF2A" stroke-width="2"/>
+</svg>

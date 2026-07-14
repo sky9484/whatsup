@@ -1,0 +1,13 @@
+<svg width="700" height="76" viewBox="0 0 700 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="1" y="1" width="698" height="74" rx="16" fill="#FFFAF2" stroke="#0F2E8A" stroke-opacity=".16"/>
+  <circle cx="33" cy="29" r="8" stroke="#0F2E8A" stroke-width="1.7"/><path d="m39 35 7 7" stroke="#0F2E8A" stroke-width="1.7"/>
+  <text x="56" y="34" fill="#65708C" font-family="Inter,Arial" font-size="12">Search places, people or events...</text>
+  <g font-family="Inter,Arial" font-size="10" font-weight="700">
+    <rect x="20" y="48" width="45" height="20" rx="10" fill="#0F2E8A"/><text x="42.5" y="62" fill="white" text-anchor="middle">All</text>
+    <rect x="72" y="48" width="60" height="20" rx="10" fill="#F7F1E8"/><text x="102" y="62" fill="#0F2E8A" text-anchor="middle">People</text>
+    <rect x="139" y="48" width="58" height="20" rx="10" fill="#F7F1E8"/><text x="168" y="62" fill="#0F2E8A" text-anchor="middle">Events</text>
+    <rect x="204" y="48" width="58" height="20" rx="10" fill="#F7F1E8"/><text x="233" y="62" fill="#0F2E8A" text-anchor="middle">Places</text>
+    <rect x="269" y="48" width="58" height="20" rx="10" fill="#F7F1E8"/><text x="298" y="62" fill="#0F2E8A" text-anchor="middle">Guilds</text>
+  </g>
+  <path d="M656 24h22M650 32h28M660 40h18" stroke="#D96A4A" stroke-width="1.8" stroke-linecap="round"/>
+</svg>

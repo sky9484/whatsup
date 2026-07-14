@@ -1,0 +1,5 @@
+<svg width="220" height="64" viewBox="0 0 220 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="1" y="1" width="218" height="62" rx="12" fill="#B7FF2A" stroke="#0F2E8A" stroke-opacity=".25"/>
+  <text x="24" y="38" fill="#0F2E8A" font-family="Space Grotesk,Arial,sans-serif" font-size="15" font-weight="700">Get the app</text>
+  <path d="M176 32h18m-6-6 6 6-6 6" stroke="#0F2E8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

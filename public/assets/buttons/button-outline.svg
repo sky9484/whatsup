@@ -1,0 +1,5 @@
+<svg width="210" height="56" viewBox="0 0 210 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="1" y="1" width="208" height="54" rx="11" fill="white" fill-opacity=".02" stroke="#0F2E8A"/>
+  <text x="22" y="34" fill="#0F2E8A" font-family="Space Grotesk,Arial,sans-serif" font-size="14" font-weight="700">Browse events</text>
+  <path d="M170 28h16m-5-5 5 5-5 5" stroke="#0F2E8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

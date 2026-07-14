@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="260" height="64" viewBox="0 0 260 64" fill="none">
+  <path d="M30 2C14 2 3 13 3 29c0 14 8 23 20 27l-2 8 12-8c14-1 24-11 24-27C57 13 46 2 30 2Z" fill="#B7FF2A"/>
+  <path d="m17 21 5 19 7-15 6 15 8-20" stroke="#F7F1E8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="72" y="38" fill="#0F2E8A" font-family="Space Grotesk,Arial" font-size="30" font-weight="700">Whatsvp!</text>
+</svg>

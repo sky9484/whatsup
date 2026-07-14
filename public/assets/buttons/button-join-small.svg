@@ -1,0 +1,5 @@
+<svg width="112" height="42" viewBox="0 0 112 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="1" y="1" width="110" height="40" rx="9" fill="#F7F1E8" stroke="#8CAD17"/>
+  <text x="32" y="27" fill="#0F2E8A" font-family="Space Grotesk,Arial,sans-serif" font-size="13" font-weight="700">Join</text>
+  <path d="M77 21h12m-4-4 4 4-4 4" stroke="#8CAD17" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

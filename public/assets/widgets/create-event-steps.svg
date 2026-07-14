@@ -1,0 +1,12 @@
+<svg width="1040" height="150" viewBox="0 0 1040 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="1" y="1" width="1038" height="148" rx="20" fill="#FFFAF2" stroke="#0F2E8A" stroke-opacity=".16"/>
+  <text x="28" y="34" fill="#0F2E8A" font-family="Space Grotesk,Arial" font-size="14" font-weight="700">Create your event in 4 simple steps</text>
+  <path d="M76 85h852" stroke="#0F2E8A" stroke-opacity=".18" stroke-width="2" stroke-dasharray="5 7"/>
+  <g font-family="Inter,Arial">
+    <g transform="translate(52 61)"><circle cx="24" cy="24" r="23" fill="#FFF2EC" stroke="#D96A4A"/><text x="24" y="29" fill="#D96A4A" font-size="13" font-weight="800" text-anchor="middle">1</text><text x="60" y="19" fill="#0F2E8A" font-size="11" font-weight="700">Details</text><text x="60" y="36" fill="#65708C" font-size="8">Add name, date</text><text x="60" y="48" fill="#65708C" font-size="8">and location</text></g>
+    <g transform="translate(286 61)"><circle cx="24" cy="24" r="23" fill="#FFF2EC" stroke="#D96A4A"/><text x="24" y="29" fill="#D96A4A" font-size="13" font-weight="800" text-anchor="middle">2</text><text x="60" y="19" fill="#0F2E8A" font-size="11" font-weight="700">Customize</text><text x="60" y="36" fill="#65708C" font-size="8">Add description</text><text x="60" y="48" fill="#65708C" font-size="8">and tags</text></g>
+    <g transform="translate(520 61)"><circle cx="24" cy="24" r="23" fill="#FFF2EC" stroke="#D96A4A"/><text x="24" y="29" fill="#D96A4A" font-size="13" font-weight="800" text-anchor="middle">3</text><text x="60" y="19" fill="#0F2E8A" font-size="11" font-weight="700">Invite</text><text x="60" y="36" fill="#65708C" font-size="8">Share and invite</text><text x="60" y="48" fill="#65708C" font-size="8">your people</text></g>
+    <g transform="translate(754 61)"><circle cx="24" cy="24" r="23" fill="#FFF2EC" stroke="#D96A4A"/><text x="24" y="29" fill="#D96A4A" font-size="13" font-weight="800" text-anchor="middle">4</text><text x="60" y="19" fill="#0F2E8A" font-size="11" font-weight="700">Go live</text><text x="60" y="36" fill="#65708C" font-size="8">Engage and grow</text><text x="60" y="48" fill="#65708C" font-size="8">your event</text></g>
+    <circle cx="966" cy="85" r="28" fill="#E6F4C7"/><path d="m953 85 9 9 18-20" stroke="#8CAD17" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

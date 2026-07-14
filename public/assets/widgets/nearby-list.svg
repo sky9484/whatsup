@@ -1,0 +1,13 @@
+<svg width="280" height="390" viewBox="0 0 280 390" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="1" y="1" width="278" height="388" rx="20" fill="#FFFAF2" stroke="#0F2E8A" stroke-opacity=".18"/>
+  <text x="20" y="34" fill="#0F2E8A" font-family="Space Grotesk,Arial" font-size="13" font-weight="700">Nearby</text><text x="239" y="34" fill="#65708C" font-family="Inter,Arial" font-size="9">See all</text>
+  <g font-family="Inter,Arial">
+    <g transform="translate(0 55)"><circle cx="38" cy="20" r="18" fill="#F4B08A"/><text x="38" y="24" fill="#0F2E8A" font-size="10" font-weight="700" text-anchor="middle">A</text><text x="66" y="18" fill="#0F2E8A" font-size="11" font-weight="700">Aisha</text><text x="66" y="32" fill="#65708C" font-size="8">Shared location</text><text x="239" y="24" fill="#65708C" font-size="9">200 m</text></g>
+    <g transform="translate(0 112)"><circle cx="38" cy="20" r="18" fill="#DCE7F7"/><text x="38" y="24" fill="#0F2E8A" font-size="10" font-weight="700" text-anchor="middle">D</text><text x="66" y="18" fill="#0F2E8A" font-size="11" font-weight="700">Devin</text><text x="66" y="32" fill="#65708C" font-size="8">At a public event</text><text x="239" y="24" fill="#65708C" font-size="9">300 m</text></g>
+    <g transform="translate(0 169)"><circle cx="38" cy="20" r="18" fill="#D8DEC3"/><text x="38" y="24" fill="#0F2E8A" font-size="10" font-weight="700" text-anchor="middle">L</text><text x="66" y="18" fill="#0F2E8A" font-size="11" font-weight="700">Lina</text><text x="66" y="32" fill="#65708C" font-size="8">Shared location</text><text x="239" y="24" fill="#65708C" font-size="9">450 m</text></g>
+    <g transform="translate(0 226)"><circle cx="38" cy="20" r="18" fill="#E7B7AA"/><text x="38" y="24" fill="#0F2E8A" font-size="10" font-weight="700" text-anchor="middle">M</text><text x="66" y="18" fill="#0F2E8A" font-size="11" font-weight="700">Marcus</text><text x="66" y="32" fill="#65708C" font-size="8">At a workshop</text><text x="239" y="24" fill="#65708C" font-size="9">550 m</text></g>
+  </g>
+  <path d="M18 296h244" stroke="#0F2E8A" stroke-opacity=".12"/>
+  <circle cx="40" cy="334" r="20" fill="#B7FF2A"/><path d="M34 334a6 6 0 0 0 0 8M46 334a6 6 0 0 1 0 8M40 336v4" stroke="#0F2E8A" stroke-width="1.7" stroke-linecap="round"/>
+  <text x="70" y="328" fill="#D96A4A" font-family="Inter,Arial" font-size="8" font-weight="700">LIVE ROOM</text><text x="70" y="345" fill="#0F2E8A" font-family="Space Grotesk,Arial" font-size="11" font-weight="700">Crypto 101</text><text x="70" y="359" fill="#65708C" font-family="Inter,Arial" font-size="8">122 watching</text>
+</svg>

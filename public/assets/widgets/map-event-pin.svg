@@ -1,0 +1,7 @@
+<svg width="220" height="88" viewBox="0 0 220 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M38 82S10 56 10 34a28 28 0 1 1 56 0C66 56 38 82 38 82Z" fill="#0F2E8A" stroke="white" stroke-width="4"/>
+  <path d="M28 30h20v17H28zM33 26v8M43 26v8" stroke="#B7FF2A" stroke-width="2" stroke-linecap="round"/>
+  <rect x="66" y="12" width="152" height="64" rx="14" fill="#FFFAF2" stroke="#0F2E8A" stroke-opacity=".18"/>
+  <text x="84" y="38" fill="#0F2E8A" font-family="Space Grotesk,Arial" font-size="12" font-weight="700">Workshop Space</text>
+  <text x="84" y="58" fill="#65708C" font-family="Inter,Arial" font-size="10">Sat · 7:00 PM</text>
+</svg>

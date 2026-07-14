@@ -1,0 +1,13 @@
+<svg width="330" height="280" viewBox="0 0 330 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="1" y="1" width="328" height="278" rx="20" fill="#FFFAF2" stroke="#0F2E8A" stroke-opacity=".2"/>
+  <text x="22" y="34" fill="#65708C" font-family="Inter,Arial" font-size="10" font-weight="700" letter-spacing="1">SEND MONEY</text>
+  <text x="22" y="77" fill="#0F2E8A" font-family="Space Grotesk,Arial" font-size="34" font-weight="700">125.00</text>
+  <rect x="228" y="47" width="80" height="36" rx="10" fill="#F7F1E8" stroke="#0F2E8A" stroke-opacity=".15"/>
+  <circle cx="247" cy="65" r="8" fill="#D96A4A"/><text x="265" y="69" fill="#0F2E8A" font-family="Inter,Arial" font-size="11" font-weight="700">MYR</text><path d="m295 62 4 4 4-4" stroke="#0F2E8A" stroke-width="1.5"/>
+  <path d="M22 100h286" stroke="#0F2E8A" stroke-opacity=".12"/>
+  <text x="22" y="123" fill="#65708C" font-family="Inter,Arial" font-size="9">TO</text>
+  <circle cx="42" cy="149" r="17" fill="#F4B08A"/><text x="42" y="153" fill="#0F2E8A" font-family="Inter,Arial" font-size="10" font-weight="700" text-anchor="middle">A</text>
+  <text x="68" y="146" fill="#0F2E8A" font-family="Inter,Arial" font-size="12" font-weight="700">@Ava</text><text x="68" y="161" fill="#65708C" font-family="Inter,Arial" font-size="9">Community member</text>
+  <text x="22" y="195" fill="#65708C" font-family="Inter,Arial" font-size="9">FOR</text><text x="22" y="216" fill="#0F2E8A" font-family="Inter,Arial" font-size="11">Thanks for lunch! 👋</text>
+  <rect x="18" y="230" width="294" height="36" rx="9" fill="#B7FF2A"/><text x="165" y="253" fill="#0F2E8A" font-family="Space Grotesk,Arial" font-size="12" font-weight="700" text-anchor="middle">Review &amp; send</text>
+</svg>
