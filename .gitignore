@@ -1,2 +1,5 @@
 # Source PNG exports (227 MB) — converted to WebP in public/art/, keep originals local only
 public/*.png
+
+# Node / Tailwind build
+node_modules/

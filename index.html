@@ -14,6 +14,25 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="public/assets/backgrounds/hero-kl-social-city.webp" fetchpriority="high">
+<!-- Tailwind (Play CDN) — utilities live instantly with the Whatsup! brand tokens.
+     Preflight is off so it coexists with the page's own CSS below.
+     PRODUCTION: run `npm run build:css`, then swap this block for
+     <link rel="stylesheet" href="public/tailwind.css"> -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  corePlugins: { preflight: false },
+  theme: { extend: {
+    colors: { navy:'#0F2E8A', 'navy-deep':'#062660', lime:'#B7FF2A', paper:'#F7F1E8', panel:'#FFFAF2', coral:'#D96A4A', clay:'#C95A3A', peach:'#F4B08A', muted:'#65708C' },
+    fontFamily: { display:['"Space Grotesk"','sans-serif'], body:['"DM Sans"','sans-serif'] },
+    borderRadius: { xl2:'20px' },
+    boxShadow: {
+      soft:'0 12px 30px -12px rgba(11,31,85,.16), 0 4px 10px -6px rgba(11,31,85,.10)',
+      float:'0 34px 66px -22px rgba(11,31,85,.30), 0 10px 24px -12px rgba(11,31,85,.14)'
+    }
+  } }
+}
+</script>
 <style>
 :root{
   --navy:#0F2E8A; --navy-deep:#062660; --navy-ink:#0B1F55;

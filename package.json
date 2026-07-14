@@ -1,0 +1,14 @@
+{
+  "name": "whatsup-landing",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Whatsup! — community social OS landing page (static, illustrated).",
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/tailwind.css -o ./public/tailwind.css --minify",
+    "watch:css": "tailwindcss -i ./src/tailwind.css -o ./public/tailwind.css --watch",
+    "serve": "npx http-server -p 4173 -c-1 ."
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}

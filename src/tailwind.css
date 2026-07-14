@@ -1,0 +1,7 @@
+/* Tailwind entry point — compiled to public/tailwind.css via `npm run build:css`.
+   Preflight is disabled in tailwind.config.js so this coexists with the page's
+   own reset in index.html. Brand tokens (navy/lime/paper/coral, Space Grotesk /
+   DM Sans, shadow-soft/float, rounded-xl2) come from the config theme. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
