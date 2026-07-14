@@ -45,8 +45,9 @@ tailwind.config = {
   --r-lg:24px; --r-md:18px;
   --disp:"Space Grotesk","Segoe UI",system-ui,sans-serif;
   --body:"DM Sans","Segoe UI",system-ui,sans-serif;
-  --pad:clamp(24px,4.8vw,74px); --max:1680px;
-  --gap:clamp(72px,7vw,104px);
+  --pad:clamp(20px,3.6vw,52px); --max:1240px;
+  --gap:clamp(48px,4.6vw,68px);
+  --divider:rgba(11,31,85,.9);
   --ease:cubic-bezier(.22,.9,.28,1);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -107,24 +108,30 @@ a{color:inherit;text-decoration:none}
 .nav__links a:hover::after{right:8px}
 .nav__cta{display:flex;align-items:center;gap:10px;margin-left:8px}
 
-/* hero — full-bleed illustrated city */
-.hero{position:relative;overflow:hidden;min-height:clamp(560px,56vw,730px);display:flex;align-items:center}
-.hero__city{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0}
-.hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,var(--paper) 24%,rgba(247,241,232,.55) 40%,rgba(247,241,232,0) 60%);pointer-events:none}
-.hero__inner{position:relative;z-index:4;max-width:var(--max);margin:0 auto;width:100%;padding:clamp(30px,4vw,56px) var(--pad)}
-.hero__copy{max-width:462px}
-.eyebrow{font-family:var(--disp);font-size:12px;font-weight:700;letter-spacing:.19em;color:var(--coral);margin-bottom:18px}
-.h1{font-family:var(--disp);font-weight:600;font-size:clamp(46px,5.6vw,92px);line-height:.93;letter-spacing:-.05em;color:var(--navy)}
+/* hero — copy left, illustrated city justified right */
+.hero{position:relative;max-width:var(--max);margin:0 auto;padding:clamp(18px,2.4vw,36px) var(--pad) clamp(28px,3vw,48px);
+  display:grid;grid-template-columns:minmax(0,36fr) minmax(0,64fr);gap:clamp(12px,1.6vw,28px);align-items:center;
+  border-bottom:1.5px solid var(--divider)}
+.hero__copy{position:relative;z-index:4;max-width:440px}
+.hero__stage{position:relative}
+.hero__city{display:block;width:112%;max-width:none;height:auto;margin-left:-12%;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 15%);mask-image:linear-gradient(90deg,transparent 0,#000 15%)}
+.eyebrow{font-family:var(--disp);font-size:11.5px;font-weight:700;letter-spacing:.19em;color:var(--coral);margin-bottom:16px}
+.h1{font-family:var(--disp);font-weight:600;font-size:clamp(36px,4.2vw,60px);line-height:.95;letter-spacing:-.045em;color:var(--navy)}
 .h1 .clay{color:var(--coral)}
-.hero__sub{margin-top:22px;max-width:42ch;font-size:16px;color:var(--muted)}
-.hero__cta{margin-top:26px}
-.trust{display:flex;gap:0;margin-top:52px;flex-wrap:wrap}
-.trust > div{display:flex;gap:10px;align-items:flex-start;padding-right:22px;margin-right:22px}
-.trust .ic{color:var(--coral);margin-top:2px;width:20px;height:20px}
-.trust b{display:block;font-family:var(--disp);font-size:14px;font-weight:600}
-.trust span{font-size:12px;color:var(--muted)}
+.hero__sub{margin-top:18px;max-width:40ch;font-size:15px;color:var(--muted)}
+.hero__cta{margin-top:22px}
+.trust{display:flex;gap:0;margin-top:36px;flex-wrap:wrap}
+.trust > div{display:flex;gap:9px;align-items:flex-start;padding-right:18px;margin-right:18px}
+.trust .ic{color:var(--coral);margin-top:2px;width:19px;height:19px}
+.trust b{display:block;font-family:var(--disp);font-size:13.5px;font-weight:600}
+.trust span{font-size:11.5px;color:var(--muted)}
 .hero__floats{position:absolute;inset:0;z-index:3;pointer-events:none}
 .hero__floats > *{pointer-events:auto}
+@media (prefers-reduced-motion:no-preference){
+  .float-a{animation:floaty 7s ease-in-out infinite}
+  .float-b{animation:floaty 8.6s ease-in-out infinite;animation-delay:-2.4s}
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+}
 .fw{position:absolute;z-index:5;background:var(--panel);border:1px solid var(--line);border-radius:18px;box-shadow:var(--sh);padding:13px 15px}
 .fw__lbl{font-family:var(--disp);font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
 .fw__sub{font-size:11px;color:var(--muted)}
@@ -142,9 +149,10 @@ a{color:inherit;text-decoration:none}
 .paycard .sent{margin-top:10px;width:100%;background:var(--lime);color:var(--navy);border-radius:10px;min-height:36px;font-family:var(--disp);font-weight:700;font-size:12.5px;display:flex;align-items:center;justify-content:center;gap:7px}
 
 /* numbered sections */
-.sec{padding-top:var(--gap)}
+.sec{padding-top:var(--gap);border-top:1.5px solid var(--divider)}
 .navy{background:var(--navy);color:var(--paper)}
-.navy .sec__in{padding-top:clamp(64px,7vw,96px);padding-bottom:clamp(64px,7vw,96px)}
+.navy.sec{border-top-color:#0A1024}
+.navy .sec__in{padding-top:clamp(44px,4.6vw,66px);padding-bottom:clamp(44px,4.6vw,66px)}
 .sec__grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,8fr);gap:clamp(26px,3.4vw,56px);align-items:center}
 .sec__grid > *{min-width:0}
 .sec__grid--fin{grid-template-columns:minmax(0,4fr) minmax(0,9fr)}
@@ -358,7 +366,7 @@ a{color:inherit;text-decoration:none}
 .poll .votes{font-size:10.5px;color:var(--muted);margin-top:10px}
 
 /* cta band + footer */
-.cta{position:relative;margin-top:0;overflow:hidden;text-align:center;color:var(--paper)}
+.cta{position:relative;margin-top:0;overflow:hidden;text-align:center;color:var(--paper);border-top:1.5px solid #0A1024}
 .cta > img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
 .cta::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,20,60,.42),rgba(6,20,60,.58))}
 .cta__in{position:relative;z-index:3;max-width:840px;margin:0 auto;padding:clamp(60px,7vw,104px) var(--pad)}
@@ -395,10 +403,10 @@ a{color:inherit;text-decoration:none}
 @media (max-width:1100px){
   .nav__links{display:none}
   .sec__grid{grid-template-columns:1fr}
-  .hero{display:flex;flex-direction:column;min-height:0}
-  .hero::before{display:none}
-  .hero__city{position:relative;order:2;width:100%;height:auto;max-height:none;object-fit:contain}
-  .hero__inner{order:1;background:var(--paper);padding-bottom:26px}
+  .hero{grid-template-columns:1fr;gap:0}
+  .hero__copy{order:1;padding-bottom:18px;max-width:none}
+  .hero__stage{order:2}
+  .hero__city{width:100%;margin-left:0}
   .hero__floats{display:none}
   .eventwrap,.cwrap,.livegrid{grid-template-columns:1fr}
   .fingrid{grid-template-columns:1fr 1fr}
@@ -461,9 +469,7 @@ a{color:inherit;text-decoration:none}
 <main id="main">
 <!-- ================= HERO ================= -->
 <section class="hero" id="top" aria-label="Whatsup! introduction">
-  <img class="hero__city" src="public/assets/backgrounds/hero-kl-social-city.webp" alt="Illustrated Kuala Lumpur community — skyline, rooftop gatherings, parks and a rail line." width="1568" height="960" fetchpriority="high">
-  <div class="hero__inner">
-    <div class="hero__copy">
+  <div class="hero__copy">
       <p class="eyebrow">A SOCIAL OS FOR REAL LIFE</p>
       <h1 class="h1">Your city.<br>Your people.<br><span class="clay">Your world.</span></h1>
       <p class="hero__sub">Whatsup! is a community social OS that connects cities and communities. Discover people, join groups, host events, go live, and build real connections — together.</p>
@@ -474,10 +480,11 @@ a{color:inherit;text-decoration:none}
         <div><svg class="ic"><use href="public/assets/icons/whatsvp-icons.svg#shield"/></svg><div><b>Open &amp; Secure</b><span>You stay in control</span></div></div>
       </div>
     </div>
-  </div>
 
-  <div class="hero__floats" aria-hidden="true">
-    <div class="fw" style="top:8%;left:47%;width:220px">
+  <div class="hero__stage">
+    <img class="hero__city" src="public/assets/backgrounds/hero-kl-social-city.webp" alt="Illustrated Kuala Lumpur community — skyline, rooftop gatherings, parks and a rail line." width="1568" height="960" fetchpriority="high">
+    <div class="hero__floats" aria-hidden="true">
+    <div class="fw float-a" style="top:1%;left:4%;width:208px">
       <div style="display:flex;align-items:center;justify-content:space-between"><span class="fw__lbl">Nearby now</span><span class="fw__sub" style="display:inline-flex;align-items:center;gap:5px"><i style="width:6px;height:6px;border-radius:50%;background:#8CAD17"></i>Online</span></div>
       <div style="display:flex;align-items:center;gap:8px;margin-top:9px">
         <span class="avs"><span class="av"><img src="public/art/avatar-1.webp" alt=""></span><span class="av"><img src="public/art/avatar-5.webp" alt=""></span><span class="av"><img src="public/art/avatar-6.webp" alt=""></span><span class="av"><img src="public/art/avatar-2.webp" alt=""></span></span>
@@ -485,32 +492,33 @@ a{color:inherit;text-decoration:none}
       </div>
       <div class="fw__sub" style="margin-top:8px;font-weight:600;color:var(--navy)">See all nearby <span style="color:var(--coral)">→</span></div>
     </div>
-    <div class="pinchip" style="top:38%;left:53%">
+    <div class="pinchip float-b" style="top:34%;left:24%">
       <span class="av"><img src="public/art/avatar-4.webp" alt=""><span class="dot"></span></span>
       <span class="tag">Ava · 1.2 km away</span>
     </div>
-    <div class="fw" style="top:21%;right:5%;width:192px">
+    <div class="fw float-a" style="top:14%;right:1%;width:184px">
       <div style="display:flex;align-items:center;gap:9px">
         <span class="av av--lg"><img src="public/art/avatar-2.webp" alt=""><span class="dot"></span></span>
         <div><b style="font-family:var(--disp);font-size:13.5px;display:block">Marcus</b><span class="fw__sub">Let's meet up! 👋<br>At The Hive KL</span></div>
       </div>
     </div>
-    <div class="fw eventpin" style="bottom:28%;left:41%">
+    <div class="fw eventpin float-b" style="bottom:23%;left:2%">
       <span class="pin"><svg><use href="public/assets/icons/whatsvp-icons.svg#pin"/></svg></span>
       <div><b style="font-family:var(--disp);font-size:13px;display:block">Design Walk</b><span class="fw__sub">Today · 6 PM</span></div>
     </div>
-    <div class="fw paycard" style="bottom:6%;right:4%">
+    <div class="fw paycard float-a" style="bottom:2%;right:-1%;width:198px">
       <div style="display:flex;align-items:center;justify-content:space-between"><span class="fw__lbl">You sent</span><span class="fw__sub" style="border:1px solid var(--line);border-radius:999px;padding:2px 9px;font-weight:600">MYR ▾</span></div>
       <div class="amt">125.00<small>MYR</small></div>
       <div class="to">To <span class="av av--sm"><img src="public/art/avatar-4.webp" alt=""></span> <b style="color:var(--navy)">@Ava</b></div>
       <div class="note">Thanks for lunch! 😊</div>
       <div class="sent"><svg width="13" height="13"><use href="public/assets/icons/whatsvp-icons.svg#check"/></svg>Sent</div>
     </div>
+    </div>
   </div>
 </section>
 
 <!-- ================= 01 EXPLORE (navy) ================= -->
-<section class="navy sec" id="explore" aria-labelledby="xt" style="margin-top:var(--gap)">
+<section class="navy sec" id="explore" aria-labelledby="xt">
   <div class="wrap sec__in">
     <div class="sec__grid">
       <div>
@@ -912,8 +920,10 @@ window.addEventListener('load',()=>{
   gsap.registerPlugin(ScrollTrigger);
   gsap.timeline({defaults:{ease:'power3.out'}})
     .from('.hero__copy > *',{y:24,opacity:0,duration:.6,stagger:.08})
-    .from('.hero__city',{scale:1.05,opacity:0,duration:.9,ease:'power2.out',clearProps:'transform'},'-=.5')
-    .from('.hero__floats > *',{scale:.6,opacity:0,duration:.5,stagger:.09,ease:'back.out(1.7)',clearProps:'transform,opacity'},'-=.4');
+    .from('.hero__city',{opacity:0,duration:.9,ease:'power2.out'},'-=.5')
+    .from('.hero__floats > *',{opacity:0,duration:.6,stagger:.1},'-=.4');
+  /* gentle depth: the city drifts a touch slower than the page as you scroll past */
+  gsap.to('.hero__city',{yPercent:5,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:.6}});
   ScrollTrigger.batch('.mf, .railcard, .uprow, .fincard, .story, .steps, .featured, .uplist, .guild, .liveplayer, .secrow > div',{
     start:'top 88%',
     onEnter:els=>gsap.from(els,{y:26,opacity:0,duration:.5,stagger:.05,ease:'power3.out',overwrite:true,clearProps:'transform,opacity'})
