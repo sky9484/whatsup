@@ -11,11 +11,11 @@
 <link rel="icon" href="public/assets/illustrations/logo-mark.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="public/assets/backgrounds/hero-kl-social-city.webp" fetchpriority="high">
 <style>
 :root{
-  --navy:#0F2E8A; --navy-deep:#0A1F63; --navy-ink:#0B1F55;
+  --navy:#0F2E8A; --navy-deep:#062660; --navy-ink:#0B1F55;
   --lime:#B7FF2A; --peach:#F4B08A; --coral:#D96A4A; --clay:#C95A3A;
   --paper:#F7F1E8; --panel:#FFFAF2; --muted:#65708C;
   --line:rgba(15,46,138,.14); --line-soft:rgba(15,46,138,.08);
@@ -23,7 +23,7 @@
   --sh:0 14px 34px -20px rgba(11,31,85,.45);
   --sh-lg:0 24px 60px -30px rgba(11,31,85,.5);
   --disp:"Space Grotesk","Segoe UI",system-ui,sans-serif;
-  --body:"Inter","Segoe UI",system-ui,sans-serif;
+  --body:"DM Sans","Segoe UI",system-ui,sans-serif;
   --pad:clamp(20px,4.2vw,60px); --max:1320px;
   --gap:clamp(88px,9vw,130px);
   --ease:cubic-bezier(.22,.9,.28,1);
@@ -83,19 +83,24 @@ a{color:inherit;text-decoration:none}
 .nav__links a:hover{background:rgba(15,46,138,.07)}
 .nav__cta{display:flex;align-items:center;gap:10px;margin-left:8px}
 
-/* hero */
-.hero{max-width:var(--max);margin:0 auto;padding:clamp(30px,4vw,56px) var(--pad) 0;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,8fr);gap:clamp(20px,3vw,44px);align-items:center}
-.h1{font-family:var(--disp);font-weight:700;font-size:clamp(42px,4.8vw,68px);line-height:1.02;letter-spacing:-.025em}
-.h1 .clay{color:var(--clay)}
-.hero__sub{margin-top:20px;max-width:44ch;font-size:16px;color:var(--muted)}
+/* hero — full-bleed illustrated city */
+.hero{position:relative;overflow:hidden;min-height:clamp(560px,56vw,730px);display:flex;align-items:center}
+.hero__city{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,var(--paper) 24%,rgba(247,241,232,.55) 40%,rgba(247,241,232,0) 60%);pointer-events:none}
+.hero__inner{position:relative;z-index:4;max-width:var(--max);margin:0 auto;width:100%;padding:clamp(30px,4vw,56px) var(--pad)}
+.hero__copy{max-width:462px}
+.eyebrow{font-family:var(--disp);font-size:12px;font-weight:700;letter-spacing:.19em;color:var(--coral);margin-bottom:18px}
+.h1{font-family:var(--disp);font-weight:700;font-size:clamp(46px,5.4vw,88px);line-height:.95;letter-spacing:-.03em;color:var(--navy)}
+.h1 .clay{color:var(--coral)}
+.hero__sub{margin-top:22px;max-width:42ch;font-size:16px;color:var(--muted)}
 .hero__cta{margin-top:26px}
-.trust{display:flex;gap:0;margin-top:34px;border-top:1px solid var(--line);flex-wrap:wrap}
-.trust > div{display:flex;gap:10px;align-items:flex-start;padding:18px 22px 0 0;margin-right:20px}
+.trust{display:flex;gap:0;margin-top:52px;flex-wrap:wrap}
+.trust > div{display:flex;gap:10px;align-items:flex-start;padding-right:22px;margin-right:22px}
 .trust .ic{color:var(--coral);margin-top:2px;width:20px;height:20px}
 .trust b{display:block;font-family:var(--disp);font-size:14px;font-weight:600}
 .trust span{font-size:12px;color:var(--muted)}
-.hero__stage{position:relative}
-.hero__stage > img.bg{width:100%;height:auto}
+.hero__floats{position:absolute;inset:0;z-index:3;pointer-events:none}
+.hero__floats > *{pointer-events:auto}
 .fw{position:absolute;z-index:5;background:var(--panel);border:1px solid var(--line);border-radius:16px;box-shadow:var(--sh);padding:12px 14px}
 .fw__lbl{font-family:var(--disp);font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
 .fw__sub{font-size:11px;color:var(--muted)}
@@ -325,7 +330,12 @@ a{color:inherit;text-decoration:none}
 /* responsive */
 @media (max-width:1100px){
   .nav__links{display:none}
-  .hero,.sec__grid{grid-template-columns:1fr}
+  .sec__grid{grid-template-columns:1fr}
+  .hero{display:flex;flex-direction:column;min-height:0}
+  .hero::before{display:none}
+  .hero__city{position:relative;order:2;height:auto;max-height:58vh}
+  .hero__inner{order:1;background:var(--paper);padding-bottom:26px}
+  .hero__floats{display:none}
   .eventwrap,.cwrap,.livegrid{grid-template-columns:1fr}
   .fingrid{grid-template-columns:1fr 1fr}
   .footer__grid{grid-template-columns:1fr 1fr 1fr}
@@ -344,9 +354,6 @@ a{color:inherit;text-decoration:none}
   .minifeats{grid-template-columns:1fr}
   .fingrid,.secrow{grid-template-columns:1fr}
   .footer__grid{grid-template-columns:1fr 1fr}
-  .fw--hide-m,.pinchip{display:none}
-  .hero__stage .paycard{position:static;width:100%;margin-top:12px}
-  .hero__stage .fw--nearby{position:static;width:100%;margin-bottom:12px}
   .trust > div{padding-right:0;margin-right:14px}
   .plant{display:none}
 }
@@ -383,42 +390,45 @@ a{color:inherit;text-decoration:none}
 <main id="main">
 <!-- ================= HERO ================= -->
 <section class="hero" id="top" aria-label="Whatsvp! introduction">
-  <div>
-    <h1 class="h1">Your city.<br>Your people.<br><span class="clay">Your world.</span></h1>
-    <p class="hero__sub">Whatsvp! is a community social OS that connects cities and communities. Discover people, join groups, host events, go live, and build real connections — together.</p>
-    <div class="hero__cta"><button class="btn btn--lime" data-toast="The app is almost here — join the waitlist from the footer.">Get the app</button></div>
-    <div class="trust">
-      <div><svg class="ic"><use href="public/assets/icons/whatsvp-icons.svg#live-local"/></svg><div><b>Live &amp; Local</b><span>Real-time updates</span></div></div>
-      <div><svg class="ic"><use href="public/assets/icons/whatsvp-icons.svg#people"/></svg><div><b>People First</b><span>Built on community</span></div></div>
-      <div><svg class="ic"><use href="public/assets/icons/whatsvp-icons.svg#shield"/></svg><div><b>Open &amp; Secure</b><span>Your data. Your control.</span></div></div>
+  <img class="hero__city" src="public/assets/backgrounds/hero-kl-social-city.webp" alt="Illustrated Kuala Lumpur community — skyline, rooftop gatherings, parks and a rail line." width="1568" height="960" fetchpriority="high">
+  <div class="hero__inner">
+    <div class="hero__copy">
+      <p class="eyebrow">A SOCIAL OS FOR REAL LIFE</p>
+      <h1 class="h1">Your city.<br>Your people.<br><span class="clay">Your world.</span></h1>
+      <p class="hero__sub">Whatsvp! is a community social OS that connects cities and communities. Discover people, join groups, host events, go live, and build real connections — together.</p>
+      <div class="hero__cta"><button class="btn btn--lime" data-toast="The app is almost here — join the waitlist from the footer.">Get the app</button></div>
+      <div class="trust">
+        <div><svg class="ic"><use href="public/assets/icons/whatsvp-icons.svg#live-local"/></svg><div><b>Live &amp; Local</b><span>Real-time updates</span></div></div>
+        <div><svg class="ic"><use href="public/assets/icons/whatsvp-icons.svg#people"/></svg><div><b>People First</b><span>Built for community</span></div></div>
+        <div><svg class="ic"><use href="public/assets/icons/whatsvp-icons.svg#shield"/></svg><div><b>Open &amp; Secure</b><span>You stay in control</span></div></div>
+      </div>
     </div>
   </div>
 
-  <div class="hero__stage" role="img" aria-label="An illustrated Kuala Lumpur neighborhood with nearby people, an event pin and a payment floating above it.">
-    <img class="bg" src="public/assets/backgrounds/hero-kl-social-city.webp" alt="" width="1568" height="960" fetchpriority="high">
-    <div class="fw fw--nearby" style="top:4%;left:26%;width:220px">
-      <div style="display:flex;align-items:center;justify-content:space-between"><span class="fw__lbl">Nearby now</span><span class="fw__sub" style="display:inline-flex;align-items:center;gap:5px"><i style="width:6px;height:6px;border-radius:50%;background:#8CAD17"></i>Live</span></div>
+  <div class="hero__floats" aria-hidden="true">
+    <div class="fw" style="top:8%;left:47%;width:220px">
+      <div style="display:flex;align-items:center;justify-content:space-between"><span class="fw__lbl">Nearby now</span><span class="fw__sub" style="display:inline-flex;align-items:center;gap:5px"><i style="width:6px;height:6px;border-radius:50%;background:#8CAD17"></i>Online</span></div>
       <div style="display:flex;align-items:center;gap:8px;margin-top:9px">
         <span class="avs"><span class="av"><img src="public/art/avatar-1.webp" alt=""></span><span class="av"><img src="public/art/avatar-5.webp" alt=""></span><span class="av"><img src="public/art/avatar-6.webp" alt=""></span><span class="av"><img src="public/art/avatar-2.webp" alt=""></span></span>
         <b style="font-family:var(--disp);font-size:12px">+24</b>
       </div>
       <div class="fw__sub" style="margin-top:8px;font-weight:600;color:var(--navy)">See all nearby <span style="color:var(--coral)">→</span></div>
     </div>
-    <div class="pinchip" style="top:34%;left:44%">
+    <div class="pinchip" style="top:38%;left:53%">
       <span class="av"><img src="public/art/avatar-4.webp" alt=""><span class="dot"></span></span>
       <span class="tag">Ava · 1.2 km away</span>
     </div>
-    <div class="fw fw--hide-m" style="top:22%;right:6%;width:190px">
+    <div class="fw" style="top:21%;right:5%;width:192px">
       <div style="display:flex;align-items:center;gap:9px">
         <span class="av av--lg"><img src="public/art/avatar-2.webp" alt=""><span class="dot"></span></span>
         <div><b style="font-family:var(--disp);font-size:13.5px;display:block">Marcus</b><span class="fw__sub">Let's meet up! 👋<br>At The Hive KL</span></div>
       </div>
     </div>
-    <div class="fw eventpin fw--hide-m" style="bottom:26%;left:8%">
+    <div class="fw eventpin" style="bottom:28%;left:41%">
       <span class="pin"><svg><use href="public/assets/icons/whatsvp-icons.svg#pin"/></svg></span>
       <div><b style="font-family:var(--disp);font-size:13px;display:block">Design Walk</b><span class="fw__sub">Today · 6 PM</span></div>
     </div>
-    <div class="fw paycard" style="bottom:5%;right:4%">
+    <div class="fw paycard" style="bottom:6%;right:4%">
       <div style="display:flex;align-items:center;justify-content:space-between"><span class="fw__lbl">You sent</span><span class="fw__sub" style="border:1px solid var(--line);border-radius:999px;padding:2px 9px;font-weight:600">MYR ▾</span></div>
       <div class="amt">125.00<small>MYR</small></div>
       <div class="to">To <span class="av av--sm"><img src="public/art/avatar-4.webp" alt=""></span> <b style="color:var(--navy)">@Ava</b></div>
@@ -804,9 +814,9 @@ window.addEventListener('load',()=>{
   if(!window.gsap || REDUCE) return;
   gsap.registerPlugin(ScrollTrigger);
   gsap.timeline({defaults:{ease:'power3.out'}})
-    .from('.hero > div:first-child > *',{y:24,opacity:0,duration:.6,stagger:.08})
-    .from('.hero__stage',{y:24,opacity:0,duration:.7},'-=.45')
-    .from('.hero__stage .fw, .hero__stage .pinchip',{scale:.6,opacity:0,duration:.5,stagger:.09,ease:'back.out(1.7)',clearProps:'transform,opacity'},'-=.3');
+    .from('.hero__copy > *',{y:24,opacity:0,duration:.6,stagger:.08})
+    .from('.hero__city',{scale:1.05,opacity:0,duration:.9,ease:'power2.out',clearProps:'transform'},'-=.5')
+    .from('.hero__floats > *',{scale:.6,opacity:0,duration:.5,stagger:.09,ease:'back.out(1.7)',clearProps:'transform,opacity'},'-=.4');
   ScrollTrigger.batch('.mf, .railcard, .uprow, .fincard, .story, .steps, .featured, .uplist, .guild, .liveplayer, .secrow > div',{
     start:'top 88%',
     onEnter:els=>gsap.from(els,{y:26,opacity:0,duration:.5,stagger:.05,ease:'power3.out',overwrite:true,clearProps:'transform,opacity'})
