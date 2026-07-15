@@ -3,3 +3,4 @@ public/*.png
 
 # Node / Tailwind build
 node_modules/
+_fm/

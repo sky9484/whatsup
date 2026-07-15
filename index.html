@@ -78,7 +78,8 @@ a{color:inherit;text-decoration:none}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,246,238,.7)}100%{box-shadow:0 0 0 6px rgba(255,246,238,0)}}
 
 /* nav */
-.nav{position:sticky;top:0;z-index:900;background:rgba(247,241,232,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-soft)}
+.nav{position:sticky;top:0;z-index:900;background:transparent;border-bottom:1px solid transparent;transition:background-color .35s var(--ease),border-color .35s var(--ease),backdrop-filter .35s var(--ease),box-shadow .35s var(--ease)}
+.nav.is-scrolled{background:rgba(247,241,232,.92);backdrop-filter:blur(10px);border-bottom-color:var(--line-soft);box-shadow:0 6px 24px -16px rgba(11,31,85,.4)}
 .nav__in{max-width:var(--max);margin:0 auto;display:flex;align-items:center;gap:26px;padding:13px var(--pad)}
 .brand{display:flex;align-items:center;gap:10px;flex-shrink:0}
 .brand img{height:34px;width:auto}
@@ -108,6 +109,8 @@ a{color:inherit;text-decoration:none}
 .trust span{font-size:11.5px;color:var(--muted)}
 .hero__floats{position:absolute;inset:0;z-index:3;pointer-events:none}
 .hero__floats > *{pointer-events:auto}
+.hfloat{position:absolute;z-index:5;filter:drop-shadow(0 18px 30px rgba(11,31,85,.22)) drop-shadow(0 4px 10px rgba(11,31,85,.10))}
+.hfloat img{width:100%;height:auto;display:block}
 @media (prefers-reduced-motion:no-preference){
   .float-a{animation:floaty 7s ease-in-out infinite}
   .float-b{animation:floaty 8.6s ease-in-out infinite;animation-delay:-2.4s}
@@ -276,34 +279,35 @@ a{color:inherit;text-decoration:none}
 .finance{position:relative;overflow:hidden}
 .finance > img.bg{position:absolute;left:0;right:0;bottom:0;width:100%;height:52%;object-fit:cover;object-position:50% 20%;opacity:.4;mask-image:linear-gradient(180deg,transparent,black 55%);-webkit-mask-image:linear-gradient(180deg,transparent,black 55%)}
 .fingrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.fincard{background:rgba(8,28,72,.5);border:1px solid rgba(247,241,232,.15);color:var(--paper);border-radius:var(--r-lg);box-shadow:var(--sh-lg);padding:24px 26px;display:flex;flex-direction:column}
-.fincard h4{font-family:var(--disp);font-size:15px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--paper);display:flex;align-items:center;justify-content:space-between}
-.fincard h4 svg{color:rgba(247,241,232,.7)}
-.fincard .fw__sub{color:rgba(247,241,232,.66);margin-top:8px}
-.fincard .bal{font-family:var(--disp);font-size:clamp(26px,2.3vw,32px);font-weight:700;margin-top:6px;font-variant-numeric:tabular-nums;color:var(--paper)}
-.arow{display:flex;align-items:center;gap:11px;padding:11px 0;border-top:1px solid rgba(247,241,232,.1);font-size:14px}
-.arow .g{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-size:12px;font-weight:700;color:var(--navy);flex-shrink:0}
-.arow b{font-family:var(--disp);font-weight:600;color:var(--paper)}
-.arow > span:last-child{margin-left:auto;font-variant-numeric:tabular-nums;color:rgba(247,241,232,.72)}
+/* Finance cards — solid, opaque "wallet UI" panels (no glass) */
+.fincard{background:linear-gradient(180deg,#FFFFFF, #FFFAF2);border:1px solid rgba(15,46,138,.10);color:var(--navy);border-radius:var(--r-lg);box-shadow:0 30px 60px -26px rgba(4,14,44,.55),0 8px 20px -12px rgba(4,14,44,.35);padding:24px 26px;display:flex;flex-direction:column}
+.fincard h4{font-family:var(--disp);font-size:15px;font-weight:700;letter-spacing:0;text-transform:none;color:var(--navy);display:flex;align-items:center;justify-content:space-between}
+.fincard h4 svg{color:rgba(15,46,138,.5)}
+.fincard .fw__sub{color:var(--muted);margin-top:8px}
+.fincard .bal{font-family:var(--disp);font-size:clamp(26px,2.3vw,33px);font-weight:700;margin-top:6px;font-variant-numeric:tabular-nums;color:var(--navy);letter-spacing:-.02em}
+.arow{display:flex;align-items:center;gap:11px;padding:11px 0;border-top:1px solid var(--line-soft);font-size:14px}
+.arow .g{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-size:12px;font-weight:700;color:#fff;flex-shrink:0;box-shadow:0 2px 6px rgba(4,14,44,.18)}
+.arow b{font-family:var(--disp);font-weight:600;color:var(--navy)}
+.arow > span:last-child{margin-left:auto;font-variant-numeric:tabular-nums;color:var(--muted);font-weight:600}
 .fincard .foot{margin-top:auto;padding-top:14px}
-.fincard .foot .linkbtn{color:rgba(247,241,232,.85)}
-.sendfield{border-bottom:1px solid rgba(247,241,232,.12);padding:14px 0;margin-top:2px}
-.sendfield label{display:block;font-size:12px;color:rgba(247,241,232,.6);font-family:var(--disp);font-weight:500;letter-spacing:0;text-transform:none}
-.sendfield .v{display:flex;align-items:center;justify-content:space-between;gap:8px;font-family:var(--disp);font-size:26px;font-weight:700;margin-top:5px;color:var(--paper)}
-.sendfield .cur{font-size:12.5px;background:rgba(247,241,232,.08);border:1px solid rgba(247,241,232,.2);border-radius:999px;padding:6px 12px;font-weight:600}
-.sendbtn{margin-top:16px;width:100%;background:var(--lime);color:var(--navy);border-radius:10px;min-height:46px;font-family:var(--disp);font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;gap:8px;transition:transform .16s var(--ease)}
-.sendbtn:hover{transform:translateY(-2px)}
+.fincard .foot .linkbtn{color:var(--coral);font-weight:600}
+.sendfield{border-bottom:1px solid var(--line-soft);padding:14px 0;margin-top:2px}
+.sendfield label{display:block;font-size:12px;color:var(--muted);font-family:var(--disp);font-weight:600;letter-spacing:0;text-transform:none}
+.sendfield .v{display:flex;align-items:center;justify-content:space-between;gap:8px;font-family:var(--disp);font-size:26px;font-weight:700;margin-top:5px;color:var(--navy)}
+.sendfield .cur{font-size:12.5px;background:var(--paper);border:1px solid var(--line);color:var(--navy);border-radius:999px;padding:6px 12px;font-weight:700}
+.sendbtn{margin-top:16px;width:100%;background:var(--navy);color:var(--paper);border-radius:12px;min-height:46px;font-family:var(--disp);font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;gap:8px;transition:transform .16s var(--ease),background-color .2s}
+.sendbtn:hover{transform:translateY(-2px);background:#143AA6}
 .fundbar{margin-top:14px}
-.fundbar .lbl{display:flex;justify-content:space-between;font-size:12.5px;color:rgba(247,241,232,.7)}
-.fundbar .track{height:9px;border-radius:999px;background:rgba(247,241,232,.14);margin-top:8px;overflow:hidden}
-.fundbar .fill{height:100%;width:0;border-radius:999px;background:var(--lime);transition:width 1.2s var(--ease)}
-.fundbar .pct{font-family:var(--disp);font-size:13px;font-weight:700;color:var(--paper);text-align:right;margin-top:6px}
-.secrow{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:16px;background:rgba(8,28,72,.4);border:1px solid rgba(247,241,232,.14);border-radius:16px;padding:16px 24px}
-.secrow > div{display:flex;gap:12px;align-items:center;border-left:1px solid rgba(247,241,232,.14);padding-left:22px}
+.fundbar .lbl{display:flex;justify-content:space-between;font-size:12.5px;color:var(--muted)}
+.fundbar .track{height:9px;border-radius:999px;background:rgba(15,46,138,.10);margin-top:8px;overflow:hidden}
+.fundbar .fill{height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,var(--coral),var(--clay));transition:width 1.2s var(--ease)}
+.fundbar .pct{font-family:var(--disp);font-size:13px;font-weight:700;color:var(--navy);text-align:right;margin-top:6px}
+.secrow{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:16px;background:linear-gradient(180deg,#FFFFFF,#FFFAF2);border:1px solid rgba(15,46,138,.10);border-radius:16px;padding:16px 24px;box-shadow:0 20px 44px -26px rgba(4,14,44,.5)}
+.secrow > div{display:flex;gap:12px;align-items:center;border-left:1px solid var(--line-soft);padding-left:22px}
 .secrow > div:first-child{border-left:0;padding-left:0}
-.secrow .ic{color:var(--lime)}
-.secrow b{display:block;font-family:var(--disp);font-size:14px;font-weight:600;color:var(--paper)}
-.secrow span{font-size:12px;color:var(--on-navy)}
+.secrow .ic{color:var(--coral)}
+.secrow b{display:block;font-family:var(--disp);font-size:14px;font-weight:600;color:var(--navy)}
+.secrow span{font-size:12px;color:var(--muted)}
 
 /* live (05) */
 .livegrid{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:16px}
@@ -654,39 +658,13 @@ a{color:inherit;text-decoration:none}
       <img class="hero__city" src="public/assets/backgrounds/hero-kl-social-city.webp" alt="Illustrated Kuala Lumpur builder community — skyline, launch rooms, parks, and a connected rail line." width="1568" height="960" fetchpriority="high">
     </picture>
     <div class="hero__floats" aria-hidden="true">
-    <div class="fw float-a" style="top:1%;left:4%;width:208px">
-      <div style="display:flex;align-items:center;justify-content:space-between"><span class="fw__lbl">Nearby now</span><span class="fw__sub" style="display:inline-flex;align-items:center;gap:5px"><i style="width:6px;height:6px;border-radius:50%;background:#8CAD17"></i>Online</span></div>
-      <div style="display:flex;align-items:center;gap:8px;margin-top:9px">
-        <span class="avs"><span class="av"><img src="public/art/avatar-1.webp" alt=""></span><span class="av"><img src="public/art/avatar-5.webp" alt=""></span><span class="av"><img src="public/art/avatar-6.webp" alt=""></span><span class="av"><img src="public/art/avatar-2.webp" alt=""></span></span>
-        <b style="font-family:var(--disp);font-size:12px">+24</b>
-      </div>
-      <div class="fw__sub" style="margin-top:8px;font-weight:600;color:var(--navy)">See all nearby <span style="color:var(--coral)">→</span></div>
-    </div>
-    <div class="pinchip float-b" style="top:34%;left:24%">
-      <span class="av"><img src="public/art/avatar-4.webp" alt=""><span class="dot"></span></span>
-      <span class="tag">Ava · 1.2 km away</span>
-    </div>
-    <div class="fw float-a" style="top:14%;right:1%;width:184px">
-      <div style="display:flex;align-items:center;gap:9px">
-        <span class="av av--lg"><img src="public/art/avatar-2.webp" alt=""><span class="dot"></span></span>
-        <div><b style="font-family:var(--disp);font-size:13.5px;display:block">Marcus</b><span class="fw__sub">Let's meet up! 👋<br>At The Hive KL</span></div>
-      </div>
-    </div>
-    <div class="fw eventpin float-b" style="bottom:23%;left:2%">
-      <span class="pin"><svg><use href="public/assets/icons/whatsvp-icons.svg#pin"/></svg></span>
-      <div><b style="font-family:var(--disp);font-size:13px;display:block">Move Builders Walk</b><span class="fw__sub">Today · 6 PM</span></div>
-    </div>
-    <div class="fw paycard float-a" style="bottom:2%;right:-1%;width:198px">
-      <div style="display:flex;align-items:center;justify-content:space-between"><span class="fw__lbl">You sent</span><span class="fw__sub" style="border:1px solid var(--line);border-radius:999px;padding:2px 9px;font-weight:600">MYRC ▾</span></div>
-      <div class="amt">125.00<small>MYRC</small></div>
-      <div class="to">To <span class="av av--sm"><img src="public/art/avatar-4.webp" alt=""></span> <b style="color:var(--navy)">@Ava</b></div>
-      <div class="note">Thanks for lunch! 😊</div>
-      <div class="sent"><svg width="13" height="13"><use href="public/assets/icons/whatsvp-icons.svg#check"/></svg>Sent</div>
-    </div>
+      <div class="hfloat float-a" style="top:6%;left:45%;width:248px"><img src="public/assets/widgets/card-nearby-now.webp" alt="" width="513" height="248"></div>
+      <div class="hfloat float-b" style="top:15%;right:1.5%;width:290px"><img src="public/assets/widgets/card-hosting-now.webp" alt="" width="760" height="308"></div>
+      <div class="hfloat float-a" style="top:45%;left:50%;width:128px"><img src="public/assets/widgets/pin-avatar-ava.webp" alt="" width="220" height="217"></div>
+      <div class="hfloat float-b" style="bottom:27%;left:43%;width:168px"><img src="public/assets/widgets/pin-web3-meetup.webp" alt="" width="260" height="129"></div>
+      <div class="hfloat float-a" style="bottom:5%;right:2%;width:236px"><img src="public/assets/widgets/card-receive-125.webp" alt="" width="760" height="509"></div>
     </div>
   </div>
-  <button class="nft-sticker nft-pudgy" type="button" data-nft="Pudgy Penguins" aria-label="Open Pudgy Penguins identity card"><span class="nft-face">🐧</span><span><b>Pudgy Penguins</b><small>Ethereum identity</small></span></button>
-  <button class="nft-sticker nft-bayc" type="button" data-nft="Bored Ape Yacht Club" aria-label="Open Bored Ape identity card"><span class="nft-face">🦍</span><span><b>Bored Ape</b><small>Founder pass</small></span></button>
 </section>
 
 <!-- ================= 01 EXPLORE (navy) ================= -->
@@ -1198,6 +1176,11 @@ a{color:inherit;text-decoration:none}
 "use strict";
 const qs=(s,r=document)=>r.querySelector(s), qsa=(s,r=document)=>[...r.querySelectorAll(s)];
 const REDUCE=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* Navbar: transparent over the hero, solid once you scroll past ~5% of the viewport */
+(()=>{ const nav=qs('.nav'); if(!nav) return;
+  const onScroll=()=>{ nav.classList.toggle('is-scrolled', window.scrollY > window.innerHeight*0.05); };
+  onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
+})();
 let tt=null;
 function toast(m){ qs('#toastMsg').textContent=m; qs('#toast').classList.add('is-on'); clearTimeout(tt); tt=setTimeout(()=>qs('#toast').classList.remove('is-on'),3400); }
 document.addEventListener('click',e=>{
