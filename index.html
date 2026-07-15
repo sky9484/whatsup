@@ -273,7 +273,7 @@ a{color:inherit;text-decoration:none}
 .dmsg .b b{font-weight:600}
 .dmsg .t{font-size:9.5px;color:var(--muted);margin-left:auto;padding-left:6px;white-space:nowrap}
 .dmin{margin-top:11px;display:flex;align-items:center;justify-content:space-between;gap:8px;border:1px solid var(--line);border-radius:999px;padding:8px 13px;font-size:12px;color:var(--muted)}
-.plant{position:absolute;right:-34px;bottom:-30px;width:150px;opacity:.9;pointer-events:none}
+.plant{position:absolute;right:-30px;bottom:-30px;width:132px;opacity:.95;pointer-events:none;filter:drop-shadow(0 14px 22px rgba(11,31,85,.12))}
 
 /* finance (04) */
 .finance{position:relative;overflow:hidden}
@@ -498,12 +498,13 @@ a{color:inherit;text-decoration:none}
 .paper-sec:nth-of-type(even)>.sec__grid>div:first-child{order:2}
 .mappanel{min-height:clamp(560px,72vh,820px);border-radius:32px 0 0 32px;margin-right:calc(var(--edge) * -1);box-shadow:-14px 22px 0 rgba(183,255,42,.16)}
 .eventwrap{grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr)}
-#events{isolation:isolate}
-#events>.sec__grid{position:relative;z-index:2}
+#events{isolation:isolate;flex-direction:column;justify-content:center}
+#events>.sec__grid{position:relative;z-index:2;width:100%}
+#events>.evgallery{width:100%}
 #events>.sec__grid>div:first-child{min-height:70vh;display:flex;flex-direction:column;justify-content:center}
 #events .lede{padding:10px 14px;margin-left:-14px;background:linear-gradient(90deg,rgba(247,241,232,.94),rgba(247,241,232,.72) 78%,transparent);box-decoration-break:clone;-webkit-box-decoration-break:clone}
 #events .host__ctas{position:relative;z-index:3}
-.host__art{position:absolute;z-index:1;left:0;bottom:0;width:min(60vw,920px);max-width:none;margin:0;pointer-events:none;filter:drop-shadow(0 18px 26px rgba(15,46,138,.12))}
+.host__art{position:absolute;z-index:1;left:0;bottom:0;width:min(32vw,392px);max-width:none;margin:0;pointer-events:none;opacity:.9;filter:drop-shadow(0 18px 26px rgba(15,46,138,.12))}
 #community .cwrap{grid-template-columns:minmax(0,1fr) minmax(260px,.34fr)}
 #community .guild{min-height:72vh}
 .finance>img.bg{height:78%;opacity:.55}
@@ -519,10 +520,15 @@ a{color:inherit;text-decoration:none}
 .nft-sticker .nft-face{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:white;font-size:23px}
 .nft-sticker b{display:block;font-size:12px;line-height:1.15}
 .nft-sticker small{display:block;color:var(--muted);font-size:10px;margin-top:3px}
-.nft-pudgy{right:3.5vw;top:18vh}
-.nft-bayc{left:37vw;bottom:5vh}
-.nft-rootlets{right:2vw;top:8vh}
 .nft-rootlets .nft-face{background:var(--lime);color:var(--navy)}
+.nft-pudgy .nft-face{background:#6CA8E8;color:#fff}
+.nft-bayc .nft-face{background:#7A5A3A;color:#fff}
+/* NFT identity chips live in a tidy row at the foot of Community */
+.nftrow{display:flex;flex-wrap:wrap;align-items:center;gap:13px;margin-top:clamp(36px,4.6vw,60px);position:relative;z-index:3}
+.nftrow__lbl{font-family:var(--disp);font-weight:700;font-size:13px;letter-spacing:.02em;color:var(--muted);width:100%}
+.nftrow .nft-sticker{position:static;inset:auto}
+#community{flex-direction:column;justify-content:center}
+#community>.sec__grid,#community>.nftrow{width:100%}
 
 .kit{position:relative;padding:clamp(78px,9vw,140px) 0;background:#04183f;min-height:100svh}
 .kit__head{width:100%;max-width:none;padding:0 var(--edge-wide);grid-template-columns:minmax(0,1.35fr) minmax(260px,.65fr);margin-bottom:clamp(54px,7vw,92px)}
@@ -609,6 +615,39 @@ a{color:inherit;text-decoration:none}
   .cta>img.bg{content:url("public/art/scene-city-life.webp")}
 }
 
+/* ── Events: category chips, stats + popular-events gallery ── */
+.evtags{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}
+.evtag{font-family:var(--disp);font-size:12.5px;font-weight:600;color:var(--navy);background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:7px 14px;transition:transform .2s var(--ease),background-color .2s}
+.evtag:hover{transform:translateY(-2px);background:#fff}
+.evstats{display:flex;gap:clamp(20px,2.4vw,34px);margin-top:26px;flex-wrap:wrap}
+.evstat b{display:block;font-family:var(--disp);font-size:clamp(24px,2.4vw,32px);font-weight:700;color:var(--coral);line-height:1;letter-spacing:-.02em}
+.evstat span{font-size:12.5px;color:var(--muted);margin-top:4px;display:block;max-width:12ch}
+.evgallery{margin-top:clamp(40px,5vw,72px);position:relative;z-index:3}
+.evgallery__head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:18px}
+.evgallery__head h4{font-family:var(--disp);font-size:clamp(18px,1.7vw,23px);font-weight:700;letter-spacing:-.01em}
+.evgallery__row{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.5vw,22px);align-items:end}
+.evcard{border:0;background:none;padding:0;display:block;transition:transform .3s var(--ease)}
+.evcard img{width:100%;height:auto;filter:drop-shadow(0 20px 34px rgba(11,31,85,.18))}
+.evcard:hover{transform:translateY(-7px) rotate(-.4deg)}
+@media(max-width:900px){.evgallery__row{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.evgallery__row{grid-template-columns:1fr;max-width:360px}}
+
+/* ── Thin section separators ── */
+.secline{max-width:var(--max);margin:0 auto;height:0;border:0;border-top:1.6px solid rgba(11,31,85,.18)}
+.secedge .secline{max-width:none}
+
+/* ── Community → Finance avatar marquee ("chasing" at varied speeds) ── */
+.avq{position:relative;height:118px;overflow:hidden;background:linear-gradient(180deg,#F1EADF,#FBF6EE);border-top:1.6px solid rgba(11,31,85,.16);border-bottom:1.6px solid rgba(11,31,85,.16)}
+.avq::before,.avq::after{content:"";position:absolute;top:0;bottom:0;width:90px;z-index:2;pointer-events:none}
+.avq::before{left:0;background:linear-gradient(90deg,#F4EDE2,transparent)}
+.avq::after{right:0;background:linear-gradient(270deg,#FBF6EE,transparent)}
+.avq__a{position:absolute;left:0;top:31px;width:56px;height:56px;border-radius:50%;overflow:hidden;border:3px solid var(--panel);box-shadow:0 12px 24px -8px rgba(11,31,85,.45);transform:translateX(-90px)}
+.avq__a img{width:100%;height:100%;object-fit:cover}
+@media (prefers-reduced-motion:no-preference){
+  .avq__a{animation:avqmove linear infinite}
+  @keyframes avqmove{from{transform:translateX(-90px)}to{transform:translateX(calc(100vw + 90px))}}
+}
+@media (prefers-reduced-motion:reduce){.avq{display:none}}
 </style>
 </head>
 <body>
@@ -747,6 +786,19 @@ a{color:inherit;text-decoration:none}
         <button class="btn btn--coral" data-toast="Event hosting opens with the app — pick a spot and go.">Host event</button>
         <a class="linkbtn" href="#" data-toast="The full calendar ships with the app.">Browse events <span class="arr">→</span></a>
       </div>
+      <div class="evtags">
+        <span class="evtag">Move workshops</span>
+        <span class="evtag">AI agent labs</span>
+        <span class="evtag">Founder circles</span>
+        <span class="evtag">Hack nights</span>
+        <span class="evtag">Demo days</span>
+        <span class="evtag">Community meetups</span>
+      </div>
+      <div class="evstats">
+        <div class="evstat"><b>120+</b><span>events every month</span></div>
+        <div class="evstat"><b>38</b><span>active hosts</span></div>
+        <div class="evstat"><b>12</b><span>cities live</span></div>
+      </div>
     </div>
     <div>
       <div class="eventwrap">
@@ -786,8 +838,21 @@ a{color:inherit;text-decoration:none}
       </div>
     </div>
   </div>
+  <div class="evgallery">
+    <div class="evgallery__head">
+      <h4>Popular this week</h4>
+      <a class="linkbtn" href="#" data-toast="The full calendar ships with the app.">See all events <span class="arr">→</span></a>
+    </div>
+    <div class="evgallery__row">
+      <button class="evcard" data-toast="Founders Mixer — RSVP opens in the app."><img src="public/assets/widgets/card-founders-mixer.webp" alt="Founders Mixer event card" width="800" height="468" loading="lazy"></button>
+      <button class="evcard" data-toast="Blockchain Workshop — RSVP opens in the app."><img src="public/assets/widgets/card-blockchain-workshop.webp" alt="Blockchain Workshop event card" width="800" height="315" loading="lazy"></button>
+      <button class="evcard" data-toast="Developer Meetup — RSVP opens in the app."><img src="public/assets/widgets/card-developer-meetup.webp" alt="Developer Meetup event card" width="800" height="600" loading="lazy"></button>
+      <button class="evcard" data-toast="Sports Day: Pickleball — RSVP opens in the app."><img src="public/assets/widgets/card-sports-pickleball.webp" alt="Sports Day Pickleball event card" width="800" height="600" loading="lazy"></button>
+    </div>
+  </div>
   <img class="host__art" src="public/assets/illustrations/community-pavilion-transparent.webp" alt="An illustrated community pavilion strung with lights, people gathering around it." loading="lazy">
 </section>
+<hr class="secline" aria-hidden="true">
 <!-- ================= 03 COMMUNITY ================= -->
 <section class="sec paper-sec wrap" id="community" aria-labelledby="ct">
   <div class="sec__grid" style="align-items:start">
@@ -861,13 +926,34 @@ a{color:inherit;text-decoration:none}
           <div class="dmsg"><span class="av av--sm"><img src="public/art/avatar-8.webp" alt=""></span><span class="b"><b>Dev</b> — let's make it impactful.</span><span class="t">9:43 AM</span></div>
           <div class="dmin"><span>Type a message…</span><svg width="13" height="13" style="color:var(--coral)"><use href="public/assets/icons/whatsvp-icons.svg#send"/></svg></div>
         </div>
-        <img class="plant" src="public/assets/illustrations/plant-corner.svg" alt="" aria-hidden="true">
+        <img class="plant" src="public/assets/widgets/deco-plant.webp" alt="" aria-hidden="true" width="520" height="520">
       </div>
     </div>
   </div>
-  <button class="nft-sticker nft-rootlets" type="button" data-nft="Rootlets on Sui" aria-label="Open Rootlets identity card"><span class="nft-face">🐷</span><span><b>Rootlets</b><small>Sui culture · liquid NFT</small></span></button>
+  <div class="nftrow">
+    <span class="nftrow__lbl">Bring your identity across chains</span>
+    <button class="nft-sticker nft-rootlets" type="button" data-nft="Rootlets on Sui" aria-label="Open Rootlets identity card"><span class="nft-face">🐷</span><span><b>Rootlets</b><small>Sui culture · liquid NFT</small></span></button>
+    <button class="nft-sticker nft-pudgy" type="button" data-nft="Pudgy Penguins" aria-label="Open Pudgy Penguins identity card"><span class="nft-face">🐧</span><span><b>Pudgy Penguins</b><small>Ethereum identity</small></span></button>
+    <button class="nft-sticker nft-bayc" type="button" data-nft="Bored Ape Yacht Club" aria-label="Open Bored Ape identity card"><span class="nft-face">🦍</span><span><b>Bored Ape</b><small>Founder pass</small></span></button>
+  </div>
 </section>
-
+<!-- avatar marquee — people flowing between community and money -->
+<div class="avq" aria-hidden="true">
+  <span class="avq__a" style="top:30px;animation-duration:11s;animation-delay:0s"><img src="public/art/avatar-1.webp" alt=""></span>
+  <span class="avq__a" style="top:52px;animation-duration:8s;animation-delay:-3s"><img src="public/art/avatar-2.webp" alt=""></span>
+  <span class="avq__a" style="top:20px;animation-duration:14s;animation-delay:-6s"><img src="public/art/avatar-3.webp" alt=""></span>
+  <span class="avq__a" style="top:44px;animation-duration:9.5s;animation-delay:-2s"><img src="public/art/avatar-4.webp" alt=""></span>
+  <span class="avq__a" style="top:34px;animation-duration:12s;animation-delay:-8s"><img src="public/art/avatar-5.webp" alt=""></span>
+  <span class="avq__a" style="top:54px;animation-duration:7.5s;animation-delay:-4.5s"><img src="public/art/avatar-6.webp" alt=""></span>
+  <span class="avq__a" style="top:26px;animation-duration:13.5s;animation-delay:-10s"><img src="public/art/avatar-7.webp" alt=""></span>
+  <span class="avq__a" style="top:46px;animation-duration:10s;animation-delay:-1.5s"><img src="public/art/avatar-8.webp" alt=""></span>
+  <span class="avq__a" style="top:32px;animation-duration:15s;animation-delay:-5.5s"><img src="public/art/avatar-9.webp" alt=""></span>
+  <span class="avq__a" style="top:22px;animation-duration:8.5s;animation-delay:-7s"><img src="public/art/avatar-1.webp" alt=""></span>
+  <span class="avq__a" style="top:50px;animation-duration:12.5s;animation-delay:-9.5s"><img src="public/art/avatar-5.webp" alt=""></span>
+  <span class="avq__a" style="top:40px;animation-duration:9s;animation-delay:-11s"><img src="public/art/avatar-3.webp" alt=""></span>
+  <span class="avq__a" style="top:28px;animation-duration:16s;animation-delay:-13s"><img src="public/art/avatar-7.webp" alt=""></span>
+  <span class="avq__a" style="top:48px;animation-duration:7s;animation-delay:-12.5s"><img src="public/art/avatar-2.webp" alt=""></span>
+</div>
 <!-- ================= 04 FINANCE (navy) ================= -->
 <section class="navy sec finance" id="finance" aria-labelledby="ft">
   <img class="bg" src="public/assets/backgrounds/finance-kl-blue-hour.webp" alt="" loading="lazy">
