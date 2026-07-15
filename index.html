@@ -442,10 +442,10 @@ a{color:inherit;text-decoration:none}
 .kit__track::-webkit-scrollbar{height:7px}
 .kit__track::-webkit-scrollbar-track{background:rgba(247,241,232,.1);border-radius:20px}
 .kit__track::-webkit-scrollbar-thumb{background:var(--lime);border-radius:20px}
-.kit-card{position:relative;flex:0 0 clamp(250px,31vw,420px);aspect-ratio:4/3;overflow:hidden;border-radius:18px;background:#f4f5f5;border:1px solid rgba(247,241,232,.22);box-shadow:0 20px 50px rgba(0,0,0,.22);scroll-snap-align:start;transition:transform .35s var(--ease),box-shadow .35s}
-.kit-card:hover{transform:translateY(-6px) rotate(-.35deg);box-shadow:0 28px 60px rgba(0,0,0,.32)}
-.kit-card img{width:100%;height:100%;object-fit:contain}
-.kit-card figcaption{position:absolute;top:10px;right:10px;min-width:34px;height:34px;border-radius:999px;background:rgba(6,38,96,.88);color:var(--paper);display:grid;place-items:center;font-family:var(--disp);font-size:11px;font-weight:700;backdrop-filter:blur(8px)}
+.kit-card{position:relative;flex:0 0 auto;height:clamp(148px,20vh,208px);overflow:visible;background:none;border:0;box-shadow:none;scroll-snap-align:start;transition:transform .35s var(--ease)}
+.kit-card:hover{transform:translateY(-7px)}
+.kit-card img{width:auto;height:100%;max-width:none;object-fit:contain;filter:drop-shadow(0 20px 34px rgba(0,0,0,.42)) drop-shadow(0 6px 14px rgba(0,0,0,.22))}
+.kit-card figcaption{display:none}
 .kit-card--wide{flex-basis:clamp(340px,47vw,620px);aspect-ratio:2.25/1}
 .kit-card--portrait{flex-basis:clamp(220px,23vw,310px);aspect-ratio:3/4}
 @media (max-width:760px){
@@ -536,13 +536,12 @@ a{color:inherit;text-decoration:none}
 .kit__label{max-width:none;margin:0 0 13px;padding:0 var(--edge);font-family:var(--body)}
 .kit__track{gap:clamp(12px,1.4vw,24px);padding:10px var(--edge) 28px;cursor:grab}
 .kit__track:active{cursor:grabbing}
-.kit-card{cursor:pointer;isolation:isolate;outline:none;flex-basis:clamp(290px,34vw,520px);border-radius:22px;background:#eef0ef;box-shadow:0 24px 68px rgba(0,0,0,.34)}
-.kit-card::after{content:"Open";position:absolute;left:14px;bottom:14px;padding:7px 11px;border-radius:999px;background:rgba(6,38,96,.9);color:var(--paper);font:700 10px/1 var(--disp);letter-spacing:.1em;text-transform:uppercase;opacity:0;transform:translateY(8px);transition:.25s var(--ease)}
+.kit-card{cursor:pointer;isolation:isolate;outline:none;height:clamp(158px,22vh,244px);background:none;border-radius:0;box-shadow:none}
+.kit-card::after{content:"Open";position:absolute;left:6px;bottom:4px;padding:6px 11px;border-radius:999px;background:rgba(6,38,96,.92);color:var(--paper);font:700 10px/1 var(--disp);letter-spacing:.1em;text-transform:uppercase;opacity:0;transform:translateY(8px);transition:.25s var(--ease)}
 .kit-card:hover::after,.kit-card:focus-visible::after{opacity:1;transform:none}
-.kit-card:focus-visible{outline:3px solid var(--lime);outline-offset:4px}
-.kit-card img{object-fit:cover;transition:transform .55s var(--ease)}
-.kit-card:hover img{transform:scale(1.025)}
-.kit-card figcaption{z-index:2;top:12px;right:12px;background:var(--lime);color:var(--navy);backdrop-filter:none}
+.kit-card:focus-visible{outline:3px solid var(--lime);outline-offset:4px;border-radius:14px}
+.kit-card img{object-fit:contain;transition:transform .35s var(--ease)}
+.kit-card figcaption{display:none}
 .kit-card--wide{flex-basis:clamp(390px,58vw,860px)}
 .kit-card--portrait{flex-basis:clamp(230px,25vw,370px)}
 
@@ -1097,84 +1096,84 @@ a{color:inherit;text-decoration:none}
     <div class="kit__group">
       <h3 class="kit__label"><span>01</span>Discovery and builder radar</h3>
       <div class="kit__track" tabindex="0" aria-label="City canvas; scroll horizontally">
-          <figure class="kit-card kit-card--wide"><img src="public/reference-assets/ref-01.webp" alt="City map and discovery interface 01" loading="lazy" decoding="async"><figcaption>01</figcaption></figure>
-          <figure class="kit-card kit-card--wide"><img src="public/reference-assets/ref-02.webp" alt="City map and discovery interface 02" loading="lazy" decoding="async"><figcaption>02</figcaption></figure>
-          <figure class="kit-card kit-card--wide"><img src="public/reference-assets/ref-03.webp" alt="City map and discovery interface 03" loading="lazy" decoding="async"><figcaption>03</figcaption></figure>
-          <figure class="kit-card kit-card--wide"><img src="public/reference-assets/ref-04.webp" alt="City map and discovery interface 04" loading="lazy" decoding="async"><figcaption>04</figcaption></figure>
-          <figure class="kit-card "><img src="public/reference-assets/ref-05.webp" alt="City map and discovery interface 05" loading="lazy" decoding="async"><figcaption>05</figcaption></figure>
-          <figure class="kit-card kit-card--portrait"><img src="public/reference-assets/ref-06.webp" alt="City map and discovery interface 06" loading="lazy" decoding="async"><figcaption>06</figcaption></figure>
-          <figure class="kit-card "><img src="public/reference-assets/ref-07.webp" alt="City map and discovery interface 07" loading="lazy" decoding="async"><figcaption>07</figcaption></figure>
-          <figure class="kit-card "><img src="public/reference-assets/ref-08.webp" alt="City map and discovery interface 08" loading="lazy" decoding="async"><figcaption>08</figcaption></figure>
-          <figure class="kit-card "><img src="public/reference-assets/ref-09.webp" alt="City map and discovery interface 09" loading="lazy" decoding="async"><figcaption>09</figcaption></figure>
-          <figure class="kit-card "><img src="public/reference-assets/ref-10.webp" alt="City map and discovery interface 10" loading="lazy" decoding="async"><figcaption>10</figcaption></figure>
-          <figure class="kit-card "><img src="public/reference-assets/ref-11.webp" alt="City map and discovery interface 11" loading="lazy" decoding="async"><figcaption>11</figcaption></figure>
-          <figure class="kit-card kit-card--wide"><img src="public/reference-assets/ref-12.webp" alt="City map and discovery interface 12" loading="lazy" decoding="async"><figcaption>12</figcaption></figure>
-          <figure class="kit-card "><img src="public/reference-assets/ref-13.webp" alt="City map and discovery interface 13" loading="lazy" decoding="async"><figcaption>13</figcaption></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/card-nearby-now.webp" alt="nearby now surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/card-nearby-people.webp" alt="nearby people surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/card-hosting-now.webp" alt="hosting now surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/card-online-now.webp" alt="online now surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/card-nearby-list.webp" alt="nearby list surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/card-streaming-now.webp" alt="streaming now surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/pin-web3-meetup.webp" alt="web3 meetup surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/pin-art-walk.webp" alt="art walk surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/pin-design-lab.webp" alt="design lab surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/icon-location.webp" alt="location surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/icon-map-pin.webp" alt="map pin surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/card-art-walk.webp" alt="art walk surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/card-art-walk2.webp" alt="art walk2 surface" loading="lazy" decoding="async"></figure>
       </div>
     </div>
     <div class="kit__group">
       <h3 class="kit__label"><span>02</span>Teams, founders, and live signals</h3>
       <div class="kit__track" tabindex="0" aria-label="Signals nearby; scroll horizontally">
-          <figure class="kit-card kit-card--wide"><img src="public/reference-assets/ref-14.webp" alt="Nearby people and activity interface 14" loading="lazy" decoding="async"><figcaption>14</figcaption></figure>
-          <figure class="kit-card "><img src="public/reference-assets/ref-15.webp" alt="Nearby people and activity interface 15" loading="lazy" decoding="async"><figcaption>15</figcaption></figure>
-          <figure class="kit-card "><img src="public/reference-assets/ref-16.webp" alt="Nearby people and activity interface 16" loading="lazy" decoding="async"><figcaption>16</figcaption></figure>
-          <figure class="kit-card "><img src="public/reference-assets/ref-17.webp" alt="Nearby people and activity interface 17" loading="lazy" decoding="async"><figcaption>17</figcaption></figure>
-          <figure class="kit-card kit-card--portrait"><img src="public/reference-assets/ref-18.webp" alt="Nearby people and activity interface 18" loading="lazy" decoding="async"><figcaption>18</figcaption></figure>
-          <figure class="kit-card "><img src="public/reference-assets/ref-19.webp" alt="Nearby people and activity interface 19" loading="lazy" decoding="async"><figcaption>19</figcaption></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/card-platform-stats.webp" alt="platform stats surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/card-creator-spotlight.webp" alt="creator spotlight surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/card-creator-nadia.webp" alt="creator nadia surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/avatar-luna.webp" alt="luna surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/avatar-devon.webp" alt="devon surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/avatar-nadia.webp" alt="nadia surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/pin-avatar-ava.webp" alt="avatar ava surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/pin-avatar.webp" alt="avatar surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/icon-community.webp" alt="community surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/icon-messages.webp" alt="messages surface" loading="lazy" decoding="async"></figure>
       </div>
     </div>
     <div class="kit__group">
       <h3 class="kit__label"><span>03</span>Wallets, guilds, and contributor pay</h3>
       <div class="kit__track" tabindex="0" aria-label="Money and belonging; scroll horizontally">
-          <figure class="kit-card kit-card--portrait"><img src="public/reference-assets/ref-20.webp" alt="Wallet guild and community interface 20" loading="lazy" decoding="async"><figcaption>20</figcaption></figure>
-          <figure class="kit-card kit-card--portrait"><img src="public/reference-assets/ref-21.webp" alt="Wallet guild and community interface 21" loading="lazy" decoding="async"><figcaption>21</figcaption></figure>
-          <figure class="kit-card kit-card--portrait"><img src="public/reference-assets/ref-22.webp" alt="Wallet guild and community interface 22" loading="lazy" decoding="async"><figcaption>22</figcaption></figure>
-          <figure class="kit-card kit-card--portrait"><img src="public/reference-assets/ref-23.webp" alt="Wallet guild and community interface 23" loading="lazy" decoding="async"><figcaption>23</figcaption></figure>
-          <figure class="kit-card kit-card--portrait"><img src="public/reference-assets/ref-24.webp" alt="Wallet guild and community interface 24" loading="lazy" decoding="async"><figcaption>24</figcaption></figure>
-          <figure class="kit-card kit-card--portrait"><img src="public/reference-assets/ref-25.webp" alt="Wallet guild and community interface 25" loading="lazy" decoding="async"><figcaption>25</figcaption></figure>
-          <figure class="kit-card kit-card--wide"><img src="public/reference-assets/ref-26.webp" alt="Wallet guild and community interface 26" loading="lazy" decoding="async"><figcaption>26</figcaption></figure>
-          <figure class="kit-card kit-card--wide"><img src="public/reference-assets/ref-27.webp" alt="Wallet guild and community interface 27" loading="lazy" decoding="async"><figcaption>27</figcaption></figure>
-          <figure class="kit-card kit-card--wide"><img src="public/reference-assets/ref-28.webp" alt="Wallet guild and community interface 28" loading="lazy" decoding="async"><figcaption>28</figcaption></figure>
-          <figure class="kit-card "><img src="public/reference-assets/ref-29.webp" alt="Wallet guild and community interface 29" loading="lazy" decoding="async"><figcaption>29</figcaption></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/card-wallet-1245.webp" alt="wallet 1245 surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/card-wallet-1845.webp" alt="wallet 1845 surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/card-wallet-2480.webp" alt="wallet 2480 surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/card-wallet-3420.webp" alt="wallet 3420 surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/card-send-jordan.webp" alt="send jordan surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/card-send-usdc.webp" alt="send usdc surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/card-receive-125.webp" alt="receive 125 surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/card-sent-eth.webp" alt="sent eth surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/card-transfer-sent.webp" alt="transfer sent surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/card-transfer-4275.webp" alt="transfer 4275 surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/card-fund-wallet.webp" alt="fund wallet surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/icon-wallet.webp" alt="wallet surface" loading="lazy" decoding="async"></figure>
       </div>
     </div>
     <div class="kit__group">
       <h3 class="kit__label"><span>04</span>Protocols and product primitives</h3>
       <div class="kit__track" tabindex="0" aria-label="Product surfaces; scroll horizontally">
-          <figure class="kit-card "><img src="public/reference-assets/ref-30.webp" alt="Whatsup product surface 30" loading="lazy" decoding="async"><figcaption>30</figcaption></figure>
-          <figure class="kit-card "><img src="public/reference-assets/ref-31.webp" alt="Whatsup product surface 31" loading="lazy" decoding="async"><figcaption>31</figcaption></figure>
-          <figure class="kit-card "><img src="public/reference-assets/ref-32.webp" alt="Whatsup product surface 32" loading="lazy" decoding="async"><figcaption>32</figcaption></figure>
-          <figure class="kit-card "><img src="public/reference-assets/ref-33.webp" alt="Whatsup product surface 33" loading="lazy" decoding="async"><figcaption>33</figcaption></figure>
-          <figure class="kit-card kit-card--wide"><img src="public/reference-assets/ref-34.webp" alt="Whatsup product surface 34" loading="lazy" decoding="async"><figcaption>34</figcaption></figure>
-          <figure class="kit-card kit-card--wide"><img src="public/reference-assets/ref-35.webp" alt="Whatsup product surface 35" loading="lazy" decoding="async"><figcaption>35</figcaption></figure>
-          <figure class="kit-card "><img src="public/reference-assets/ref-36.webp" alt="Whatsup product surface 36" loading="lazy" decoding="async"><figcaption>36</figcaption></figure>
-          <figure class="kit-card "><img src="public/reference-assets/ref-37.webp" alt="Whatsup product surface 37" loading="lazy" decoding="async"><figcaption>37</figcaption></figure>
-          <figure class="kit-card "><img src="public/reference-assets/ref-38.webp" alt="Whatsup product surface 38" loading="lazy" decoding="async"><figcaption>38</figcaption></figure>
-          <figure class="kit-card kit-card--portrait"><img src="public/reference-assets/ref-39.webp" alt="Whatsup product surface 39" loading="lazy" decoding="async"><figcaption>39</figcaption></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/card-guild-chat.webp" alt="guild chat surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/card-guild-general.webp" alt="guild general surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/card-create-guild.webp" alt="create guild surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/card-design-lab.webp" alt="design lab surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/icon-events.webp" alt="events surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/icon-tickets.webp" alt="tickets surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/deco-journal.webp" alt="journal surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/deco-plant.webp" alt="plant surface" loading="lazy" decoding="async"></figure>
       </div>
     </div>
     <div class="kit__group">
       <h3 class="kit__label"><span>05</span>Demos, AMAs, and build streams</h3>
       <div class="kit__track" tabindex="0" aria-label="Community stories; scroll horizontally">
-          <figure class="kit-card "><img src="public/reference-assets/ref-40.webp" alt="Community event and live interface 40" loading="lazy" decoding="async"><figcaption>40</figcaption></figure>
-          <figure class="kit-card "><img src="public/reference-assets/ref-41.webp" alt="Community event and live interface 41" loading="lazy" decoding="async"><figcaption>41</figcaption></figure>
-          <figure class="kit-card "><img src="public/reference-assets/ref-42.webp" alt="Community event and live interface 42" loading="lazy" decoding="async"><figcaption>42</figcaption></figure>
-          <figure class="kit-card "><img src="public/reference-assets/ref-43.webp" alt="Community event and live interface 43" loading="lazy" decoding="async"><figcaption>43</figcaption></figure>
-          <figure class="kit-card "><img src="public/reference-assets/ref-44.webp" alt="Community event and live interface 44" loading="lazy" decoding="async"><figcaption>44</figcaption></figure>
-          <figure class="kit-card "><img src="public/reference-assets/ref-45.webp" alt="Community event and live interface 45" loading="lazy" decoding="async"><figcaption>45</figcaption></figure>
-          <figure class="kit-card kit-card--wide"><img src="public/reference-assets/ref-46.webp" alt="Community event and live interface 46" loading="lazy" decoding="async"><figcaption>46</figcaption></figure>
-          <figure class="kit-card "><img src="public/reference-assets/ref-47.webp" alt="Community event and live interface 47" loading="lazy" decoding="async"><figcaption>47</figcaption></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/card-live-player.webp" alt="live player surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/icon-live.webp" alt="live surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/deco-community.webp" alt="community surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/pin-nft-cat.webp" alt="nft cat surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/pin-nft-cat2.webp" alt="nft cat2 surface" loading="lazy" decoding="async"></figure>
       </div>
     </div>
     <div class="kit__group">
       <h3 class="kit__label"><span>06</span>Developer events in every format</h3>
       <div class="kit__track" tabindex="0" aria-label="Events in every format; scroll horizontally">
-          <figure class="kit-card "><img src="public/reference-assets/ref-48.webp" alt="Event format and watercolor icon study 48" loading="lazy" decoding="async"><figcaption>48</figcaption></figure>
-          <figure class="kit-card "><img src="public/reference-assets/ref-49.webp" alt="Event format and watercolor icon study 49" loading="lazy" decoding="async"><figcaption>49</figcaption></figure>
-          <figure class="kit-card "><img src="public/reference-assets/ref-50.webp" alt="Event format and watercolor icon study 50" loading="lazy" decoding="async"><figcaption>50</figcaption></figure>
-          <figure class="kit-card kit-card--wide"><img src="public/reference-assets/ref-51.webp" alt="Event format and watercolor icon study 51" loading="lazy" decoding="async"><figcaption>51</figcaption></figure>
-          <figure class="kit-card "><img src="public/reference-assets/ref-52.webp" alt="Event format and watercolor icon study 52" loading="lazy" decoding="async"><figcaption>52</figcaption></figure>
-          <figure class="kit-card "><img src="public/reference-assets/ref-53.webp" alt="Event format and watercolor icon study 53" loading="lazy" decoding="async"><figcaption>53</figcaption></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/card-founders-mixer.webp" alt="founders mixer surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/card-founders-mixer2.webp" alt="founders mixer2 surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/card-blockchain-workshop.webp" alt="blockchain workshop surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/card-developer-meetup.webp" alt="developer meetup surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/card-sports-pickleball.webp" alt="sports pickleball surface" loading="lazy" decoding="async"></figure>
       </div>
     </div>
   </div>
@@ -1233,7 +1232,7 @@ a{color:inherit;text-decoration:none}
   <div class="asset-dialog__grid">
     <div class="asset-dialog__media">
       <button class="asset-dialog__close" type="button" aria-label="Close product surface">×</button>
-      <img id="assetImage" src="public/reference-assets/ref-01.webp" alt="">
+      <img id="assetImage" src="public/assets/widgets/card-nearby-now.webp" alt="">
       <div class="asset-dialog__nav" aria-label="Browse product surfaces">
         <button type="button" id="assetPrev" aria-label="Previous surface">←</button>
         <button type="button" id="assetNext" aria-label="Next surface">→</button>
@@ -1317,12 +1316,12 @@ function renderSurface(index){
   currentAsset=(index+cards.length)%cards.length;
   const id=currentAsset+1;
   const n=String(id).padStart(2,'0');
-  dialogImage.src=`public/reference-assets/ref-${n}.webp`;
-  dialogImage.srcset=`public/reference-assets/responsive/ref-${n}-480.webp 480w, public/reference-assets/responsive/ref-${n}-960.webp 960w, public/reference-assets/ref-${n}.webp 1600w`;
-  dialogImage.sizes='(max-width: 720px) 100vw, 70vw';
-  dialogImage.alt=`${surfaceNames[currentAsset]} interface`;
+  const cimg=cards[currentAsset].querySelector('img');
+  dialogImage.removeAttribute('srcset');
+  dialogImage.src=cimg.getAttribute('src');
+  dialogImage.alt=cimg.getAttribute('alt')||'';
   dialogEyebrow.textContent=`Surface ${n} · ${groupFor(id)}`;
-  dialogTitle.textContent=surfaceNames[currentAsset];
+  dialogTitle.textContent=surfaceNames[currentAsset]||cimg.getAttribute('alt');
   dialogDescription.textContent=descriptionFor(id);
   dialogAction.firstChild.textContent=actionFor(id)+' ';
   dialogStatus.textContent=`Ready with ${selectedToken} · Sui-first routing enabled.`;
@@ -1337,11 +1336,8 @@ cards.forEach((card,index)=>{
   const id=index+1,n=String(id).padStart(2,'0'),img=qs('img',card);
   card.tabIndex=0;
   card.setAttribute('role','button');
-  card.setAttribute('aria-label',`Open surface ${n}: ${surfaceNames[index]}`);
+  card.setAttribute('aria-label',`Open surface ${n}: ${surfaceNames[index]||(img&&img.alt)||''}`);
   card.dataset.assetId=n;
-  img.srcset=`public/reference-assets/responsive/ref-${n}-480.webp 480w, public/reference-assets/responsive/ref-${n}-960.webp 960w, public/reference-assets/ref-${n}.webp 1600w`;
-  img.sizes='(max-width: 720px) 84vw, (max-width: 1200px) 52vw, 34vw';
-  img.width=1600; img.height=1200;
   card.addEventListener('click',()=>openSurface(index));
   card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openSurface(index);}});
 });
