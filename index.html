@@ -515,16 +515,16 @@ a{color:inherit;text-decoration:none}
 #live .livegrid{grid-template-columns:minmax(0,1.45fr) minmax(240px,.55fr)}
 #live .liveplayer{min-height:610px}
 
-.nft-sticker{position:absolute;z-index:12;display:grid;grid-template-columns:44px auto;align-items:center;gap:10px;min-height:60px;padding:8px 13px 8px 8px;border:1px solid rgba(15,46,138,.26);border-radius:999px;background:rgba(255,250,242,.9);box-shadow:0 12px 30px rgba(11,31,85,.16);backdrop-filter:blur(12px);font-family:var(--disp);text-align:left;transition:transform .25s var(--ease),box-shadow .25s}
+.nft-sticker{position:absolute;z-index:12;display:grid;grid-template-columns:50px auto;align-items:center;gap:11px;min-height:62px;padding:7px 15px 7px 7px;border:1px solid rgba(15,46,138,.26);border-radius:999px;background:rgba(255,250,242,.9);box-shadow:0 12px 30px rgba(11,31,85,.16);backdrop-filter:blur(12px);font-family:var(--disp);text-align:left;transition:transform .25s var(--ease),box-shadow .25s}
 .nft-sticker:hover{transform:translateY(-5px) rotate(-1.2deg);box-shadow:0 18px 38px rgba(11,31,85,.24)}
-.nft-sticker .nft-face{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:white;font-size:23px}
-.nft-face--img{background:none!important;overflow:hidden}
-.nft-face--img img{width:100%;height:100%;object-fit:cover;object-position:50% 42%}
+.nft-sticker .nft-face{width:50px;height:50px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:white;font-size:23px}
+.nft-face--img{border-radius:14px;overflow:hidden;padding:0}
+.nft-face--img img{width:100%;height:100%;object-fit:contain;object-position:50% 100%}
 .nft-sticker b{display:block;font-size:12px;line-height:1.15}
 .nft-sticker small{display:block;color:var(--muted);font-size:10px;margin-top:3px}
-.nft-rootlets .nft-face{background:var(--lime);color:var(--navy)}
-.nft-pudgy .nft-face{background:#6CA8E8;color:#fff}
-.nft-bayc .nft-face{background:#7A5A3A;color:#fff}
+.nft-rootlets .nft-face{background:radial-gradient(120% 100% at 50% 0,#EAF7C8,#CDEB9A)}
+.nft-pudgy .nft-face{background:radial-gradient(120% 100% at 50% 0,#DCEBFB,#B9D6F5)}
+.nft-bayc .nft-face{background:radial-gradient(120% 100% at 50% 0,#F6E4D2,#EBC9A8)}
 /* NFT identity chips live in a tidy row at the foot of Community */
 .nftrow{display:flex;flex-wrap:wrap;align-items:center;gap:13px;margin-top:clamp(36px,4.6vw,60px);position:relative;z-index:3}
 .nftrow__lbl{font-family:var(--disp);font-weight:700;font-size:13px;letter-spacing:.02em;color:var(--muted);width:100%}
@@ -933,9 +933,9 @@ a{color:inherit;text-decoration:none}
   </div>
   <div class="nftrow">
     <span class="nftrow__lbl">Bring your identity across chains</span>
-    <button class="nft-sticker nft-rootlets" type="button" data-nft="Rootlets on Sui" aria-label="Open Rootlets identity card"><span class="nft-face">🐷</span><span><b>Rootlets</b><small>Sui culture · liquid NFT</small></span></button>
-    <button class="nft-sticker nft-pudgy" type="button" data-nft="Pudgy Penguins" aria-label="Open Pudgy Penguins identity card"><span class="nft-face nft-face--img"><img src="public/assets/widgets/pin-nft-cat.webp" alt=""></span><span><b>Pudgy Penguins</b><small>Ethereum identity</small></span></button>
-    <button class="nft-sticker nft-bayc" type="button" data-nft="Bored Ape Yacht Club" aria-label="Open Bored Ape identity card"><span class="nft-face nft-face--img"><img src="public/assets/widgets/pin-nft-cat2.webp" alt=""></span><span><b>Bored Ape</b><small>Founder pass</small></span></button>
+    <button class="nft-sticker nft-rootlets" type="button" data-nft="Rootlets on Sui" aria-label="Open Rootlets identity card"><span class="nft-face nft-face--img"><img src="public/assets/widgets/nft-owl.webp" alt="" width="239" height="340"></span><span><b>Rootlets</b><small>Sui culture · liquid NFT</small></span></button>
+    <button class="nft-sticker nft-pudgy" type="button" data-nft="Pudgy Penguins" aria-label="Open Pudgy Penguins identity card"><span class="nft-face nft-face--img"><img src="public/assets/widgets/nft-penguin.webp" alt="" width="252" height="340"></span><span><b>Pudgy Penguins</b><small>Ethereum identity</small></span></button>
+    <button class="nft-sticker nft-bayc" type="button" data-nft="Bored Ape Yacht Club" aria-label="Open Bored Ape identity card"><span class="nft-face nft-face--img"><img src="public/assets/widgets/nft-ape.webp" alt="" width="204" height="340"></span><span><b>Bored Ape</b><small>Founder pass</small></span></button>
   </div>
 </section>
 <!-- avatar marquee — people flowing between community and money -->
