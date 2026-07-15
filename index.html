@@ -518,6 +518,8 @@ a{color:inherit;text-decoration:none}
 .nft-sticker{position:absolute;z-index:12;display:grid;grid-template-columns:44px auto;align-items:center;gap:10px;min-height:60px;padding:8px 13px 8px 8px;border:1px solid rgba(15,46,138,.26);border-radius:999px;background:rgba(255,250,242,.9);box-shadow:0 12px 30px rgba(11,31,85,.16);backdrop-filter:blur(12px);font-family:var(--disp);text-align:left;transition:transform .25s var(--ease),box-shadow .25s}
 .nft-sticker:hover{transform:translateY(-5px) rotate(-1.2deg);box-shadow:0 18px 38px rgba(11,31,85,.24)}
 .nft-sticker .nft-face{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:white;font-size:23px}
+.nft-face--img{background:none!important;overflow:hidden}
+.nft-face--img img{width:100%;height:100%;object-fit:cover;object-position:50% 42%}
 .nft-sticker b{display:block;font-size:12px;line-height:1.15}
 .nft-sticker small{display:block;color:var(--muted);font-size:10px;margin-top:3px}
 .nft-rootlets .nft-face{background:var(--lime);color:var(--navy)}
@@ -932,8 +934,8 @@ a{color:inherit;text-decoration:none}
   <div class="nftrow">
     <span class="nftrow__lbl">Bring your identity across chains</span>
     <button class="nft-sticker nft-rootlets" type="button" data-nft="Rootlets on Sui" aria-label="Open Rootlets identity card"><span class="nft-face">🐷</span><span><b>Rootlets</b><small>Sui culture · liquid NFT</small></span></button>
-    <button class="nft-sticker nft-pudgy" type="button" data-nft="Pudgy Penguins" aria-label="Open Pudgy Penguins identity card"><span class="nft-face">🐧</span><span><b>Pudgy Penguins</b><small>Ethereum identity</small></span></button>
-    <button class="nft-sticker nft-bayc" type="button" data-nft="Bored Ape Yacht Club" aria-label="Open Bored Ape identity card"><span class="nft-face">🦍</span><span><b>Bored Ape</b><small>Founder pass</small></span></button>
+    <button class="nft-sticker nft-pudgy" type="button" data-nft="Pudgy Penguins" aria-label="Open Pudgy Penguins identity card"><span class="nft-face nft-face--img"><img src="public/assets/widgets/pin-nft-cat.webp" alt=""></span><span><b>Pudgy Penguins</b><small>Ethereum identity</small></span></button>
+    <button class="nft-sticker nft-bayc" type="button" data-nft="Bored Ape Yacht Club" aria-label="Open Bored Ape identity card"><span class="nft-face nft-face--img"><img src="public/assets/widgets/pin-nft-cat2.webp" alt=""></span><span><b>Bored Ape</b><small>Founder pass</small></span></button>
   </div>
 </section>
 <!-- avatar marquee — people flowing between community and money -->
@@ -1084,12 +1086,12 @@ a{color:inherit;text-decoration:none}
 <section class="kit" id="city-kit" aria-labelledby="kit-title">
   <div class="wrap kit__head">
     <div>
-      <p class="kit__kicker">53 live product surfaces · click any one</p>
+      <p class="kit__kicker">54 live product surfaces · click any one</p>
       <h2 id="kit-title">The whole city<br>is an interface.</h2>
     </div>
     <div>
       <p class="kit__intro">Drag the rails. Open a surface. RSVP, join a guild, watch a build stream, or simulate a USDC, USDT, MYRC, SOL, ETH, BTC, or SUI action without leaving the atlas.</p>
-      <p class="kit__count">53 of 53 responsive and interactive</p>
+      <p class="kit__count">54 of 54 responsive and interactive</p>
     </div>
   </div>
   <div class="kit__groups">
@@ -1174,6 +1176,7 @@ a{color:inherit;text-decoration:none}
           <figure class="kit-card"><img src="public/assets/widgets/card-blockchain-workshop.webp" alt="blockchain workshop surface" loading="lazy" decoding="async"></figure>
           <figure class="kit-card"><img src="public/assets/widgets/card-developer-meetup.webp" alt="developer meetup surface" loading="lazy" decoding="async"></figure>
           <figure class="kit-card"><img src="public/assets/widgets/card-sports-pickleball.webp" alt="sports pickleball surface" loading="lazy" decoding="async"></figure>
+          <figure class="kit-card"><img src="public/assets/widgets/card-web3-builders.webp" alt="web3 builders workshop surface" loading="lazy" decoding="async"></figure>
       </div>
     </div>
   </div>
