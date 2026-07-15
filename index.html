@@ -649,6 +649,125 @@ a{color:inherit;text-decoration:none}
   @keyframes avqmove{from{transform:translateX(-90px)}to{transform:translateX(calc(100vw + 90px))}}
 }
 @media (prefers-reduced-motion:reduce){.avq{display:none}}
+
+/* ============ In-app preview — "Whatsup!, running" ============ */
+.ip{position:relative;background:#06183f;color:var(--paper);overflow:hidden;padding:clamp(70px,8vw,124px) 0;min-height:100svh;display:flex;align-items:center}
+.ip::before{content:"";position:absolute;inset:0;background:radial-gradient(55% 45% at 80% 24%,rgba(183,255,42,.12),transparent 70%),radial-gradient(50% 42% at 16% 82%,rgba(217,106,74,.14),transparent 72%);pointer-events:none}
+.ip__in{max-width:var(--max);margin:0 auto;padding:0 var(--edge-wide,var(--pad));display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,384px);gap:clamp(28px,5vw,84px);align-items:center;position:relative;z-index:2;width:100%}
+.ip__kicker{font-family:var(--disp);font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--lime);display:flex;align-items:center;gap:10px}
+.ip__kicker::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 5px rgba(183,255,42,.16);animation:ippulse 2.4s var(--ease) infinite}
+@keyframes ippulse{0%,100%{box-shadow:0 0 0 5px rgba(183,255,42,.16)}50%{box-shadow:0 0 0 9px rgba(183,255,42,.05)}}
+.ip__title{font-family:var(--disp);font-size:clamp(40px,6vw,88px);line-height:.9;letter-spacing:-.05em;font-weight:600;margin-top:14px}
+.ip__cap{margin-top:clamp(22px,3vw,34px);min-height:104px}
+.ip__cap-h{font-family:var(--disp);font-size:clamp(19px,2.1vw,27px);font-weight:600;letter-spacing:-.01em;color:var(--paper);transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.ip__cap-p{color:var(--on-navy);margin-top:9px;max-width:44ch;font-size:15px;transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.ip__cap.is-swapping .ip__cap-h,.ip__cap.is-swapping .ip__cap-p{opacity:0;transform:translateY(8px)}
+.ip__tabs{display:flex;flex-wrap:wrap;gap:8px;margin-top:clamp(22px,3vw,32px)}
+.ip__tab{position:relative;display:inline-flex;align-items:center;gap:8px;padding:8px 15px 8px 8px;border-radius:999px;border:1px solid rgba(247,241,232,.2);background:rgba(247,241,232,.05);color:var(--on-navy);font-family:var(--disp);font-weight:700;font-size:13px;cursor:pointer;transition:transform .2s var(--ease),background-color .25s,color .25s,border-color .25s;overflow:hidden}
+.ip__tab img{width:26px;height:26px;flex-shrink:0}
+.ip__tab:hover{transform:translateY(-2px);border-color:rgba(247,241,232,.4)}
+.ip__tab[aria-selected="true"]{background:var(--lime);border-color:var(--lime);color:var(--navy)}
+.ip__tab .prog{position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--navy);opacity:.55}
+.ip__tab[aria-selected="true"].is-playing .prog{width:100%;transition:width var(--ip-dwell,3600ms) linear}
+.ip__hint{margin-top:18px;font-size:12.5px;color:rgba(247,241,232,.6);display:inline-flex;align-items:center;gap:9px}
+.ip__hint svg{width:15px;height:15px;color:var(--lime)}
+.ip__sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+.ip__stage{position:relative;display:grid;place-items:center;min-height:660px}
+.ip__ambient{position:absolute;width:clamp(150px,17vw,210px);opacity:.42;filter:blur(1.5px) drop-shadow(0 22px 42px rgba(0,0,0,.5));pointer-events:none;z-index:1}
+.ip__ambient--a{top:4%;right:-6%;rotate:6deg}
+.ip__ambient--b{bottom:2%;left:-8%;rotate:-7deg}
+
+.phone{position:relative;width:clamp(272px,94%,336px);aspect-ratio:336/700;z-index:2;filter:drop-shadow(0 60px 90px rgba(0,0,0,.5))}
+.phone__frame{position:absolute;inset:0;background:linear-gradient(155deg,#141d38,#080d1c);border-radius:48px;padding:12px;box-shadow:0 0 0 2px rgba(247,241,232,.07),inset 0 2px 6px rgba(255,255,255,.08),inset 0 -4px 10px rgba(0,0,0,.5)}
+.phone__screen{position:relative;width:100%;height:100%;border-radius:37px;overflow:hidden;background:var(--paper);isolation:isolate}
+.phone__island{position:absolute;top:13px;left:50%;transform:translateX(-50%);width:98px;height:27px;background:#05080f;border-radius:999px;z-index:30;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
+
+.appbar{position:absolute;top:0;left:0;right:0;height:96px;z-index:12;background:linear-gradient(180deg,var(--panel) 60%,rgba(255,250,242,.82));border-bottom:1px solid var(--line-soft);padding:44px 18px 0}
+.appbar__sb{position:absolute;top:15px;left:20px;right:20px;display:flex;justify-content:space-between;align-items:center;font:700 12px/1 var(--disp);color:var(--navy)}
+.appbar__sb .sig{display:inline-flex;gap:3px;align-items:flex-end}
+.appbar__sb .sig i{width:3px;background:var(--navy);border-radius:1px}
+.appbar__sb .sig i:nth-child(1){height:5px}.appbar__sb .sig i:nth-child(2){height:8px}.appbar__sb .sig i:nth-child(3){height:11px}
+.appbar__title{font-family:var(--disp);font-weight:700;font-size:20px;letter-spacing:-.02em;color:var(--navy);display:flex;align-items:center;gap:8px}
+.appbar__title .loc{margin-left:auto;font-size:11px;font-weight:600;color:var(--coral);display:inline-flex;align-items:center;gap:4px}
+
+.ip-screen{position:absolute;inset:0;padding:108px 13px 80px;opacity:0;visibility:hidden;transform:translateX(18px) scale(.99);transition:opacity .5s var(--ease),transform .5s var(--ease);overflow:hidden}
+.ip-screen.is-active{opacity:1;visibility:visible;transform:none;transition-delay:.06s}
+.ip-screen.is-exit{transform:translateX(-14px) scale(.99)}
+.ip-feed{display:flex;flex-direction:column;gap:11px}
+.ip-card{width:100%;height:auto;display:block;border-radius:16px;filter:drop-shadow(0 14px 26px rgba(11,31,85,.16))}
+.ip-screen.is-active .ip-card{animation:ipin .5s var(--ease) backwards}
+.ip-screen.is-active .ip-card--2{animation-delay:.1s}
+.ip-screen.is-active .ip-card--3{animation-delay:.2s}
+@keyframes ipin{from{transform:translateY(16px)}to{transform:none}}
+
+/* Explore map screen */
+.ip-map{position:absolute;inset:0;padding:96px 0 70px}
+.ip-map__canvas{position:relative;width:100%;height:100%;overflow:hidden;background:#e8eef3}
+.ip-map__canvas>img.bg{width:100%;height:100%;object-fit:cover;object-position:62% 42%}
+.ip-pin{position:absolute;width:44px;height:auto;transform:translate(-50%,-100%);filter:drop-shadow(0 8px 10px rgba(11,31,85,.3));animation:pindrop .5s var(--ease) both}
+@keyframes pindrop{0%{opacity:0;transform:translate(-50%,-160%)}60%{transform:translate(-50%,-92%)}100%{opacity:1;transform:translate(-50%,-100%)}}
+.ip-map .ip-float{position:absolute;left:9px;right:9px;bottom:10px;width:auto}
+
+/* bottom tab bar */
+.tabbar{position:absolute;left:0;right:0;bottom:0;height:72px;z-index:14;background:rgba(255,250,242,.94);backdrop-filter:blur(10px);border-top:1px solid var(--line-soft);display:flex;padding:7px 4px 12px}
+.tabbar button{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;font:700 8.5px/1 var(--disp);letter-spacing:.02em;color:var(--muted);cursor:pointer;position:relative}
+.tb-ic{position:relative;width:30px;height:30px;display:grid;place-items:center;transition:transform .32s var(--ease)}
+.tb-glyph{width:22px;height:22px;color:var(--muted);transition:color .25s var(--ease),opacity .25s}
+.tb-wash{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity .3s var(--ease)}
+.tabbar button.is-active{color:var(--navy)}
+.tabbar button.is-active .tb-ic{transform:translateY(-3px) scale(1.06)}
+.tabbar button.is-active .tb-glyph{opacity:0}
+.tabbar button.is-active .tb-wash{opacity:1}
+.tabbar button.is-active::before{content:"";position:absolute;top:1px;width:22px;height:3px;border-radius:3px;background:var(--lime)}
+
+/* autoplay tap cursor */
+.tapdot{position:absolute;width:30px;height:30px;border-radius:50%;background:rgba(15,46,138,.22);border:2px solid rgba(247,241,232,.95);box-shadow:0 4px 12px rgba(0,0,0,.3);z-index:28;pointer-events:none;opacity:0;left:50%;top:88%;transform:translate(-50%,-50%);transition:left .62s var(--ease),top .62s var(--ease),opacity .3s}
+.tapdot.show{opacity:1}
+.tapdot.tap{animation:tapring .45s var(--ease)}
+@keyframes tapring{0%{box-shadow:0 4px 12px rgba(0,0,0,.3),0 0 0 0 rgba(183,255,42,.5)}50%{transform:translate(-50%,-50%) scale(.72)}100%{box-shadow:0 4px 12px rgba(0,0,0,.3),0 0 0 16px rgba(183,255,42,0)}}
+/* graft: peach ghost-thumb + hand-off dissolve */
+.tapdot{background:radial-gradient(circle at 38% 32%,rgba(244,176,138,.95),rgba(217,106,74,.55) 72%);border-color:rgba(255,250,242,.92)}
+.tapdot.gone{opacity:0!important;transform:translate(-50%,-50%) scale(1.55);filter:blur(5px);transition:opacity .35s,transform .35s,filter .35s}
+/* graft: navy phone chrome for Wallet + Live */
+.phone[data-mode="navy"] .phone__screen{background:#0a1f52}
+.phone[data-mode="navy"] .appbar{background:linear-gradient(180deg,var(--navy-deep),#071c4d);border-bottom-color:rgba(247,241,232,.14)}
+.phone[data-mode="navy"] .appbar__sb,.phone[data-mode="navy"] .appbar__title{color:var(--paper)}
+.phone[data-mode="navy"] .appbar__sb .sig i{background:var(--paper)}
+.phone[data-mode="navy"] .appbar__title .loc{color:var(--lime)}
+.phone[data-mode="navy"] .tabbar{background:rgba(6,24,63,.96);border-top-color:rgba(247,241,232,.14)}
+.phone[data-mode="navy"] .tabbar button{color:rgba(247,241,232,.66)}
+.phone[data-mode="navy"] .tabbar button.is-active{color:var(--paper)}
+.phone[data-mode="navy"] .tabbar button .tb-glyph{color:rgba(247,241,232,.6)}
+/* graft: caption marker (device + words move together) */
+.ip__cap{display:grid;grid-template-columns:46px 1fr;gap:8px 15px;align-items:center}
+.ip__marker{width:46px;height:46px;border-radius:50%;overflow:hidden;background:rgba(247,241,232,.08);border:2px solid rgba(247,241,232,.2);grid-row:span 2;align-self:start;margin-top:3px}
+.ip__marker img{width:100%;height:100%;object-fit:contain;transition:opacity .35s var(--ease),transform .4s var(--ease)}
+.ip__cap.is-swapping .ip__marker img{opacity:0;transform:scale(.68) rotate(-8deg)}
+/* graft: real in-app Send verb (Wallet screen) */
+.ip-send{position:absolute;left:16px;right:16px;bottom:84px;z-index:8;min-height:44px;border-radius:12px;border:0;background:var(--lime);color:var(--navy);font-family:var(--disp);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;box-shadow:0 12px 24px -8px rgba(4,14,44,.55);transition:transform .16s var(--ease),background-color .25s,color .25s}
+.ip-send:hover{transform:translateY(-2px)}
+.ip-send:disabled{cursor:default;transform:none}
+.ip-send.is-sent{background:#2E8B57;color:#fff}
+.ip-send svg{width:16px;height:16px}
+/* graft: "your turn" hand-off nudge */
+.ip__tab.is-offer{animation:offerpulse 1.5s var(--ease) infinite}
+@keyframes offerpulse{0%,100%{box-shadow:0 0 0 0 rgba(183,255,42,.5)}50%{box-shadow:0 0 0 9px rgba(183,255,42,0)}}
+
+@media (max-width:900px){
+  .ip__in{grid-template-columns:1fr;justify-items:center;text-align:center;gap:40px}
+  .ip__cap{min-height:0}.ip__cap-p{margin-left:auto;margin-right:auto}
+  .ip__tabs{justify-content:center}
+  .ip__stage{min-height:0;order:-1;width:100%}
+  .ip__ambient{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .ip__kicker::before{animation:none}
+  .ip-card,.ip-pin{animation:none!important}
+  .ip-screen{transition:opacity .01s}
+  .tapdot{display:none}
+  .ip__tab .prog{display:none}
+}
 </style>
 </head>
 <body>
@@ -682,7 +801,7 @@ a{color:inherit;text-decoration:none}
       <p class="eyebrow">SUI-FIRST · CHAIN-AGNOSTIC · BUILDER-OWNED</p>
       <h1 class="h1">Build local.<br>Ship global.<br><span class="clay">Move together.</span></h1>
       <p class="hero__sub">The city layer for Web3 and Web2 developers, AI builders, founders, and communities. Discover collaborators, launch events, stream demos, and settle in the currencies your people already use.</p>
-      <div class="hero__cta"><button class="btn btn--lime" data-toast="Builder pass reserved — welcome to the Sui-first beta.">Claim builder pass <span class="arr">→</span></button><a class="btn btn--outline" href="#city-kit">Explore 53 live surfaces</a></div>
+      <div class="hero__cta"><button class="btn btn--lime" data-toast="Builder pass reserved — welcome to the Sui-first beta.">Claim builder pass <span class="arr">→</span></button><a class="btn btn--outline" href="#preview">See the app in action</a></div>
       <div class="chain-strip" aria-label="Supported networks"><span class="sui">Sui native</span><span>Solana</span><span>Ethereum</span><span>Bitcoin</span></div>
       <div class="trust">
         <div><svg class="ic"><use href="public/assets/icons/whatsvp-icons.svg#live-local"/></svg><div><b>Live &amp; Local</b><span>Real-time updates</span></div></div>
@@ -1082,101 +1201,88 @@ a{color:inherit;text-decoration:none}
   </div>
 </section>
 
-<!-- ================= LIVING CITY KIT ================= -->
-<section class="kit" id="city-kit" aria-labelledby="kit-title">
-  <div class="wrap kit__head">
-    <div>
-      <p class="kit__kicker">54 live product surfaces · click any one</p>
-      <h2 id="kit-title">The whole city<br>is an interface.</h2>
-    </div>
-    <div>
-      <p class="kit__intro">Drag the rails. Open a surface. RSVP, join a guild, watch a build stream, or simulate a USDC, USDT, MYRC, SOL, ETH, BTC, or SUI action without leaving the atlas.</p>
-      <p class="kit__count">54 of 54 responsive and interactive</p>
-    </div>
-  </div>
-  <div class="kit__groups">
-    <div class="kit__group">
-      <h3 class="kit__label"><span>01</span>Discovery and builder radar</h3>
-      <div class="kit__track" tabindex="0" aria-label="City canvas; scroll horizontally">
-          <figure class="kit-card"><img src="public/assets/widgets/card-nearby-now.webp" alt="nearby now surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/card-nearby-people.webp" alt="nearby people surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/card-hosting-now.webp" alt="hosting now surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/card-online-now.webp" alt="online now surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/card-nearby-list.webp" alt="nearby list surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/card-streaming-now.webp" alt="streaming now surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/pin-web3-meetup.webp" alt="web3 meetup surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/pin-art-walk.webp" alt="art walk surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/pin-design-lab.webp" alt="design lab surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/icon-location.webp" alt="location surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/icon-map-pin.webp" alt="map pin surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/card-art-walk.webp" alt="art walk surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/card-art-walk2.webp" alt="art walk2 surface" loading="lazy" decoding="async"></figure>
+<!-- ================= IN-APP PREVIEW ================= -->
+<section class="ip" id="preview" aria-labelledby="ip-title">
+  <div class="ip__in">
+    <div class="ip__copy">
+      <p class="ip__kicker">A live look inside</p>
+      <h2 class="ip__title" id="ip-title">This is Whatsup!,<br>running.</h2>
+      <div class="ip__cap">
+        <span class="ip__marker" aria-hidden="true"><img data-cap-mark src="public/assets/widgets/icon-location.webp" alt=""></span>
+        <h3 class="ip__cap-h" data-cap-h>See who's shipping on your street.</h3>
+        <p class="ip__cap-p" data-cap-p>A consent-first map of Web3 teams, AI labs and founders moving near you in KL right now.</p>
       </div>
-    </div>
-    <div class="kit__group">
-      <h3 class="kit__label"><span>02</span>Teams, founders, and live signals</h3>
-      <div class="kit__track" tabindex="0" aria-label="Signals nearby; scroll horizontally">
-          <figure class="kit-card"><img src="public/assets/widgets/card-platform-stats.webp" alt="platform stats surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/card-creator-spotlight.webp" alt="creator spotlight surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/card-creator-nadia.webp" alt="creator nadia surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/avatar-luna.webp" alt="luna surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/avatar-devon.webp" alt="devon surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/avatar-nadia.webp" alt="nadia surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/pin-avatar-ava.webp" alt="avatar ava surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/pin-avatar.webp" alt="avatar surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/icon-community.webp" alt="community surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/icon-messages.webp" alt="messages surface" loading="lazy" decoding="async"></figure>
+      <div class="ip__tabs" role="tablist" aria-label="Whatsup app sections">
+        <button class="ip__tab" role="tab" id="iptab-explore" aria-controls="ipscr-explore" aria-selected="true" data-screen="explore"><img src="public/assets/widgets/icon-location.webp" alt="" width="26" height="26">Explore<span class="prog"></span></button>
+        <button class="ip__tab" role="tab" id="iptab-events" aria-controls="ipscr-events" aria-selected="false" data-screen="events"><img src="public/assets/widgets/icon-events.webp" alt="" width="26" height="26">Events<span class="prog"></span></button>
+        <button class="ip__tab" role="tab" id="iptab-community" aria-controls="ipscr-community" aria-selected="false" data-screen="community"><img src="public/assets/widgets/icon-community.webp" alt="" width="26" height="26">Guilds<span class="prog"></span></button>
+        <button class="ip__tab" role="tab" id="iptab-wallet" aria-controls="ipscr-wallet" aria-selected="false" data-screen="wallet"><img src="public/assets/widgets/icon-wallet.webp" alt="" width="26" height="26">Wallet<span class="prog"></span></button>
+        <button class="ip__tab" role="tab" id="iptab-live" aria-controls="ipscr-live" aria-selected="false" data-screen="live"><img src="public/assets/widgets/icon-live.webp" alt="" width="26" height="26">Live<span class="prog"></span></button>
       </div>
+      <p class="ip__hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v6"/><path d="M6 11a6 6 0 0 0 12 0"/><circle cx="12" cy="18" r="1.4" fill="currentColor" stroke="none"/></svg> Plays itself — tap a tab to take over.</p>
+      <span class="ip__sr" data-ip-sr aria-live="polite"></span>
     </div>
-    <div class="kit__group">
-      <h3 class="kit__label"><span>03</span>Wallets, guilds, and contributor pay</h3>
-      <div class="kit__track" tabindex="0" aria-label="Money and belonging; scroll horizontally">
-          <figure class="kit-card"><img src="public/assets/widgets/card-wallet-1245.webp" alt="wallet 1245 surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/card-wallet-1845.webp" alt="wallet 1845 surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/card-wallet-2480.webp" alt="wallet 2480 surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/card-wallet-3420.webp" alt="wallet 3420 surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/card-send-jordan.webp" alt="send jordan surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/card-send-usdc.webp" alt="send usdc surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/card-receive-125.webp" alt="receive 125 surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/card-sent-eth.webp" alt="sent eth surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/card-transfer-sent.webp" alt="transfer sent surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/card-transfer-4275.webp" alt="transfer 4275 surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/card-fund-wallet.webp" alt="fund wallet surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/icon-wallet.webp" alt="wallet surface" loading="lazy" decoding="async"></figure>
-      </div>
-    </div>
-    <div class="kit__group">
-      <h3 class="kit__label"><span>04</span>Protocols and product primitives</h3>
-      <div class="kit__track" tabindex="0" aria-label="Product surfaces; scroll horizontally">
-          <figure class="kit-card"><img src="public/assets/widgets/card-guild-chat.webp" alt="guild chat surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/card-guild-general.webp" alt="guild general surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/card-create-guild.webp" alt="create guild surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/card-design-lab.webp" alt="design lab surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/icon-events.webp" alt="events surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/icon-tickets.webp" alt="tickets surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/deco-journal.webp" alt="journal surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/deco-plant.webp" alt="plant surface" loading="lazy" decoding="async"></figure>
-      </div>
-    </div>
-    <div class="kit__group">
-      <h3 class="kit__label"><span>05</span>Demos, AMAs, and build streams</h3>
-      <div class="kit__track" tabindex="0" aria-label="Community stories; scroll horizontally">
-          <figure class="kit-card"><img src="public/assets/widgets/card-live-player.webp" alt="live player surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/icon-live.webp" alt="live surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/deco-community.webp" alt="community surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/pin-nft-cat.webp" alt="nft cat surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/pin-nft-cat2.webp" alt="nft cat2 surface" loading="lazy" decoding="async"></figure>
-      </div>
-    </div>
-    <div class="kit__group">
-      <h3 class="kit__label"><span>06</span>Developer events in every format</h3>
-      <div class="kit__track" tabindex="0" aria-label="Events in every format; scroll horizontally">
-          <figure class="kit-card"><img src="public/assets/widgets/card-founders-mixer.webp" alt="founders mixer surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/card-founders-mixer2.webp" alt="founders mixer2 surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/card-blockchain-workshop.webp" alt="blockchain workshop surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/card-developer-meetup.webp" alt="developer meetup surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/card-sports-pickleball.webp" alt="sports pickleball surface" loading="lazy" decoding="async"></figure>
-          <figure class="kit-card"><img src="public/assets/widgets/card-web3-builders.webp" alt="web3 builders workshop surface" loading="lazy" decoding="async"></figure>
+
+    <div class="ip__stage">
+      <img class="ip__ambient ip__ambient--a" src="public/assets/widgets/card-receive-125.webp" alt="" loading="eager">
+      <img class="ip__ambient ip__ambient--b" src="public/assets/widgets/card-founders-mixer2.webp" alt="" loading="eager">
+      <div class="phone" id="ipPhone">
+        <div class="phone__frame">
+          <div class="phone__screen">
+            <div class="phone__island"></div>
+            <div class="appbar">
+              <div class="appbar__sb"><span data-clock>9:41</span><span class="sig"><i></i><i></i><i></i></span></div>
+              <div class="appbar__title"><span data-app-title>Explore</span><span class="loc" data-app-loc>◎ Kuala Lumpur</span></div>
+            </div>
+
+            <div class="ip-screen ip-map is-active" id="ipscr-explore" role="tabpanel" aria-labelledby="iptab-explore" data-screen="explore">
+              <div class="ip-map__canvas">
+                <img class="bg" src="public/assets/backgrounds/hero-kl-social-city.webp" alt="Illustrated map of Kuala Lumpur" loading="eager">
+                <img class="ip-pin" style="left:30%;top:40%" src="public/assets/widgets/pin-web3-meetup.webp" alt="" loading="eager">
+                <img class="ip-pin" style="left:63%;top:54%" src="public/assets/widgets/pin-art-walk.webp" alt="" loading="eager">
+                <img class="ip-pin" style="left:47%;top:31%;width:54px" src="public/assets/widgets/pin-avatar-ava.webp" alt="" loading="eager">
+                <img class="ip-float ip-card" src="public/assets/widgets/card-nearby-now.webp" alt="12 builders nearby right now" loading="eager">
+              </div>
+            </div>
+
+            <div class="ip-screen" id="ipscr-events" role="tabpanel" aria-labelledby="iptab-events" data-screen="events">
+              <div class="ip-feed">
+                <img class="ip-card" src="public/assets/widgets/card-founders-mixer.webp" alt="Founders Mixer event card" loading="eager">
+                <img class="ip-card ip-card--2" src="public/assets/widgets/card-web3-builders.webp" alt="Web3 Builders Workshop card" loading="eager">
+              </div>
+            </div>
+
+            <div class="ip-screen" id="ipscr-community" role="tabpanel" aria-labelledby="iptab-community" data-screen="community">
+              <div class="ip-feed">
+                <img class="ip-card" src="public/assets/widgets/card-guild-chat.webp" alt="Guild chat" loading="eager">
+                <img class="ip-card ip-card--2" src="public/assets/widgets/card-nearby-people.webp" alt="People nearby" loading="eager">
+              </div>
+            </div>
+
+            <div class="ip-screen" id="ipscr-wallet" role="tabpanel" aria-labelledby="iptab-wallet" data-screen="wallet">
+              <div class="ip-feed">
+                <img class="ip-card" src="public/assets/widgets/card-wallet-1245.webp" alt="Multi-chain wallet balance" loading="eager">
+              </div>
+              <button class="ip-send" type="button" data-ip-send>Send 125 USDC <svg viewBox="0 0 24 24"><use href="public/assets/icons/whatsvp-icons.svg#send"/></svg></button>
+            </div>
+
+            <div class="ip-screen" id="ipscr-live" role="tabpanel" aria-labelledby="iptab-live" data-screen="live">
+              <div class="ip-feed">
+                <img class="ip-card" src="public/assets/widgets/card-live-player.webp" alt="Live build stream" loading="eager">
+                <img class="ip-card ip-card--2" src="public/assets/widgets/card-creator-spotlight.webp" alt="Creator spotlight" loading="eager">
+              </div>
+            </div>
+
+            <nav class="tabbar" aria-hidden="true">
+              <button tabindex="-1" data-screen="explore" class="is-active"><span class="tb-ic"><svg class="tb-glyph" viewBox="0 0 24 24"><use href="public/assets/icons/whatsvp-icons.svg#nearby"/></svg><img class="tb-wash" src="public/assets/widgets/icon-location.webp" alt="" width="30" height="30"></span>Explore</button>
+              <button tabindex="-1" data-screen="events"><span class="tb-ic"><svg class="tb-glyph" viewBox="0 0 24 24"><use href="public/assets/icons/whatsvp-icons.svg#events"/></svg><img class="tb-wash" src="public/assets/widgets/icon-events.webp" alt="" width="30" height="30"></span>Events</button>
+              <button tabindex="-1" data-screen="community"><span class="tb-ic"><svg class="tb-glyph" viewBox="0 0 24 24"><use href="public/assets/icons/whatsvp-icons.svg#guilds"/></svg><img class="tb-wash" src="public/assets/widgets/icon-community.webp" alt="" width="30" height="30"></span>Guilds</button>
+              <button tabindex="-1" data-screen="wallet"><span class="tb-ic"><svg class="tb-glyph" viewBox="0 0 24 24"><use href="public/assets/icons/whatsvp-icons.svg#wallet"/></svg><img class="tb-wash" src="public/assets/widgets/icon-wallet.webp" alt="" width="30" height="30"></span>Wallet</button>
+              <button tabindex="-1" data-screen="live"><span class="tb-ic"><svg class="tb-glyph" viewBox="0 0 24 24"><use href="public/assets/icons/whatsvp-icons.svg#go-live"/></svg><img class="tb-wash" src="public/assets/widgets/icon-live.webp" alt="" width="30" height="30"></span>Live</button>
+            </nav>
+            <span class="tapdot" aria-hidden="true"></span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1231,27 +1337,19 @@ a{color:inherit;text-decoration:none}
 
 <div class="toast" id="toast" role="status" aria-live="polite"><svg width="16" height="16" style="color:var(--lime);flex-shrink:0"><use href="public/assets/icons/whatsvp-icons.svg#check"/></svg><span id="toastMsg">Done.</span></div>
 
-<dialog class="asset-dialog" id="assetDialog" aria-labelledby="assetTitle">
+<dialog class="asset-dialog asset-dialog--nft" id="assetDialog" aria-labelledby="assetTitle">
   <div class="asset-dialog__grid">
     <div class="asset-dialog__media">
-      <button class="asset-dialog__close" type="button" aria-label="Close product surface">×</button>
-      <img id="assetImage" src="public/assets/widgets/card-nearby-now.webp" alt="">
-      <div class="asset-dialog__nav" aria-label="Browse product surfaces">
-        <button type="button" id="assetPrev" aria-label="Previous surface">←</button>
-        <button type="button" id="assetNext" aria-label="Next surface">→</button>
-      </div>
+      <button class="asset-dialog__close" type="button" aria-label="Close identity card">×</button>
+      <img id="assetImage" src="public/assets/widgets/nft-penguin.webp" alt="">
     </div>
     <div class="asset-dialog__body">
-      <p class="asset-dialog__eyebrow" id="assetEyebrow">Surface 01 · Discovery</p>
-      <h3 id="assetTitle">Builder radar</h3>
-      <p id="assetDescription">Open a living view of builders, teams, events, and protocols moving around the city.</p>
-      <div class="asset-dialog__tokens" role="group" aria-label="Choose settlement asset">
-        <button type="button" aria-pressed="true">USDC</button><button type="button" aria-pressed="false">USDT</button><button type="button" aria-pressed="false">MYRC</button><button type="button" aria-pressed="false">SUI</button><button type="button" aria-pressed="false">SOL</button><button type="button" aria-pressed="false">ETH</button><button type="button" aria-pressed="false">BTC</button>
-      </div>
+      <p class="asset-dialog__eyebrow" id="assetEyebrow">NFT identity · chain-aware profile</p>
+      <h3 id="assetTitle">Pudgy Penguins</h3>
+      <p id="assetDescription">Carry your NFT profile across rooms, events and contributor cards — one identity, every chain.</p>
       <div class="asset-dialog__action">
-        <span class="asset-dialog__status" id="assetStatus" aria-live="polite">Ready on Sui mainnet.</span>
-        <button class="btn btn--lime" id="assetAction" type="button">Open builder radar <span class="arr">→</span></button>
-        <button class="btn btn--outline" id="assetSave" type="button" style="color:var(--paper);border-color:rgba(247,241,232,.42)">Save to my city</button>
+        <span class="asset-dialog__status" id="assetStatus" aria-live="polite">Ethereum community identity</span>
+        <button class="btn btn--lime" id="assetAction" type="button">Add identity <span class="arr">→</span></button>
       </div>
     </div>
   </div>
@@ -1283,98 +1381,127 @@ qs('#sendBtn').addEventListener('click',()=>{
   },REDUCE?100:900);
 });
 
-/* Every supplied asset is a real, keyboard-operable product entry point. */
-const surfaceNames=[
-  'Watercolor city atlas','Builder map workspace','Map control system','Live city operations','Neighborhood signal board','Protocol pin library','Builder roster','Event lane','Live rooms radar','People proximity layer','City activity feed','Event discovery rail','Map search console',
-  'Founder proximity card','Guild discussion room','Contributor pay receipt','Build stream stage','Community pulse strip','Capability index',
-  'Multi-chain wallet','Move guild channel','Create a builder guild','Send contributor pay','Receive community grant','Fund the treasury','Contributor action rail','Supported asset matrix','Security and fee layer','Community action tokens',
-  'Universal search','Founder meetup card','Product capability grid','Protocol identity set','Nearby builder list','Onchain receipt',
-  'Builder map filters','Map action controls','Live host room','Online collaborator row','Upcoming build sessions',
-  'Streaming room','People nearby','Live and upcoming board','Map marker system','Builder city canvas','Operations dashboard','Interaction component set',
-  'Move workshop pass','Founder meetup pass','Pickleball reset','Builder newsletter','Watercolor event icons','Community service icons'
-];
-const groupFor=id=>id<=13?'Discovery':id<=19?'People & signals':id<=29?'Wallet & treasury':id<=39?'Guilds & protocols':id<=47?'Live builds':'Developer events';
-const actionFor=id=>id<=13?'Open builder radar':id<=19?'Connect with builder':id<=29?'Simulate settlement':id<=39?'Join builder guild':id<=47?'Enter live room':'Reserve a build seat';
-const descriptionFor=id=>{
-  if(id<=13)return 'Explore developers, AI teams, founders, protocols, and events across a consent-first city map.';
-  if(id<=19)return 'Turn proximity into a useful introduction, filtered by stack, chain, role, and what someone is shipping.';
-  if(id<=29)return 'Preview contributor pay, treasury funding, and self-custody balances across stablecoins and major chains.';
-  if(id<=39)return 'Open a focused guild surface for releases, roles, technical discussions, grants, and shared decisions.';
-  if(id<=47)return 'Join a build stream, founder AMA, protocol demo, or pairing room without losing the conversation around it.';
-  return 'Launch or reserve a developer-first event format built for workshops, meetups, reset sessions, and community updates.';
-};
-const cards=qsa('.kit-card');
+/* ---------- NFT identity dialog (real PFP art) ---------- */
 const dialog=qs('#assetDialog');
-const dialogImage=qs('#assetImage');
-const dialogTitle=qs('#assetTitle');
-const dialogEyebrow=qs('#assetEyebrow');
-const dialogDescription=qs('#assetDescription');
-const dialogAction=qs('#assetAction');
-const dialogStatus=qs('#assetStatus');
-const dialogNav=qs('.asset-dialog__nav');
-let currentAsset=0;
-let selectedToken='USDC';
-
-function renderSurface(index){
-  currentAsset=(index+cards.length)%cards.length;
-  const id=currentAsset+1;
-  const n=String(id).padStart(2,'0');
-  const cimg=cards[currentAsset].querySelector('img');
-  dialogImage.removeAttribute('srcset');
-  dialogImage.src=cimg.getAttribute('src');
-  dialogImage.alt=cimg.getAttribute('alt')||'';
-  dialogEyebrow.textContent=`Surface ${n} · ${groupFor(id)}`;
-  dialogTitle.textContent=surfaceNames[currentAsset]||cimg.getAttribute('alt');
-  dialogDescription.textContent=descriptionFor(id);
-  dialogAction.firstChild.textContent=actionFor(id)+' ';
-  dialogStatus.textContent=`Ready with ${selectedToken} · Sui-first routing enabled.`;
-  dialogNav.hidden=false;
+if(dialog){
+  const dImg=qs('#assetImage'),dTitle=qs('#assetTitle'),dEyebrow=qs('#assetEyebrow'),
+        dDesc=qs('#assetDescription'),dAction=qs('#assetAction'),dStatus=qs('#assetStatus'),
+        dMedia=dialog.querySelector('.asset-dialog__media'),dClose=qs('.asset-dialog__close',dialog);
+  const nftData={
+    'Pudgy Penguins':{img:'public/assets/widgets/nft-penguin.webp',sub:'Ethereum community identity',copy:'Carry your Pudgy Penguins profile across rooms, events and contributor cards — one identity, every chain.',action:'Add Pudgy identity',bg:'radial-gradient(120% 90% at 50% 0,#EAF3FE,#B9D6F5)'},
+    'Bored Ape Yacht Club':{img:'public/assets/widgets/nft-ape.webp',sub:'Ethereum founder identity',copy:'A founder-pass identity that travels with your guilds, live rooms and settlement history.',action:'Add BAYC identity',bg:'radial-gradient(120% 90% at 50% 0,#FBEEDF,#EBC9A8)'},
+    'Rootlets on Sui':{img:'public/assets/widgets/nft-owl.webp',sub:'Sui-native culture identity',copy:'Rootlets brings Sui-native culture into the city layer as a portable community signal.',action:'Add Rootlets identity',bg:'radial-gradient(120% 90% at 50% 0,#F1FADB,#CDEB9A)'}
+  };
+  qsa('[data-nft]').forEach(btn=>btn.addEventListener('click',()=>{
+    const d=nftData[btn.dataset.nft]; if(!d) return;
+    if(dMedia) dMedia.style.background=d.bg;
+    dImg.removeAttribute('srcset'); dImg.src=d.img; dImg.alt=btn.dataset.nft+' NFT profile art'; dImg.style.objectFit='contain';
+    dEyebrow.textContent='NFT identity · chain-aware profile';
+    dTitle.textContent=btn.dataset.nft; dDesc.textContent=d.copy;
+    if(dAction&&dAction.firstChild) dAction.firstChild.textContent=d.action+' ';
+    dStatus.textContent=d.sub;
+    dialog.showModal(); if(dClose) dClose.focus();
+  }));
+  if(dClose) dClose.addEventListener('click',()=>dialog.close());
+  dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close();});
+  if(dAction) dAction.addEventListener('click',()=>{ dStatus.textContent='Identity added to your cross-chain profile.'; toast('NFT identity added to your Whatsup! profile.'); });
 }
-function openSurface(index){
-  renderSurface(index);
-  dialog.showModal();
-  qs('.asset-dialog__close').focus();
-}
-cards.forEach((card,index)=>{
-  const id=index+1,n=String(id).padStart(2,'0'),img=qs('img',card);
-  card.tabIndex=0;
-  card.setAttribute('role','button');
-  card.setAttribute('aria-label',`Open surface ${n}: ${surfaceNames[index]||(img&&img.alt)||''}`);
-  card.dataset.assetId=n;
-  card.addEventListener('click',()=>openSurface(index));
-  card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openSurface(index);}});
-});
-qs('.asset-dialog__close').addEventListener('click',()=>dialog.close());
-qs('#assetPrev').addEventListener('click',()=>renderSurface(currentAsset-1));
-qs('#assetNext').addEventListener('click',()=>renderSurface(currentAsset+1));
-dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close();});
-qsa('.asset-dialog__tokens button').forEach(btn=>btn.addEventListener('click',()=>{
-  selectedToken=btn.textContent;
-  qsa('.asset-dialog__tokens button').forEach(b=>b.setAttribute('aria-pressed',String(b===btn)));
-  dialogStatus.textContent=`Settlement switched to ${selectedToken}. Route preview updated.`;
-}));
-dialogAction.addEventListener('click',()=>{
-  if(currentAsset<0){ dialogStatus.textContent=`Identity added to your cross-chain profile.`; toast('NFT identity added to your Whatsup! profile.'); return; }
-  const id=currentAsset+1;
-  const result=id<=13?'Builder radar opened with 18 nearby matches.':id<=19?'Private introduction request sent.':id<=29?`125 ${selectedToken} settlement simulated — no funds moved.`:id<=39?'Joined the builder guild in preview mode.':id<=47?'Build room opened — mic and camera stay off.':'Seat reserved — calendar pass created.';
-  dialogStatus.textContent=result; toast(result);
-});
-qs('#assetSave').addEventListener('click',()=>{dialogStatus.textContent='Saved to My City for this session.';toast('Saved to My City.');});
 
-/* Randomly placed NFT identity stamps reuse the same interaction language. */
-const nftData={
-  'Pudgy Penguins':{emoji:'🐧',sub:'Ethereum community identity',copy:'A playful cross-chain profile stamp for builders who already carry Pudgy Penguins across their social graph.',action:'Add Pudgy identity'},
-  'Bored Ape Yacht Club':{emoji:'🦍',sub:'Ethereum founder identity',copy:'A founder-pass style identity surface that travels with rooms, events, and contributor profiles.',action:'Add BAYC identity'},
-  'Rootlets on Sui':{emoji:'🐷',sub:'Sui-native culture identity',copy:'Rootlets brings Sui-native culture into the city layer as a portable community and profile signal.',action:'Add Rootlets identity'}
-};
-qsa('[data-nft]').forEach((button,index)=>button.addEventListener('click',()=>{
-  const data=nftData[button.dataset.nft];
-  currentAsset=-1; dialogNav.hidden=true;
-  const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900"><rect width="900" height="900" fill="#F7F1E8"/><circle cx="450" cy="390" r="260" fill="#B7FF2A"/><text x="450" y="490" text-anchor="middle" font-size="290">${data.emoji}</text><text x="450" y="760" text-anchor="middle" font-family="Arial" font-weight="700" font-size="56" fill="#0F2E8A">${button.dataset.nft}</text></svg>`;
-  dialogImage.removeAttribute('srcset'); dialogImage.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg); dialogImage.alt=`${button.dataset.nft} identity stamp`;
-  dialogEyebrow.textContent='NFT identity · chain-aware profile'; dialogTitle.textContent=button.dataset.nft; dialogDescription.textContent=data.copy; dialogAction.firstChild.textContent=data.action+' '; dialogStatus.textContent=data.sub;
-  dialog.showModal(); qs('.asset-dialog__close').focus();
-}));
+/* ---------- In-app preview controller ("Whatsup!, running") ---------- */
+(()=>{
+  const root=qs('#preview'); if(!root) return;
+  const tabs=qsa('.ip__tab',root), barBtns=qsa('.tabbar button',root), screens=qsa('.ip-screen',root);
+  const capH=qs('[data-cap-h]',root), capP=qs('[data-cap-p]',root), cap=qs('.ip__cap',root), capMark=qs('[data-cap-mark]',root);
+  const appTitle=qs('[data-app-title]',root), appLoc=qs('[data-app-loc]',root);
+  const tapdot=qs('.tapdot',root), screenEl=qs('.phone__screen',root), phone=qs('.phone',root);
+  const hint=qs('.ip__hint',root), srLive=qs('[data-ip-sr]',root), sendBtn=qs('[data-ip-send]',root);
+  const W='public/assets/widgets/';
+  const order=['explore','events','community','wallet','live'];
+  const META={
+    explore:{title:'Explore',loc:'◎ Bangsar, KL',h:"See who's shipping on your street.",p:'A consent-first map of Web3 teams, AI labs and founders moving near you in KL right now.',mark:W+'icon-location.webp',mode:''},
+    events:{title:'Events',loc:'This week',h:'Turn an idea into a room by tonight.',p:'Host or RSVP builder workshops, agent labs and founder circles — tickets and reminders baked in.',mark:W+'icon-events.webp',mode:''},
+    community:{title:'Guilds',loc:'2.1K builders',h:'A guild that remembers every decision.',p:'Channels, roles, releases and DMs — one source of truth for a community that needs momentum.',mark:W+'icon-community.webp',mode:''},
+    wallet:{title:'Wallet',loc:'Sui-first',h:'Pay a contributor in ten seconds.',p:'Settle work in USDC, USDT or SUI and hold it self-custody. Sui-first routing, never chain-locked.',mark:W+'icon-wallet.webp',mode:'navy'},
+    live:{title:'Live',loc:'128 watching',h:'Watch the build happen, live.',p:'Demos, founder AMAs and pairing rooms — drop in without losing the conversation around it.',mark:W+'icon-live.webp',mode:'navy'}
+  };
+  const DWELL=3600; let idx=0, timer=null, playing=false, userTook=false, offered=false, inView=false;
+  root.style.setProperty('--ip-dwell',DWELL+'ms');
+
+  function paint(key){
+    tabs.forEach(t=>{const on=t.dataset.screen===key; t.setAttribute('aria-selected',on?'true':'false'); t.setAttribute('tabindex',on?'0':'-1'); t.classList.toggle('is-playing',on&&playing&&!REDUCE);});
+    barBtns.forEach(b=>b.classList.toggle('is-active',b.dataset.screen===key));
+    screens.forEach(s=>s.classList.toggle('is-active',s.dataset.screen===key));
+    const m=META[key];
+    if(phone) phone.dataset.mode=m.mode||'';
+    if(cap){ cap.classList.add('is-swapping'); setTimeout(()=>{ capH.textContent=m.h; capP.textContent=m.p; if(capMark) capMark.src=m.mark; cap.classList.remove('is-swapping'); }, REDUCE?0:250); }
+    appTitle.textContent=m.title; appLoc.textContent=m.loc;
+  }
+  function go(i,user){ idx=(i+order.length)%order.length; paint(order[idx]); if(user&&srLive){ const m=META[order[idx]]; srLive.textContent=m.title+' — '+m.h; } }
+
+  function moveTapTo(btn,then){
+    if(REDUCE||!tapdot||!screenEl){ then&&then(); return; }
+    const pr=screenEl.getBoundingClientRect(), br=btn.getBoundingClientRect();
+    tapdot.style.left=(br.left-pr.left+br.width/2)+'px';
+    tapdot.style.top=(br.top-pr.top+br.height/2)+'px';
+    tapdot.classList.add('show');
+    setTimeout(()=>{ tapdot.classList.add('tap'); then&&then(); setTimeout(()=>tapdot.classList.remove('tap'),450); }, 640);
+  }
+  function tick(){
+    const next=(idx+1)%order.length;
+    moveTapTo(barBtns[next],()=>{ go(next); if(next===0 && !userTook){ offerWheel(); } });
+  }
+  function play(){ if(playing||userTook||offered||REDUCE) return; playing=true; paint(order[idx]); timer=setInterval(tick,DWELL); }
+  function stop(){ playing=false; clearInterval(timer); if(tapdot)tapdot.classList.remove('show'); tabs.forEach(t=>t.classList.remove('is-playing')); }
+  function offerWheel(){
+    offered=true; stop();
+    if(tapdot) tapdot.classList.remove('show');
+    const active=tabs[idx]; if(active) active.classList.add('is-offer');
+    if(hint&&hint.lastChild) hint.lastChild.textContent=' Your turn — tap a tab to explore.';
+  }
+  function takeOver(){
+    if(userTook) return; userTook=true; offered=false; stop();
+    tabs.forEach(t=>t.classList.remove('is-offer'));
+    if(tapdot){ tapdot.classList.add('gone'); setTimeout(()=>tapdot.classList.remove('show','gone'),420); }
+    if(hint&&hint.lastChild) hint.lastChild.textContent=" You're driving — explore freely.";
+  }
+
+  tabs.forEach(t=>t.addEventListener('click',()=>{ takeOver(); go(order.indexOf(t.dataset.screen),true); }));
+  barBtns.forEach(b=>b.addEventListener('click',()=>{ takeOver(); go(order.indexOf(b.dataset.screen),true); }));
+  const tablist=qs('.ip__tabs',root);
+  if(tablist) tablist.addEventListener('keydown',e=>{
+    const cur=order.indexOf(qs('.ip__tab[aria-selected="true"]',root).dataset.screen);
+    let n=null;
+    if(e.key==='ArrowRight'||e.key==='ArrowDown')n=(cur+1)%order.length;
+    else if(e.key==='ArrowLeft'||e.key==='ArrowUp')n=(cur-1+order.length)%order.length;
+    else if(e.key==='Home')n=0; else if(e.key==='End')n=order.length-1;
+    if(n!==null){ e.preventDefault(); takeOver(); go(n,true); tabs[n].focus(); }
+  });
+  if(sendBtn) sendBtn.addEventListener('click',()=>{
+    takeOver(); go(order.indexOf('wallet'),true);
+    if(sendBtn.disabled) return; sendBtn.disabled=true;
+    const label=sendBtn.firstChild;
+    const done=()=>{ sendBtn.classList.add('is-sent'); label.textContent='Sent ✓ '; toast('Sent 125 USDC to @Ava — settled on Sui.'); };
+    if(REDUCE){ done(); return; }
+    label.textContent='Sending… ';
+    setTimeout(()=>{ done(); setTimeout(()=>{ sendBtn.classList.remove('is-sent'); label.textContent='Send 125 USDC '; sendBtn.disabled=false; },2600); },900);
+  });
+  // pause autoplay only while hovering the phone itself (not the whole full-viewport section)
+  if(phone){
+    phone.addEventListener('pointerenter',()=>{ if(!userTook&&!offered&&!REDUCE&&playing) stop(); });
+    phone.addEventListener('pointerleave',()=>{ if(!userTook&&!offered&&inView) play(); });
+  }
+
+  paint('explore');
+  if(!REDUCE && 'IntersectionObserver' in window){
+    const io=new IntersectionObserver(ents=>ents.forEach(en=>{ inView=en.isIntersecting; if(en.isIntersecting) play(); else if(!userTook) stop(); }),{threshold:.4});
+    io.observe(root);
+  }
+  const clock=qs('[data-clock]',root);
+  if(clock){ const upd=()=>{ const d=new Date(); clock.textContent=String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0'); }; upd(); setInterval(upd,30000); }
+  // warm every screen's imagery so tab-switches (and autoplay) never flash empty
+  const warm=()=>qsa('.ip-card,.ip-pin,.ip-map__canvas img.bg',root).forEach(i=>{ i.loading='eager'; if(i.decode)i.decode().catch(()=>{}); });
+  if('requestIdleCallback' in window) requestIdleCallback(warm,{timeout:2500}); else setTimeout(warm,1200);
+})();
 
 const currencyCycle=qs('.currency-cycle');
 const stableCurrencies=['USDC','USDT','MYRC'];
