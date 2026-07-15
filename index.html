@@ -1327,20 +1327,103 @@ qsa('.kit__track').forEach(track=>{
 /* bars fill on view */
 const io=new IntersectionObserver(es=>es.forEach(en=>{ if(en.isIntersecting){ en.target.style.width=en.target.dataset.fill+'%'; io.unobserve(en.target);} }),{threshold:.5});
 qsa('[data-fill]').forEach(el=>{ if(REDUCE){ el.style.transition='none'; el.style.width=el.dataset.fill+'%'; } else io.observe(el); });
-/* motion */
+/* ============ MOTION — per-section choreography (bulletproof reveals) ============
+   Content is visible by default; every reveal runs on scroll-enter, so a missed
+   trigger can never leave anything hidden. Scrubbed parallax only offsets art. */
 window.addEventListener('load',()=>{
   if(!window.gsap || REDUCE) return;
   gsap.registerPlugin(ScrollTrigger);
+  const FINE=matchMedia('(pointer:fine)').matches;
+  const onView=(trigger,fn,start='top 80%')=>{ const t=typeof trigger==='string'?qs(trigger):trigger; if(!t) return; ScrollTrigger.create({trigger:t,start,once:true,onEnter:fn}); };
+
+  /* HERO — plays on load (always in view) + pointer parallax + scroll drift */
   gsap.timeline({defaults:{ease:'power3.out'}})
-    .from('.hero__copy > *',{y:24,opacity:0,duration:.6,stagger:.08})
-    .from('.hero__city',{opacity:0,duration:.9,ease:'power2.out'},'-=.5')
-    .from('.hero__floats > *',{opacity:0,duration:.6,stagger:.1},'-=.4');
-  /* gentle depth: the city drifts a touch slower than the page as you scroll past */
-  gsap.to('.hero__city',{yPercent:5,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:.6}});
-  ScrollTrigger.batch('.mf, .railcard, .uprow, .fincard, .story, .steps, .featured, .uplist, .guild, .liveplayer, .secrow > div, .kit-card',{
-    start:'top 88%',
-    onEnter:els=>gsap.from(els,{y:26,opacity:0,duration:.5,stagger:.05,ease:'power3.out',overwrite:true,clearProps:'transform,opacity'})
+    .from('.hero__copy > *',{y:26,opacity:0,duration:.65,stagger:.09})
+    .from('.hero__city',{opacity:0,scale:1.05,transformOrigin:'70% 60%',duration:1.1,ease:'power2.out'},'-=.55')
+    .from('.hero__floats > *',{opacity:0,duration:.6,stagger:.12},'-=.5')
+    .from('.hero .nft-sticker',{opacity:0,scale:.7,rotation:-6,stagger:.12,duration:.6,ease:'back.out(1.7)',clearProps:'transform'},'-=.35');
+  gsap.to('.hero__city',{yPercent:6,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:.6}});
+  if(FINE){
+    const stage=qs('.hero__stage'), city=qs('.hero__city'), floats=qs('.hero__floats');
+    const cx=gsap.quickTo(city,'x',{duration:.7,ease:'power3.out'});
+    const fx=gsap.quickTo(floats,'x',{duration:1,ease:'power3.out'});
+    const fy=gsap.quickTo(floats,'y',{duration:1,ease:'power3.out'});
+    qs('.hero').addEventListener('pointermove',e=>{
+      const r=stage.getBoundingClientRect();
+      cx((e.clientX-(r.left+r.width/2))/r.width*-12);
+      fx((e.clientX-(r.left+r.width/2))/r.width*16);
+      fy((e.clientY-(r.top+r.height/2))/r.height*11);
+    });
+    qs('.hero').addEventListener('pointerleave',()=>{cx(0);fx(0);fy(0);});
+  }
+
+  /* 01 EXPLORE — panel wipes open, map zooms to rest, pins pop, rail cascades */
+  onView('#explore',()=>{
+    gsap.timeline({defaults:{ease:'power3.out'}})
+      .from('#explore .mappanel',{clipPath:'inset(0 0 100% 0)',duration:.9,ease:'power4.inOut'})
+      .from('#explore .mappanel > img.bg',{scale:1.16,duration:1.4,ease:'power2.out'},'<')
+      .from('#explore .searchbar > *',{y:-16,opacity:0,stagger:.07,duration:.4},'-=.8')
+      .from('#explore .mapev, #explore .ppin__av, #explore .youpin i, #explore .bcastpin__b',{scale:0,opacity:0,stagger:.08,duration:.5,ease:'back.out(2)',clearProps:'transform,opacity'},'-=.4')
+      .from('#explore .maprail .railcard',{x:60,opacity:0,stagger:.12,duration:.55},'-=.6');
+    gsap.from('#explore .sec__grid > div:first-child > *',{x:-34,opacity:0,stagger:.08,duration:.6,ease:'power3.out'});
+  },'top 62%');
+
+  /* 02 EVENTS — featured card tilts in, list cascades, steps land 1-2-3-4, pavilion blooms */
+  onView('#events',()=>gsap.from('#events .featured',{rotationY:-10,x:-40,opacity:0,transformPerspective:900,transformOrigin:'left center',duration:.9,ease:'power3.out',clearProps:'transform'}),'top 60%');
+  onView('#events .uplist',()=>gsap.from('#events .uprow',{x:52,opacity:0,stagger:.1,duration:.5,ease:'power3.out'}),'top 78%');
+  onView('#events .steps',()=>{gsap.from('#events .step',{y:24,opacity:0,stagger:.15,duration:.45,ease:'back.out(1.6)'});gsap.from('#events .steps .ok',{scale:0,rotation:-90,duration:.55,delay:.5,ease:'back.out(2.2)'});},'top 84%');
+  onView('#events .host__art',()=>gsap.from('#events .host__art',{opacity:0,scale:.85,transformOrigin:'50% 100%',duration:1.3,ease:'power2.out'}),'top 92%');
+  onView('#events',()=>gsap.from('#events .sec__grid > div:first-child > :is(.no,.eyebrow-sec,.h2,.lede,.host__ctas)',{x:-30,opacity:0,stagger:.08,duration:.55,ease:'power3.out'}),'top 62%');
+
+  /* 03 COMMUNITY — feed rises, gallery blooms, rail cascades, plant grows, NFT stamp pops */
+  onView('#community',()=>gsap.from('#community .guild',{y:42,opacity:0,duration:.7,ease:'power3.out'}),'top 58%');
+  onView('#community .post__grid',()=>gsap.from('#community .post__grid img',{opacity:0,scale:.7,stagger:.1,duration:.45,ease:'back.out(1.6)'}),'top 86%');
+  onView('#community .cside',()=>gsap.from('#community .memrow, #community .dmsg',{x:38,opacity:0,stagger:.06,duration:.4,ease:'power3.out'}),'top 72%');
+  onView('#community .cside',()=>gsap.from('#community .plant',{scale:0,rotation:-8,transformOrigin:'50% 100%',duration:1.1,ease:'elastic.out(1,.55)'}),'top 55%');
+  onView('#community',()=>gsap.from('#community .nft-sticker',{opacity:0,scale:.7,rotation:6,duration:.6,ease:'back.out(1.7)',clearProps:'transform'}),'top 55%');
+  onView('#community',()=>gsap.from('#community .sec__grid > div:first-child > *',{x:-28,opacity:0,stagger:.07,duration:.5,ease:'power3.out'}),'top 60%');
+
+  /* 04 FINANCE — glass cards flip up, balance counts up, skyline drifts, cards tilt to cursor */
+  onView('#finance .fingrid',()=>gsap.from('#finance .fincard',{rotationX:-14,y:44,opacity:0,transformPerspective:800,transformOrigin:'center bottom',stagger:.14,duration:.7,ease:'power3.out'}),'top 74%');
+  onView('#finance .secrow',()=>gsap.from('#finance .secrow > div',{y:22,opacity:0,stagger:.12,duration:.5,ease:'power3.out'}),'top 88%');
+  onView('#finance',()=>gsap.from('#finance .sec__grid > div:first-child > *',{x:-28,opacity:0,stagger:.07,duration:.5,ease:'power3.out'}),'top 62%');
+  gsap.to('#finance > img.bg',{yPercent:-8,ease:'none',scrollTrigger:{trigger:'#finance',start:'top bottom',end:'bottom top',scrub:.8}});
+  const balEl=qs('#finance .fincard .bal');
+  if(balEl){ const balText=balEl.textContent; onView('#finance .fingrid',()=>{gsap.from({v:0},{v:8942.3,duration:1.4,ease:'power2.out',onUpdate:function(){balEl.textContent='$ '+this.targets()[0].v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});},onComplete:()=>{balEl.textContent=balText;}});},'top 76%'); }
+  if(FINE) qsa('#finance .fincard').forEach(card=>{
+    const rx=gsap.quickTo(card,'rotationX',{duration:.5,ease:'power3.out'});
+    const ry=gsap.quickTo(card,'rotationY',{duration:.5,ease:'power3.out'});
+    card.addEventListener('pointermove',e=>{const r=card.getBoundingClientRect();gsap.set(card,{transformPerspective:800});ry(((e.clientX-r.left)/r.width-.5)*7);rx(((e.clientY-r.top)/r.height-.5)*-7);});
+    card.addEventListener('pointerleave',()=>{rx(0);ry(0);});
   });
+
+  /* 05 LIVE — stories dealt like cards, player zooms in, tools slide */
+  onView('#live .stories',()=>gsap.from('#live .story',{y:44,rotation:i=>i%2?6:-6,opacity:0,stagger:.09,duration:.55,ease:'back.out(1.5)',clearProps:'transform'}),'top 82%');
+  onView('#live .liveplayer',()=>gsap.from('#live .liveplayer',{scale:.9,opacity:0,duration:.8,ease:'power3.out'}),'top 76%');
+  onView('#live .lside',()=>gsap.from('#live .lside .railcard',{x:44,opacity:0,stagger:.14,duration:.55,ease:'power3.out'}),'top 76%');
+  onView('#live',()=>gsap.from('#live .sec__grid > div:first-child > *',{x:-28,opacity:0,stagger:.07,duration:.5,ease:'power3.out'}),'top 62%');
+
+  /* CITY KIT — atlas header rises, each rail deals its surfaces in as it enters */
+  onView('#city-kit',()=>gsap.from('#city-kit .kit__head > div > *',{y:26,opacity:0,stagger:.08,duration:.55,ease:'power3.out'}),'top 74%');
+  qsa('#city-kit .kit__group').forEach(group=>{
+    onView(group,()=>{
+      gsap.from(group.querySelector('.kit__label'),{x:-26,opacity:0,duration:.5,ease:'power3.out'});
+      gsap.from(group.querySelectorAll('.kit-card'),{y:30,opacity:0,stagger:.05,duration:.45,ease:'power3.out',overwrite:true,clearProps:'transform,opacity'});
+    },'top 86%');
+  });
+
+  /* CTA — headline rises word by word, night city zooms to rest */
+  const ch=qs('.cta h2');
+  if(ch) ch.innerHTML=ch.textContent.trim().split(/\s+/).map(w=>'<span class="w" style="display:inline-block">'+w+'</span>').join(' ');
+  onView('.cta',()=>{gsap.from('.cta h2 .w',{yPercent:115,opacity:0,stagger:.06,duration:.7,ease:'power4.out'});gsap.from('.cta p, .cta .btn',{y:22,opacity:0,stagger:.12,delay:.25,duration:.6,ease:'power3.out'});},'top 74%');
+  gsap.fromTo('.cta > img.bg',{scale:1.14},{scale:1,ease:'none',scrollTrigger:{trigger:'.cta',start:'top bottom',end:'bottom top',scrub:.7}});
+
+  /* FOOTER — columns rise, corner plant springs */
+  onView('.footer',()=>{gsap.from('.footer__grid > div',{y:26,opacity:0,stagger:.08,duration:.5,ease:'power3.out'});gsap.from('.footplant',{scale:0,transformOrigin:'80% 100%',duration:1.1,delay:.2,ease:'elastic.out(1,.5)'});},'top 84%');
+
+  /* recompute trigger positions once images/fonts settle */
+  window.addEventListener('resize',()=>ScrollTrigger.refresh());
+  setTimeout(()=>ScrollTrigger.refresh(),400);
 });
 })();
 </script>
