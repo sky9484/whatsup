@@ -1143,7 +1143,7 @@ a{color:inherit;text-decoration:none}
           <div class="fincard">
             <h4>My wallet <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="color:rgba(15,46,138,.5)"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></h4>
             <span class="fw__sub">Total balance · multi-chain</span>
-            <div class="bal-row"><div class="balchg"><div class="bal">$8,942.30</div><span class="chg">▲ 2.4% <em>7d</em></span></div><svg class="spark" viewBox="0 0 116 42" aria-hidden="true"><defs><linearGradient id="sparkg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B9E58" stop-opacity=".26"/><stop offset="1" stop-color="#1B9E58" stop-opacity="0"/></linearGradient></defs><path class="spark-area" d="M2 32 18 29 34 31 50 21 66 25 82 13 98 17 114 5 V42 H2 Z" fill="url(#sparkg)"/><polyline class="spark-line" points="2,32 18,29 34,31 50,21 66,25 82,13 98,17 114,5" fill="none" stroke="#1B9E58" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle class="spark-dot" cx="114" cy="5" r="2.8" fill="#1B9E58"/></svg></div>
+            <div class="bal-row"><div class="balchg"><div class="bal" data-countup="8942.30" data-prefix="$">$8,942.30</div><span class="chg">▲ 2.4% <em>7d</em></span></div><svg class="spark" viewBox="0 0 116 42" aria-hidden="true"><defs><linearGradient id="sparkg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B9E58" stop-opacity=".26"/><stop offset="1" stop-color="#1B9E58" stop-opacity="0"/></linearGradient></defs><path class="spark-area" d="M2 32 18 29 34 31 50 21 66 25 82 13 98 17 114 5 V42 H2 Z" fill="url(#sparkg)"/><polyline class="spark-line" points="2,32 18,29 34,31 50,21 66,25 82,13 98,17 114,5" fill="none" stroke="#1B9E58" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle class="spark-dot" cx="114" cy="5" r="2.8" fill="#1B9E58"/></svg></div>
             <div class="alloc" aria-hidden="true">
               <span style="width:27%;background:#2775CA"></span><span style="width:14%;background:#26A17B"></span><span style="width:20%;background:#F0B429"></span><span style="width:9%;background:#4DA6E8"></span><span style="width:18%;background:#627EEA"></span><span style="width:8%;background:#F7931A"></span><span style="width:4%;background:linear-gradient(135deg,#9945FF,#14F195)"></span>
             </div>
@@ -1182,7 +1182,7 @@ a{color:inherit;text-decoration:none}
               <div><b style="font-family:var(--disp);font-size:15px;font-weight:600;display:block">Open Builders Fund</b><span class="fw__sub" style="margin-top:2px">12K contributors</span></div>
             </div>
             <span class="fw__sub" style="margin-top:16px">Balance</span>
-            <div class="bal">8,210.75 USDC</div>
+            <div class="bal" data-countup="8210.75" data-suffix=" USDC">8,210.75 USDC</div>
             <div class="fundbar">
               <div class="lbl"><span>Goal: AI x Move grants</span><span>12K USDC</span></div>
               <div class="track"><div class="fill" data-fill="64"></div></div>
@@ -1495,6 +1495,25 @@ document.addEventListener('click',e=>{
   }
 })();
 
+/* ---------- Count-up for finance figures on scroll-in ---------- */
+(()=>{
+  const els=qsa('[data-countup]'); if(!els.length) return;
+  const fmt=n=>n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+  const run=el=>{
+    const to=parseFloat(el.dataset.countup), pre=el.dataset.prefix||'', suf=el.dataset.suffix||'';
+    if(REDUCE){ el.textContent=pre+fmt(to)+suf; return; }
+    const start=performance.now(), dur=1400;
+    (function step(now){
+      const t=Math.min(1,(now-start)/dur), e=1-Math.pow(1-t,3);
+      el.textContent=pre+fmt(to*e)+suf;
+      if(t<1) requestAnimationFrame(step); else el.textContent=pre+fmt(to)+suf;
+    })(start);
+  };
+  if(REDUCE || !('IntersectionObserver' in window)){ els.forEach(run); return; }
+  const io=new IntersectionObserver((es,o)=>es.forEach(en=>{ if(en.isIntersecting){ run(en.target); o.unobserve(en.target); } }),{threshold:.6});
+  els.forEach(el=>io.observe(el));
+})();
+
 /* ---------- NFT identity dialog (real PFP art) ---------- */
 const dialog=qs('#assetDialog');
 if(dialog){
@@ -1690,8 +1709,6 @@ window.addEventListener('load',()=>{
   onView('#finance .secrow',()=>gsap.from('#finance .secrow > div',{y:22,opacity:0,stagger:.12,duration:.5,ease:'power3.out'}),'top 88%');
   onView('#finance',()=>gsap.from('#finance .sec__grid > div:first-child > *',{x:-28,opacity:0,stagger:.07,duration:.5,ease:'power3.out'}),'top 62%');
   gsap.to('#finance > img.bg',{yPercent:-8,ease:'none',scrollTrigger:{trigger:'#finance',start:'top bottom',end:'bottom top',scrub:.8}});
-  const balEl=qs('#finance .fincard .bal');
-  if(balEl){ const balText=balEl.textContent; onView('#finance .fingrid',()=>{gsap.from({v:0},{v:8942.3,duration:1.4,ease:'power2.out',onUpdate:function(){balEl.textContent='$ '+this.targets()[0].v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});},onComplete:()=>{balEl.textContent=balText;}});},'top 76%'); }
   if(FINE) qsa('#finance .fincard').forEach(card=>{
     const rx=gsap.quickTo(card,'rotationX',{duration:.5,ease:'power3.out'});
     const ry=gsap.quickTo(card,'rotationY',{duration:.5,ease:'power3.out'});
