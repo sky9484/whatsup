@@ -273,7 +273,7 @@ a{color:inherit;text-decoration:none}
 .dmsg .b b{font-weight:600}
 .dmsg .t{font-size:9.5px;color:var(--muted);margin-left:auto;padding-left:6px;white-space:nowrap}
 .dmin{margin-top:11px;display:flex;align-items:center;justify-content:space-between;gap:8px;border:1px solid var(--line);border-radius:999px;padding:8px 13px;font-size:12px;color:var(--muted)}
-.plant{position:absolute;right:-30px;bottom:-30px;width:132px;opacity:.95;pointer-events:none;filter:drop-shadow(0 14px 22px rgba(11,31,85,.12))}
+.plant{position:absolute;right:-30px;bottom:-30px;width:150px;height:auto;opacity:.95;pointer-events:none;filter:drop-shadow(0 14px 22px rgba(11,31,85,.12))}
 
 /* finance (04) */
 .finance{position:relative;overflow:hidden}
@@ -396,6 +396,10 @@ a{color:inherit;text-decoration:none}
 .cta > img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
 .cta::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,20,60,.42),rgba(6,20,60,.58))}
 .cta__in{position:relative;z-index:3;max-width:840px;margin:0 auto;padding:clamp(60px,7vw,104px) var(--pad)}
+.cta__proof{margin-top:26px;display:flex;align-items:center;justify-content:center;gap:13px;flex-wrap:wrap}
+.cta__proof .avs .av{width:34px;height:34px;border-width:2.5px;border-color:rgba(247,241,232,.9)}
+.cta__proof-txt{font-size:13.5px;color:rgba(247,241,232,.82)}
+.cta__proof-txt b{color:var(--lime);font-family:var(--disp);font-weight:700}
 .cta h2{font-family:var(--disp);font-weight:600;font-size:clamp(34px,4.6vw,60px);letter-spacing:-.04em;line-height:1}
 .cta p{margin-top:14px;font-size:17px;color:rgba(247,241,232,.9)}
 .cta .btn{margin-top:30px;min-height:58px;padding:0 40px;font-size:17px;border-radius:10px}
@@ -421,7 +425,7 @@ a{color:inherit;text-decoration:none}
 .footbenefit span{font-size:11.5px;color:var(--on-navy)}
 .footbenefit:last-of-type{border-right:0;margin-right:0;padding-right:0}
 .footcopy{margin-left:auto;font-size:12.5px;color:var(--on-navy)}
-.footplant{position:absolute;right:0;bottom:0;width:clamp(120px,13vw,190px);opacity:.9;pointer-events:none;z-index:1}
+.footplant{position:absolute;right:8px;bottom:0;width:clamp(120px,13vw,190px);height:auto;opacity:.55;pointer-events:none;z-index:1;filter:brightness(1.6) saturate(.8)}
 .toast{position:fixed;left:50%;bottom:26px;z-index:2500;transform:translate(-50%,90px);background:var(--navy);color:var(--paper);border-radius:12px;padding:12px 20px;font-size:13.5px;display:flex;align-items:center;gap:10px;box-shadow:var(--sh-lg);transition:transform .3s var(--ease);max-width:min(92vw,460px)}
 .toast.is-on{transform:translate(-50%,0)}
 
@@ -1357,6 +1361,10 @@ a{color:inherit;text-decoration:none}
     <h2 id="bt">Build where you are.<br>Reach every chain.</h2>
     <p>Sui-first infrastructure for developers, founders, AI teams, and the communities around them.</p>
     <button class="btn btn--lime" data-toast="Builder pass reserved — welcome to the Sui-first beta.">Claim builder pass <span class="arr">→</span></button>
+    <div class="cta__proof" aria-label="2,400 builders already joined">
+      <span class="avs"><span class="av"><img src="public/art/avatar-1.webp" alt=""></span><span class="av"><img src="public/art/avatar-4.webp" alt=""></span><span class="av"><img src="public/art/avatar-2.webp" alt=""></span><span class="av"><img src="public/art/avatar-6.webp" alt=""></span><span class="av"><img src="public/art/avatar-5.webp" alt=""></span></span>
+      <span class="cta__proof-txt"><b>2,400+ builders</b> already moving together in 12 cities</span>
+    </div>
   </div>
 </section>
 <footer class="footer">
@@ -1393,7 +1401,7 @@ a{color:inherit;text-decoration:none}
       <span class="footcopy">© 2026 Whatsup! All rights reserved.</span>
     </div>
   </div>
-  <img class="footplant" src="public/assets/illustrations/plant-corner.svg" alt="" aria-hidden="true">
+  <img class="footplant" src="public/assets/widgets/deco-plant.webp" alt="" aria-hidden="true" width="520" height="520" loading="lazy">
 </footer>
 </main>
 
