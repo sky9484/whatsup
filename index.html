@@ -523,10 +523,10 @@ a{color:inherit;text-decoration:none}
 .nav__links{gap:clamp(2px,1.5vw,24px)}
 .nav__links a{font-family:var(--body);font-size:13px;letter-spacing:.02em}
 
-.hero{position:relative;isolation:isolate;max-width:none;width:100%;min-height:calc(100svh - 66px);margin:0;padding:0;display:block;overflow:hidden;border-bottom:0;background:var(--paper)}
+.hero{position:relative;isolation:isolate;max-width:none;width:100%;min-height:100svh;margin:-66px 0 0;padding:0;display:block;overflow:hidden;border-bottom:0;background:var(--paper)}
 .hero__stage{position:absolute;inset:0;z-index:-1}
 .hero__picture{position:absolute;inset:0;display:block}
-.hero__city{width:100%;height:100%;max-width:none;margin:0;object-fit:cover;object-position:66% 52%;mask-image:none;-webkit-mask-image:none;filter:saturate(.98) contrast(1.02)}
+.hero__city{width:100%;height:100%;max-width:none;margin:0;object-fit:cover;object-position:66% 14%;mask-image:none;-webkit-mask-image:none;filter:saturate(.98) contrast(1.02)}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(247,241,232,.72) 0%,rgba(247,241,232,.4) 20%,rgba(247,241,232,.08) 38%,transparent 52%);pointer-events:none}
 .hero__copy{position:absolute;z-index:6;left:var(--edge-wide);bottom:clamp(34px,8vh,96px);max-width:min(560px,45vw)}
 .hero .eyebrow{display:inline-flex;align-items:center;gap:10px;margin-bottom:18px;padding:8px 12px;border-left:3px solid var(--coral);background:rgba(255,250,242,.82);backdrop-filter:blur(8px);font-size:11px}
@@ -640,9 +640,9 @@ a{color:inherit;text-decoration:none}
 }
 @media(max-width:720px){
   .nav__cta .btn span{display:none}
-  .hero{min-height:calc(100svh - 66px)}
+  .hero{min-height:100svh}
   .hero::after{background:linear-gradient(180deg,rgba(247,241,232,.25) 0%,rgba(247,241,232,.72) 49%,rgba(247,241,232,.99) 76%)}
-  .hero__city{object-position:58% 38%}
+  .hero__city{object-position:58% 16%}
   .hero__copy{left:18px;right:18px;bottom:22px;max-width:none}
   .h1{font-size:clamp(47px,15vw,72px)}
   .hero__sub{font-size:15px;max-width:40ch}
@@ -878,11 +878,11 @@ a{color:inherit;text-decoration:none}
       <img class="hero__city" src="public/assets/backgrounds/hero-kl-social-city.webp" alt="Illustrated Kuala Lumpur builder community — skyline, launch rooms, parks, and a connected rail line." width="1568" height="960" fetchpriority="high">
     </picture>
     <div class="hero__floats" aria-hidden="true">
-      <div class="hfloat float-a" style="top:6%;left:45%;width:248px"><img src="public/assets/widgets/card-nearby-now.webp" alt="" width="513" height="248"></div>
+      <div class="hfloat float-a" style="top:11%;left:45%;width:248px"><img src="public/assets/widgets/card-nearby-now.webp" alt="" width="513" height="248"></div>
       <div class="hfloat float-b" style="top:15%;right:1.5%;width:290px"><img src="public/assets/widgets/card-hosting-now.webp" alt="" width="760" height="308"></div>
       <div class="hfloat float-a" style="top:45%;left:50%;width:128px"><img src="public/assets/widgets/pin-avatar-ava.webp" alt="" width="220" height="217"></div>
       <div class="hfloat float-b" style="bottom:27%;left:43%;width:168px"><img src="public/assets/widgets/pin-web3-meetup.webp" alt="" width="260" height="129"></div>
-      <div class="hfloat float-a" style="bottom:5%;right:2%;width:236px"><img src="public/assets/widgets/card-receive-125.webp" alt="" width="760" height="509"></div>
+      <div class="hfloat float-a" style="bottom:5%;right:2%;width:256px"><img src="public/assets/widgets/card-transfer-4275.webp" alt="" width="760" height="570"></div>
     </div>
   </div>
 </section>
@@ -1117,7 +1117,7 @@ a{color:inherit;text-decoration:none}
           <div class="dmsg"><span class="av av--sm"><img src="public/art/avatar-8.webp" alt=""></span><span class="b"><b>Dev</b> — let's make it impactful.</span><span class="t">9:43 AM</span></div>
           <div class="dmin"><span>Type a message…</span><svg width="13" height="13" style="color:var(--coral)"><use href="public/assets/icons/whatsvp-icons.svg#send"/></svg></div>
         </div>
-        <img class="plant" src="public/assets/widgets/deco-plant.webp" alt="" aria-hidden="true" width="520" height="520">
+        <img class="plant" src="public/assets/widgets/deco-pot-plant.webp" alt="" aria-hidden="true" width="465" height="520">
       </div>
     </div>
   </div>
@@ -1126,7 +1126,7 @@ a{color:inherit;text-decoration:none}
     <button class="nft-sticker nft-rootlets" type="button" data-nft="Rootlets on Sui" aria-label="Open Rootlets identity card"><span class="nft-face nft-face--img"><img src="public/assets/widgets/nft-owl.webp" alt="" width="239" height="340"></span><span><b>Rootlets</b><small>Sui culture · liquid NFT</small></span></button>
     <button class="nft-sticker nft-pudgy" type="button" data-nft="Pudgy Penguins" aria-label="Open Pudgy Penguins identity card"><span class="nft-face nft-face--img"><img src="public/assets/widgets/nft-penguin.webp" alt="" width="252" height="340"></span><span><b>Pudgy Penguins</b><small>Ethereum identity</small></span></button>
     <button class="nft-sticker nft-bayc" type="button" data-nft="Bored Ape Yacht Club" aria-label="Open Bored Ape identity card"><span class="nft-face nft-face--img"><img src="public/assets/widgets/nft-ape.webp" alt="" width="204" height="340"></span><span><b>Bored Ape</b><small>Founder pass</small></span></button>
-    <button class="nft-sticker nft-monke" type="button" data-nft="monkeDAO" aria-label="Open monkeDAO identity card"><span class="nft-face nft-face--img"><img src="public/assets/widgets/nft-robot.webp" alt="" width="340" height="340"></span><span><b>monkeDAO</b><small>Solana identity</small></span></button>
+    <button class="nft-sticker nft-monke" type="button" data-nft="monkeDAO" aria-label="Open monkeDAO identity card"><span class="nft-face nft-face--img"><img src="public/assets/widgets/nft-monke.webp" alt="" width="266" height="340"></span><span><b>monkeDAO</b><small>Solana identity</small></span></button>
   </div>
 </section>
 <!-- avatar marquee — people flowing between community and money -->
@@ -1551,7 +1551,7 @@ if(dialog){
   const nftData={
     'Pudgy Penguins':{img:'public/assets/widgets/nft-penguin.webp',sub:'Ethereum community identity',copy:'Carry your Pudgy Penguins profile across rooms, events and contributor cards — one identity, every chain.',action:'Add Pudgy identity',bg:'radial-gradient(120% 90% at 50% 0,#EAF3FE,#B9D6F5)'},
     'Bored Ape Yacht Club':{img:'public/assets/widgets/nft-ape.webp',sub:'Ethereum founder identity',copy:'A founder-pass identity that travels with your guilds, live rooms and settlement history.',action:'Add BAYC identity',bg:'radial-gradient(120% 90% at 50% 0,#FBEEDF,#EBC9A8)'},
-    'monkeDAO':{img:'public/assets/widgets/nft-robot.webp',sub:'Solana community identity',copy:'monkeDAO brings your Solana identity into the city layer — one profile that travels across rooms, events and settlement.',action:'Add monke identity',bg:'radial-gradient(120% 90% at 50% 0,#EFE2FC,#CBA8F0)'},
+    'monkeDAO':{img:'public/assets/widgets/nft-monke.webp',sub:'Solana community identity',copy:'monkeDAO brings your Solana identity into the city layer — one profile that travels across rooms, events and settlement.',action:'Add monke identity',bg:'radial-gradient(120% 90% at 50% 0,#EFE2FC,#CBA8F0)'},
     'Rootlets on Sui':{img:'public/assets/widgets/nft-owl.webp',sub:'Sui-native culture identity',copy:'Rootlets brings Sui-native culture into the city layer as a portable community signal.',action:'Add Rootlets identity',bg:'radial-gradient(120% 90% at 50% 0,#F1FADB,#CDEB9A)'}
   };
   qsa('[data-nft]').forEach(btn=>btn.addEventListener('click',()=>{
