@@ -177,6 +177,16 @@ a{color:inherit;text-decoration:none}
 .ppin__av img{width:100%;height:100%;object-fit:cover;object-position:50% 26%}
 .ppin::after{content:"";position:absolute;left:50%;bottom:-4px;width:14px;height:14px;background:#fff;transform:translateX(-50%) rotate(45deg);border-radius:0 0 3px 0;z-index:-1;box-shadow:var(--sh)}
 .ppin .dot{position:absolute;right:0;bottom:5px;width:12px;height:12px;border-radius:50%;background:#8CAD17;border:2.5px solid #fff;z-index:2}
+.mapcluster{position:absolute;z-index:5;display:flex;flex-direction:column;align-items:center;gap:6px;transform:translate(-50%,-50%)}
+.mapcluster .avs{position:relative;z-index:2}
+.mapcluster .avs .av{width:38px;height:38px;border-width:2.5px}
+.mapcluster__n{position:absolute;top:-7px;right:-13px;z-index:3;font:700 10.5px/1 var(--disp);background:var(--lime);color:var(--navy);border:2px solid #fff;border-radius:999px;padding:4px 7px;box-shadow:var(--sh)}
+.mapcluster__tag{position:relative;z-index:2;background:var(--navy);color:var(--paper);border-radius:999px;padding:4px 11px;font:600 10.5px/1.2 var(--disp);box-shadow:var(--sh);white-space:nowrap}
+.mapcluster__ring{position:absolute;top:12px;left:50%;width:74px;height:74px;border-radius:50%;background:rgba(183,255,42,.16);transform:translate(-50%,-50%)}
+@media (prefers-reduced-motion:no-preference){.mapcluster__ring{animation:clusterpulse 2.8s var(--ease) infinite}
+@keyframes clusterpulse{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:1}50%{transform:translate(-50%,-50%) scale(1.35);opacity:.35}}}
+.mapev--friends b{color:var(--coral)}
+.avs--mini .av{width:28px;height:28px;border-width:2px}
 .youpin{position:absolute;z-index:4;transform:translate(-50%,-50%)}
 .youpin i{display:block;width:20px;height:20px;border-radius:50%;background:#2F80ED;border:3px solid #fff;box-shadow:0 0 0 6px rgba(47,128,237,.22)}
 .bcastpin{position:absolute;z-index:5;transform:translate(-50%,-100%)}
@@ -914,6 +924,16 @@ a{color:inherit;text-decoration:none}
         <div class="ppin" style="top:56%;left:15%"><span class="ppin__av"><img src="public/art/avatar-9.webp" alt=""></span><span class="dot"></span></div>
         <div class="youpin" style="top:41%;left:44%"><i></i></div>
         <div class="bcastpin" style="top:52%;left:63%"><span class="bcastpin__b"><svg><use href="public/assets/icons/whatsvp-icons.svg#go-live"/></svg></span></div>
+        <div class="mapcluster" style="top:25%;left:25%" aria-label="7 builders at Bangsar hotspot">
+          <span class="mapcluster__ring" aria-hidden="true"></span>
+          <span class="avs"><span class="av"><img src="public/art/avatar-8.webp" alt=""></span><span class="av"><img src="public/art/avatar-2.webp" alt=""></span><span class="av"><img src="public/art/avatar-5.webp" alt=""></span></span>
+          <span class="mapcluster__n">+4</span>
+          <span class="mapcluster__tag">Bangsar hotspot</span>
+        </div>
+        <div class="mapev mapev--friends" style="bottom:7%;left:6%">
+          <span class="avs avs--mini"><span class="av"><img src="public/art/avatar-1.webp" alt=""></span><span class="av"><img src="public/art/avatar-9.webp" alt=""></span><span class="av"><img src="public/art/avatar-4.webp" alt=""></span></span>
+          <div><b>3 friends here</b><span>Lot 10 · rooftop garden</span></div>
+        </div>
         <div class="maprail">
           <div class="railcard">
             <h4>Nearby <a href="#" data-toast="The full nearby radar lives in the app — consented, fuzzy location only.">See all</a></h4>
@@ -1692,7 +1712,7 @@ window.addEventListener('load',()=>{
       .from('#explore .mappanel',{clipPath:'inset(0 0 100% 0)',duration:.9,ease:'power4.inOut'})
       .from('#explore .mappanel > img.bg',{scale:1.16,duration:1.4,ease:'power2.out'},'<')
       .from('#explore .searchbar > *',{y:-16,opacity:0,stagger:.07,duration:.4},'-=.8')
-      .from('#explore .mapev, #explore .ppin__av, #explore .youpin i, #explore .bcastpin__b',{scale:0,opacity:0,stagger:.08,duration:.5,ease:'back.out(2)',clearProps:'transform,opacity'},'-=.4')
+      .from('#explore .mapev, #explore .ppin__av, #explore .youpin i, #explore .bcastpin__b, #explore .mapcluster',{scale:0,opacity:0,stagger:.08,duration:.5,ease:'back.out(2)',clearProps:'transform,opacity'},'-=.4')
       .from('#explore .maprail .railcard',{x:60,opacity:0,stagger:.12,duration:.55},'-=.6');
     gsap.from('#explore .sec__grid > div:first-child > *',{x:-34,opacity:0,stagger:.08,duration:.6,ease:'power3.out'});
   },'top 62%');
