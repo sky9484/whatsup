@@ -308,7 +308,20 @@ a{color:inherit;text-decoration:none}
 .sendfield{border-bottom:1px solid var(--line-soft);padding:14px 0;margin-top:2px}
 .sendfield label{display:block;font-size:12px;color:var(--muted);font-family:var(--disp);font-weight:600;letter-spacing:0;text-transform:none}
 .sendfield .v{display:flex;align-items:center;justify-content:space-between;gap:8px;font-family:var(--disp);font-size:26px;font-weight:700;margin-top:5px;color:var(--navy)}
-.sendfield .cur{font-size:12.5px;background:var(--paper);border:1px solid var(--line);color:var(--navy);border-radius:999px;padding:6px 12px;font-weight:700}
+.sendfield .cur{font-size:12.5px;background:var(--paper);border:1px solid var(--line);color:var(--navy);border-radius:999px;padding:6px 12px;font-weight:700;cursor:pointer}
+.qamt{display:flex;gap:7px;margin-top:13px}
+.qamt button{flex:1;text-align:center;font-family:var(--disp);font-size:12.5px;font-weight:700;color:var(--navy);background:var(--paper);border:1px solid var(--line);border-radius:9px;padding:8px 6px;cursor:pointer;transition:transform .16s var(--ease),background-color .2s,border-color .2s,color .2s}
+.qamt button:hover{border-color:var(--navy);transform:translateY(-1px)}
+.qamt button.on{background:var(--navy);color:var(--paper);border-color:var(--navy)}
+.recents{display:flex;gap:8px;margin-top:14px}
+.recents button{width:38px;height:38px;border-radius:50%;overflow:hidden;border:2px solid transparent;padding:0;cursor:pointer;background:none;transition:transform .16s var(--ease),border-color .2s;box-shadow:0 3px 9px -4px rgba(4,14,44,.35)}
+.recents button img{width:100%;height:100%;object-fit:cover;display:block}
+.recents button:hover{transform:translateY(-3px)}
+.recents button.on{border-color:var(--coral)}
+.receive{margin-top:20px;padding-top:15px;border-top:1px solid var(--line-soft);display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
+.receive>span{font-size:12.5px;color:var(--muted);font-family:var(--disp);font-weight:600}
+.receive b{font-family:var(--disp);font-size:19px;font-weight:700;color:var(--navy);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.receive small{font-size:11.5px;color:var(--muted);width:100%;margin-top:2px}
 .sendbtn{margin-top:16px;width:100%;background:var(--navy);color:var(--paper);border-radius:12px;min-height:46px;font-family:var(--disp);font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;gap:8px;transition:transform .16s var(--ease),background-color .2s}
 .sendbtn:hover{transform:translateY(-2px);background:#143AA6}
 .fundbar{margin-top:14px}
@@ -1131,12 +1144,21 @@ a{color:inherit;text-decoration:none}
             </div>
             <div class="foot"><a class="linkbtn" href="#" data-toast="The full wallet ships with the app." style="font-size:13px">View all assets <span class="arr">→</span></a></div>
           </div>
-          <div class="fincard">
+          <div class="fincard sendcard">
             <h4>Send money</h4>
-            <div class="sendfield"><label>You send</label><div class="v">125.00 <button class="cur currency-cycle" type="button" aria-label="Change currency">USDC ▾</button></div></div>
-            <div class="sendfield"><label>To</label><div class="v" style="font-size:14px;font-weight:600;justify-content:flex-start;gap:8px"><span class="av av--sm"><img src="public/art/avatar-4.webp" alt=""></span>@Ava</div></div>
-            <div class="sendfield"><label>For</label><div class="v" style="font-size:13.5px;font-weight:500">Thanks for lunch! 😊</div></div>
-            <div class="sendmeta"><span>Network fee <b>≈ $0.02</b></span><span>Arrives <b>~2s</b></span><span>Route <b>Sui-first</b></span></div>
+            <div class="sendfield"><label>You send</label><div class="v"><span data-send-amt>125.00</span> <button class="cur currency-cycle" type="button" aria-label="Change currency">USDC ▾</button></div></div>
+            <div class="qamt" role="group" aria-label="Quick amounts">
+              <button type="button" data-amt="25">25</button><button type="button" data-amt="50">50</button><button type="button" data-amt="125" class="on">125</button><button type="button" data-amt="max">Max</button>
+            </div>
+            <div class="sendfield"><label>To</label><div class="v" style="font-size:14px;font-weight:600;justify-content:flex-start;gap:9px"><span class="av av--sm"><img data-recip-av src="public/art/avatar-4.webp" alt=""></span><span data-recip-name>@Ava</span></div></div>
+            <div class="recents" role="group" aria-label="Recent recipients">
+              <button type="button" class="on" data-name="@Ava" data-av="public/art/avatar-4.webp" aria-label="Ava"><img src="public/art/avatar-4.webp" alt=""></button>
+              <button type="button" data-name="@Jamal" data-av="public/art/avatar-2.webp" aria-label="Jamal"><img src="public/art/avatar-2.webp" alt=""></button>
+              <button type="button" data-name="@Mina" data-av="public/art/avatar-6.webp" aria-label="Mina"><img src="public/art/avatar-6.webp" alt=""></button>
+              <button type="button" data-name="@Leo" data-av="public/art/avatar-5.webp" aria-label="Leo"><img src="public/art/avatar-5.webp" alt=""></button>
+              <button type="button" data-name="@Nova" data-av="public/art/avatar-3.webp" aria-label="Nova"><img src="public/art/avatar-3.webp" alt=""></button>
+            </div>
+            <div class="receive"><span>They receive</span><b data-receive>124.98 USDC</b><small>on Sui · fee ≈ $0.02 · ~2s</small></div>
             <div class="foot"><button class="sendbtn" id="sendBtn" type="button">Send 125.00 USDC</button></div>
           </div>
           <div class="fincard">
@@ -1399,13 +1421,39 @@ document.addEventListener('click',e=>{
   const t=e.target.closest('[data-toast]'); if(t){ e.preventDefault(); toast(t.dataset.toast); return; }
   const c=e.target.closest('.fchips button'); if(c){ qsa('.fchips button').forEach(b=>b.setAttribute('aria-pressed', b===c?'true':'false')); }
 });
-qs('#sendBtn').addEventListener('click',()=>{
-  const b=qs('#sendBtn'); if(b.disabled) return;
-  b.disabled=true; b.style.opacity='.8'; b.textContent='Sending…';
-  setTimeout(()=>{ b.textContent='Sent ✓'; toast('Sent 125.00 USDC to @Ava — "Thanks for lunch!"');
-    setTimeout(()=>{ b.textContent='Send 125.00 USDC'; b.disabled=false; b.style.opacity=''; },REDUCE?300:2200);
-  },REDUCE?100:900);
-});
+/* ---------- Finance "Send money" — interactive send flow ---------- */
+(()=>{
+  const card=qs('#finance .sendcard'); if(!card) return;
+  const amtEl=qs('[data-send-amt]',card), curBtn=qs('.currency-cycle',card),
+        recEl=qs('[data-receive]',card), btn=qs('#sendBtn'),
+        recipName=qs('[data-recip-name]',card), recipAv=qs('[data-recip-av]',card);
+  const currencies=['USDC','USDT','MYRC'];
+  const fmt=n=>n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+  let amount=125, currency='USDC', busy=false;
+  function render(){
+    amtEl.textContent=fmt(amount);
+    if(curBtn) curBtn.textContent=currency+' ▾';
+    if(recEl) recEl.textContent=fmt(Math.max(0,amount-0.02))+' '+currency;
+    if(!busy) btn.textContent='Send '+fmt(amount)+' '+currency;
+  }
+  qsa('.qamt button',card).forEach(b=>b.addEventListener('click',()=>{
+    qsa('.qamt button',card).forEach(x=>x.classList.toggle('on',x===b));
+    amount=b.dataset.amt==='max'?2450:parseFloat(b.dataset.amt); render();
+  }));
+  if(curBtn) curBtn.addEventListener('click',()=>{ currency=currencies[(currencies.indexOf(currency)+1)%currencies.length]; render(); });
+  qsa('.recents button',card).forEach(b=>b.addEventListener('click',()=>{
+    qsa('.recents button',card).forEach(x=>x.classList.toggle('on',x===b));
+    if(recipName) recipName.textContent=b.dataset.name; if(recipAv) recipAv.src=b.dataset.av;
+  }));
+  btn.addEventListener('click',()=>{
+    if(busy) return; busy=true; btn.disabled=true; btn.style.opacity='.85'; btn.textContent='Sending…';
+    const to=recipName?recipName.textContent:'@Ava';
+    setTimeout(()=>{ btn.textContent='Sent ✓'; toast('Sent '+fmt(amount)+' '+currency+' to '+to+' — settled on Sui.');
+      setTimeout(()=>{ busy=false; btn.disabled=false; btn.style.opacity=''; render(); },REDUCE?300:2200);
+    },REDUCE?100:900);
+  });
+  render();
+})();
 
 /* ---------- NFT identity dialog (real PFP art) ---------- */
 const dialog=qs('#assetDialog');
@@ -1529,14 +1577,6 @@ if(dialog){
   const warm=()=>qsa('.ip-card,.ip-pin,.ip-map__canvas img.bg',root).forEach(i=>{ i.loading='eager'; if(i.decode)i.decode().catch(()=>{}); });
   if('requestIdleCallback' in window) requestIdleCallback(warm,{timeout:2500}); else setTimeout(warm,1200);
 })();
-
-const currencyCycle=qs('.currency-cycle');
-const stableCurrencies=['USDC','USDT','MYRC'];
-currencyCycle.addEventListener('click',()=>{
-  const next=(stableCurrencies.indexOf(currencyCycle.textContent.replace(' ▾',''))+1)%stableCurrencies.length;
-  currencyCycle.textContent=stableCurrencies[next]+' ▾';
-  toast(`Send currency changed to ${stableCurrencies[next]}.`);
-});
 
 /* Pointer drag for the six intentional horizontal rails. */
 qsa('.kit__track').forEach(track=>{
