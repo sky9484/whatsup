@@ -285,8 +285,18 @@ a{color:inherit;text-decoration:none}
 .fincard h4 svg{color:rgba(15,46,138,.5)}
 .fincard .fw__sub{color:var(--muted);margin-top:8px}
 .fincard .bal{font-family:var(--disp);font-size:clamp(26px,2.3vw,33px);font-weight:700;font-variant-numeric:tabular-nums;color:var(--navy);letter-spacing:-.02em}
-.bal-row{display:flex;align-items:baseline;gap:11px;margin-top:6px;flex-wrap:wrap}
+.bal-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:6px}
+.balchg{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;min-width:0}
+.bal.pulse{animation:balpulse .4s var(--ease)}
+@keyframes balpulse{40%{transform:scale(1.045)}100%{transform:none}}
 .chg{font-family:var(--disp);font-size:11.5px;font-weight:700;color:#1B9E58;background:rgba(27,158,88,.12);padding:3px 9px;border-radius:999px;white-space:nowrap}
+.spark{width:116px;height:40px;flex-shrink:0;overflow:visible}
+.spark-line{stroke-dashoffset:0}
+.spark.anim .spark-area{opacity:0}
+.spark.anim .spark-dot{opacity:0}
+.spark.anim.drawn .spark-area{opacity:1;transition:opacity .6s var(--ease) .35s}
+.spark.anim.drawn .spark-dot{opacity:1;transition:opacity .3s var(--ease) .95s}
+@media(max-width:1180px){.spark{display:none}}
 .chg em{font-style:normal;color:rgba(27,158,88,.7);font-weight:600}
 .alloc{display:flex;gap:2px;height:8px;border-radius:999px;overflow:hidden;margin:15px 0 6px}
 .alloc span{height:100%;border-radius:2px}
@@ -322,6 +332,10 @@ a{color:inherit;text-decoration:none}
 .receive>span{font-size:12.5px;color:var(--muted);font-family:var(--disp);font-weight:600}
 .receive b{font-family:var(--disp);font-size:19px;font-weight:700;color:var(--navy);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
 .receive small{font-size:11.5px;color:var(--muted);width:100%;margin-top:2px}
+.sendfield .v [data-send-amt],.receive b{font-variant-numeric:tabular-nums}
+.sendfield .v [data-send-amt]{display:inline-block}
+.num-bump{animation:numbump .46s var(--ease)}
+@keyframes numbump{28%{transform:translateY(-2px) scale(1.045)}100%{transform:none}}
 .sendbtn{margin-top:16px;width:100%;background:var(--navy);color:var(--paper);border-radius:12px;min-height:46px;font-family:var(--disp);font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;gap:8px;transition:transform .16s var(--ease),background-color .2s}
 .sendbtn:hover{transform:translateY(-2px);background:#143AA6}
 .fundbar{margin-top:14px}
@@ -1129,7 +1143,7 @@ a{color:inherit;text-decoration:none}
           <div class="fincard">
             <h4>My wallet <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="color:rgba(15,46,138,.5)"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></h4>
             <span class="fw__sub">Total balance · multi-chain</span>
-            <div class="bal-row"><div class="bal">$8,942.30</div><span class="chg">▲ 2.4% <em>7d</em></span></div>
+            <div class="bal-row"><div class="balchg"><div class="bal">$8,942.30</div><span class="chg">▲ 2.4% <em>7d</em></span></div><svg class="spark" viewBox="0 0 116 42" aria-hidden="true"><defs><linearGradient id="sparkg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B9E58" stop-opacity=".26"/><stop offset="1" stop-color="#1B9E58" stop-opacity="0"/></linearGradient></defs><path class="spark-area" d="M2 32 18 29 34 31 50 21 66 25 82 13 98 17 114 5 V42 H2 Z" fill="url(#sparkg)"/><polyline class="spark-line" points="2,32 18,29 34,31 50,21 66,25 82,13 98,17 114,5" fill="none" stroke="#1B9E58" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle class="spark-dot" cx="114" cy="5" r="2.8" fill="#1B9E58"/></svg></div>
             <div class="alloc" aria-hidden="true">
               <span style="width:27%;background:#2775CA"></span><span style="width:14%;background:#26A17B"></span><span style="width:20%;background:#F0B429"></span><span style="width:9%;background:#4DA6E8"></span><span style="width:18%;background:#627EEA"></span><span style="width:8%;background:#F7931A"></span><span style="width:4%;background:linear-gradient(135deg,#9945FF,#14F195)"></span>
             </div>
@@ -1429,18 +1443,31 @@ document.addEventListener('click',e=>{
         recipName=qs('[data-recip-name]',card), recipAv=qs('[data-recip-av]',card);
   const currencies=['USDC','USDT','MYRC'];
   const fmt=n=>n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
-  let amount=125, currency='USDC', busy=false;
-  function render(){
+  let amount=125, currency='USDC', busy=false, raf=0;
+  function paint(){
     amtEl.textContent=fmt(amount);
     if(curBtn) curBtn.textContent=currency+' ▾';
     if(recEl) recEl.textContent=fmt(Math.max(0,amount-0.02))+' '+currency;
     if(!busy) btn.textContent='Send '+fmt(amount)+' '+currency;
   }
+  // motion: tween the "You send" + "They receive" numbers when the amount changes
+  function tweenTo(to){
+    if(REDUCE){ amount=to; paint(); return; }
+    cancelAnimationFrame(raf);
+    const from=amount, start=performance.now(), dur=460;
+    amtEl.classList.remove('num-bump'); void amtEl.offsetWidth; amtEl.classList.add('num-bump');
+    (function step(now){
+      const t=Math.min(1,(now-start)/dur), e=1-Math.pow(1-t,3), v=from+(to-from)*e;
+      amtEl.textContent=fmt(v);
+      if(recEl) recEl.textContent=fmt(Math.max(0,v-0.02))+' '+currency;
+      if(t<1){ raf=requestAnimationFrame(step); } else { amount=to; btn.textContent='Send '+fmt(amount)+' '+currency; }
+    })(start);
+  }
   qsa('.qamt button',card).forEach(b=>b.addEventListener('click',()=>{
     qsa('.qamt button',card).forEach(x=>x.classList.toggle('on',x===b));
-    amount=b.dataset.amt==='max'?2450:parseFloat(b.dataset.amt); render();
+    tweenTo(b.dataset.amt==='max'?2450:parseFloat(b.dataset.amt));
   }));
-  if(curBtn) curBtn.addEventListener('click',()=>{ currency=currencies[(currencies.indexOf(currency)+1)%currencies.length]; render(); });
+  if(curBtn) curBtn.addEventListener('click',()=>{ currency=currencies[(currencies.indexOf(currency)+1)%currencies.length]; paint(); });
   qsa('.recents button',card).forEach(b=>b.addEventListener('click',()=>{
     qsa('.recents button',card).forEach(x=>x.classList.toggle('on',x===b));
     if(recipName) recipName.textContent=b.dataset.name; if(recipAv) recipAv.src=b.dataset.av;
@@ -1449,10 +1476,23 @@ document.addEventListener('click',e=>{
     if(busy) return; busy=true; btn.disabled=true; btn.style.opacity='.85'; btn.textContent='Sending…';
     const to=recipName?recipName.textContent:'@Ava';
     setTimeout(()=>{ btn.textContent='Sent ✓'; toast('Sent '+fmt(amount)+' '+currency+' to '+to+' — settled on Sui.');
-      setTimeout(()=>{ busy=false; btn.disabled=false; btn.style.opacity=''; render(); },REDUCE?300:2200);
+      setTimeout(()=>{ busy=false; btn.disabled=false; btn.style.opacity=''; paint(); },REDUCE?300:2200);
     },REDUCE?100:900);
   });
-  render();
+  paint();
+
+  /* wallet balance sparkline — draws in when scrolled into view */
+  const spark=qs('#finance .spark'), sline=qs('#finance .spark-line');
+  if(spark && sline){
+    if(REDUCE){ spark.classList.add('drawn'); }
+    else {
+      const len=sline.getTotalLength();
+      sline.style.strokeDasharray=len; sline.style.strokeDashoffset=len; spark.classList.add('anim');
+      const draw=()=>{ sline.style.transition='stroke-dashoffset 1s var(--ease)'; sline.style.strokeDashoffset='0'; spark.classList.add('drawn'); };
+      if('IntersectionObserver' in window){ const io=new IntersectionObserver((es,o)=>es.forEach(e=>{ if(e.isIntersecting){ draw(); o.disconnect(); } }),{threshold:.6}); io.observe(spark); }
+      else draw();
+    }
+  }
 })();
 
 /* ---------- NFT identity dialog (real PFP art) ---------- */
