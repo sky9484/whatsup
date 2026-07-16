@@ -284,13 +284,27 @@ a{color:inherit;text-decoration:none}
 .fincard h4{font-family:var(--disp);font-size:15px;font-weight:700;letter-spacing:0;text-transform:none;color:var(--navy);display:flex;align-items:center;justify-content:space-between}
 .fincard h4 svg{color:rgba(15,46,138,.5)}
 .fincard .fw__sub{color:var(--muted);margin-top:8px}
-.fincard .bal{font-family:var(--disp);font-size:clamp(26px,2.3vw,33px);font-weight:700;margin-top:6px;font-variant-numeric:tabular-nums;color:var(--navy);letter-spacing:-.02em}
-.arow{display:flex;align-items:center;gap:11px;padding:11px 0;border-top:1px solid var(--line-soft);font-size:14px}
-.arow .g{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-size:12px;font-weight:700;color:#fff;flex-shrink:0;box-shadow:0 2px 6px rgba(4,14,44,.18)}
-.arow b{font-family:var(--disp);font-weight:600;color:var(--navy)}
-.arow > span:last-child{margin-left:auto;font-variant-numeric:tabular-nums;color:var(--muted);font-weight:600}
+.fincard .bal{font-family:var(--disp);font-size:clamp(26px,2.3vw,33px);font-weight:700;font-variant-numeric:tabular-nums;color:var(--navy);letter-spacing:-.02em}
+.bal-row{display:flex;align-items:baseline;gap:11px;margin-top:6px;flex-wrap:wrap}
+.chg{font-family:var(--disp);font-size:11.5px;font-weight:700;color:#1B9E58;background:rgba(27,158,88,.12);padding:3px 9px;border-radius:999px;white-space:nowrap}
+.chg em{font-style:normal;color:rgba(27,158,88,.7);font-weight:600}
+.alloc{display:flex;gap:2px;height:8px;border-radius:999px;overflow:hidden;margin:15px 0 6px}
+.alloc span{height:100%;border-radius:2px}
+.arows{margin-top:6px}
+.arow{display:flex;align-items:center;gap:12px;padding:9px 0;border-top:1px solid var(--line-soft)}
+.arows .arow:first-child{border-top:0}
+.arow .g{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-size:13px;color:#fff;flex-shrink:0;box-shadow:0 2px 6px rgba(4,14,44,.18)}
+.arow__meta{display:flex;flex-direction:column;line-height:1.2}
+.arow__meta b{font-family:var(--disp);font-weight:700;font-size:13.5px;color:var(--navy)}
+.arow__meta small{font-size:10.5px;color:var(--muted)}
+.arow__val{margin-left:auto;font-family:var(--disp);font-variant-numeric:tabular-nums;color:var(--navy);font-weight:600;font-size:14px}
 .fincard .foot{margin-top:auto;padding-top:14px}
 .fincard .foot .linkbtn{color:var(--coral);font-weight:600}
+.sendmeta{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px 18px;font-size:12px;color:var(--muted)}
+.sendmeta b{color:var(--navy);font-weight:700;font-family:var(--disp)}
+.fundpeople{margin-top:18px;display:flex;align-items:center;gap:11px;font-size:12px;color:var(--muted);line-height:1.35}
+.fundpeople b{color:var(--navy);font-weight:700}
+.fundpeople .avs .av{width:27px;height:27px;border-width:2px}
 .sendfield{border-bottom:1px solid var(--line-soft);padding:14px 0;margin-top:2px}
 .sendfield label{display:block;font-size:12px;color:var(--muted);font-family:var(--disp);font-weight:600;letter-spacing:0;text-transform:none}
 .sendfield .v{display:flex;align-items:center;justify-content:space-between;gap:8px;font-family:var(--disp);font-size:26px;font-weight:700;margin-top:5px;color:var(--navy)}
@@ -472,16 +486,21 @@ a{color:inherit;text-decoration:none}
 .hero__stage{position:absolute;inset:0;z-index:-1}
 .hero__picture{position:absolute;inset:0;display:block}
 .hero__city{width:100%;height:100%;max-width:none;margin:0;object-fit:cover;object-position:66% 52%;mask-image:none;-webkit-mask-image:none;filter:saturate(.98) contrast(1.02)}
-.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(247,241,232,.98) 0%,rgba(247,241,232,.88) 31%,rgba(247,241,232,.22) 57%,transparent 78%);pointer-events:none}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(247,241,232,.72) 0%,rgba(247,241,232,.4) 20%,rgba(247,241,232,.08) 38%,transparent 52%);pointer-events:none}
 .hero__copy{position:absolute;z-index:6;left:var(--edge-wide);bottom:clamp(34px,8vh,96px);max-width:min(560px,45vw)}
 .hero .eyebrow{display:inline-flex;align-items:center;gap:10px;margin-bottom:18px;padding:8px 12px;border-left:3px solid var(--coral);background:rgba(255,250,242,.82);backdrop-filter:blur(8px);font-size:11px}
 .h1{font-size:clamp(50px,6.7vw,112px);line-height:.82;letter-spacing:-.07em;text-wrap:balance}
-.hero__sub{max-width:48ch;font-size:clamp(15px,1.2vw,19px);color:var(--navy-ink);background:rgba(247,241,232,.72);box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.hero__sub{max-width:42ch;font-size:clamp(15px,1.2vw,19px);color:var(--navy-ink);font-weight:500;text-shadow:0 1px 12px rgba(247,241,232,.95),0 1px 3px rgba(247,241,232,.9),0 0 20px rgba(247,241,232,.7)}
 .hero__cta{display:flex;gap:10px;flex-wrap:wrap}
 .chain-strip{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-top:18px;font-family:var(--disp);font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
 .chain-strip span{padding:7px 10px;border:1px solid rgba(15,46,138,.32);border-radius:999px;background:rgba(255,250,242,.78);backdrop-filter:blur(8px)}
 .chain-strip .sui{background:var(--navy);color:var(--paper);border-color:var(--navy)}
-.trust{margin-top:22px;background:rgba(255,250,242,.74);width:max-content;max-width:100%;padding:10px 12px;border-left:1px solid var(--line);backdrop-filter:blur(10px)}
+.trust{margin-top:28px;display:flex;gap:10px;flex-wrap:wrap;background:none;border:0;padding:0;width:auto;max-width:none;backdrop-filter:none}
+.trust > div{display:flex;gap:11px;align-items:center;padding:9px 16px 9px 9px;margin:0;background:rgba(255,250,242,.74);border:1px solid rgba(255,255,255,.6);border-radius:15px;box-shadow:0 10px 26px -14px rgba(11,31,85,.32);backdrop-filter:blur(14px) saturate(1.15);transition:transform .25s var(--ease),box-shadow .25s}
+.trust > div:hover{transform:translateY(-3px);box-shadow:0 16px 32px -14px rgba(11,31,85,.36)}
+.trust .ic{width:36px;height:36px;padding:9px;border-radius:11px;background:linear-gradient(150deg,rgba(217,106,74,.18),rgba(217,106,74,.1));color:var(--coral);margin:0;flex-shrink:0}
+.trust b{font-size:13.5px;font-weight:700;color:var(--navy);line-height:1.15}
+.trust span{font-size:11.5px;color:var(--muted)}
 .hero__floats{inset:0}
 .hero__floats .fw,.hero__floats .pinchip{transform:scale(.94);transform-origin:center}
 
@@ -519,12 +538,13 @@ a{color:inherit;text-decoration:none}
 .nft-sticker:hover{transform:translateY(-5px) rotate(-1.2deg);box-shadow:0 18px 38px rgba(11,31,85,.24)}
 .nft-sticker .nft-face{width:50px;height:50px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:white;font-size:23px}
 .nft-face--img{border-radius:14px;overflow:hidden;padding:0}
-.nft-face--img img{width:100%;height:100%;object-fit:contain;object-position:50% 100%}
+.nft-face--img img{width:100%;height:100%;object-fit:cover;object-position:50% 16%}
 .nft-sticker b{display:block;font-size:12px;line-height:1.15}
 .nft-sticker small{display:block;color:var(--muted);font-size:10px;margin-top:3px}
 .nft-rootlets .nft-face{background:radial-gradient(120% 100% at 50% 0,#EAF7C8,#CDEB9A)}
 .nft-pudgy .nft-face{background:radial-gradient(120% 100% at 50% 0,#DCEBFB,#B9D6F5)}
 .nft-bayc .nft-face{background:radial-gradient(120% 100% at 50% 0,#F6E4D2,#EBC9A8)}
+.nft-monke .nft-face{background:radial-gradient(120% 100% at 50% 0,#EADCFB,#C9A9F0)}
 /* NFT identity chips live in a tidy row at the foot of Community */
 .nftrow{display:flex;flex-wrap:wrap;align-items:center;gap:13px;margin-top:clamp(36px,4.6vw,60px);position:relative;z-index:3}
 .nftrow__lbl{font-family:var(--disp);font-weight:700;font-size:13px;letter-spacing:.02em;color:var(--muted);width:100%}
@@ -550,8 +570,8 @@ a{color:inherit;text-decoration:none}
 .asset-dialog{width:min(1120px,calc(100vw - 28px));height:min(760px,calc(100svh - 28px));max-width:none;max-height:none;margin:auto;padding:0;border:1px solid rgba(247,241,232,.22);border-radius:26px;background:#061a49;color:var(--paper);box-shadow:0 40px 110px rgba(0,0,0,.48);overflow:hidden}
 .asset-dialog::backdrop{background:rgba(2,9,27,.72);backdrop-filter:blur(10px)}
 .asset-dialog__grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(300px,.55fr);height:100%}
-.asset-dialog__media{position:relative;display:grid;place-items:center;background:#eef0ee;overflow:hidden}
-.asset-dialog__media img{width:100%;height:100%;object-fit:contain}
+.asset-dialog__media{position:relative;display:grid;place-items:center;background:#eef0ee;overflow:hidden;padding:24px}
+.asset-dialog__media img{width:auto;height:auto;max-width:82%;max-height:88%;object-fit:contain;filter:drop-shadow(0 24px 44px rgba(0,0,0,.28))}
 .asset-dialog__nav{position:absolute;left:16px;bottom:16px;display:flex;gap:8px}
 .asset-dialog__nav button,.asset-dialog__close{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:rgba(6,38,96,.88);color:white;border:1px solid rgba(255,255,255,.28);font-size:22px}
 .asset-dialog__close{position:absolute;right:16px;top:16px;z-index:4}
@@ -1055,6 +1075,7 @@ a{color:inherit;text-decoration:none}
     <button class="nft-sticker nft-rootlets" type="button" data-nft="Rootlets on Sui" aria-label="Open Rootlets identity card"><span class="nft-face nft-face--img"><img src="public/assets/widgets/nft-owl.webp" alt="" width="239" height="340"></span><span><b>Rootlets</b><small>Sui culture · liquid NFT</small></span></button>
     <button class="nft-sticker nft-pudgy" type="button" data-nft="Pudgy Penguins" aria-label="Open Pudgy Penguins identity card"><span class="nft-face nft-face--img"><img src="public/assets/widgets/nft-penguin.webp" alt="" width="252" height="340"></span><span><b>Pudgy Penguins</b><small>Ethereum identity</small></span></button>
     <button class="nft-sticker nft-bayc" type="button" data-nft="Bored Ape Yacht Club" aria-label="Open Bored Ape identity card"><span class="nft-face nft-face--img"><img src="public/assets/widgets/nft-ape.webp" alt="" width="204" height="340"></span><span><b>Bored Ape</b><small>Founder pass</small></span></button>
+    <button class="nft-sticker nft-monke" type="button" data-nft="monkeDAO" aria-label="Open monkeDAO identity card"><span class="nft-face nft-face--img"><img src="public/assets/widgets/nft-robot.webp" alt="" width="340" height="340"></span><span><b>monkeDAO</b><small>Solana identity</small></span></button>
   </div>
 </section>
 <!-- avatar marquee — people flowing between community and money -->
@@ -1093,17 +1114,20 @@ a{color:inherit;text-decoration:none}
       <div>
         <div class="fingrid">
           <div class="fincard">
-            <h4>My wallet <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="color:rgba(247,241,232,.7)"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></h4>
-            <span class="fw__sub">Multi-chain balance</span>
-            <div class="bal">$ 8,942.30</div>
-            <div style="margin-top:12px">
-              <div class="arow"><span class="g" style="background:#2775CA">$</span><b>USDC</b><span>2,450.00</span></div>
-              <div class="arow"><span class="g" style="background:#26A17B">₮</span><b>USDT</b><span>1,280.00</span></div>
-              <div class="arow"><span class="g" style="background:#F0B429">M</span><b>MYRC</b><span>3,160.50</span></div>
-              <div class="arow"><span class="g" style="background:#4DA6E8">◍</span><b>SUI</b><span>42.40</span></div>
-              <div class="arow"><span class="g" style="background:#7B7FE0">Ξ</span><b>ETH</b><span>0.845</span></div>
-              <div class="arow"><span class="g" style="background:#F7931A">₿</span><b>BTC</b><span>0.082</span></div>
-              <div class="arow" style="border-bottom:0"><span class="g" style="background:linear-gradient(135deg,#9945FF,#14F195)">◎</span><b>SOL</b><span>12.10</span></div>
+            <h4>My wallet <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="color:rgba(15,46,138,.5)"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></h4>
+            <span class="fw__sub">Total balance · multi-chain</span>
+            <div class="bal-row"><div class="bal">$8,942.30</div><span class="chg">▲ 2.4% <em>7d</em></span></div>
+            <div class="alloc" aria-hidden="true">
+              <span style="width:27%;background:#2775CA"></span><span style="width:14%;background:#26A17B"></span><span style="width:20%;background:#F0B429"></span><span style="width:9%;background:#4DA6E8"></span><span style="width:18%;background:#627EEA"></span><span style="width:8%;background:#F7931A"></span><span style="width:4%;background:linear-gradient(135deg,#9945FF,#14F195)"></span>
+            </div>
+            <div class="arows">
+              <div class="arow"><span class="g" style="background:#2775CA;font-weight:700">$</span><div class="arow__meta"><b>USDC</b><small>USD Coin</small></div><span class="arow__val">2,450.00</span></div>
+              <div class="arow"><span class="g" style="background:#26A17B;font-weight:700">₮</span><div class="arow__meta"><b>USDT</b><small>Tether</small></div><span class="arow__val">1,280.00</span></div>
+              <div class="arow"><span class="g" style="background:#E8A317;font-weight:800">M</span><div class="arow__meta"><b>MYRC</b><small>Move Ringgit</small></div><span class="arow__val">3,160.50</span></div>
+              <div class="arow"><span class="g" style="background:#4DA2FF"><svg viewBox="0 0 24 24" width="14" height="14" fill="#fff"><path d="M12 2.8c2.85 3.9 4.8 6.5 4.8 9.4a4.8 4.8 0 1 1-9.6 0c0-2.9 1.95-5.5 4.8-9.4z"/></svg></span><div class="arow__meta"><b>SUI</b><small>Sui</small></div><span class="arow__val">42.40</span></div>
+              <div class="arow"><span class="g" style="background:#627EEA"><svg viewBox="0 0 256 417" width="11" height="18" fill="#fff"><path d="M128 0 125 9.5v276.8l3 2.9L256 213.6z" opacity=".55"/><path d="M128 0 0 213.6 128 289.2z"/><path d="M128 312.2l-1.7 2v98.6l1.7 4.7L256 237.8z" opacity=".55"/><path d="M128 416.9V312.2L0 237.8z"/></svg></span><div class="arow__meta"><b>ETH</b><small>Ethereum</small></div><span class="arow__val">0.845</span></div>
+              <div class="arow"><span class="g" style="background:#F7931A;font-weight:700">₿</span><div class="arow__meta"><b>BTC</b><small>Bitcoin</small></div><span class="arow__val">0.082</span></div>
+              <div class="arow"><span class="g" style="background:linear-gradient(135deg,#9945FF,#14F195)"><svg viewBox="0 0 24 20" width="14" height="12" fill="#fff"><path d="M4.9 14.6h14.2c.5 0 .8.6.4.9l-2.8 2.8a.6.6 0 0 1-.4.2H2.1c-.5 0-.8-.6-.4-.9l3.2-3zM4.9 1.5h14.2c.2 0 .3 0 .4.2l2.8 2.8c.4.3.1.9-.4.9H5.7l-3.2-3c-.4-.4-.1-.9.4-.9zM19.1 8.1H4.9c-.2 0-.3 0-.4-.2L1.7 5.1c-.4-.3-.1-.9.4-.9h14.2l3.2 3c.4.4.1.9-.4.9z" opacity="0"/><path d="M5.6 13.9h15.1l-3.3 3.1H2.3zM5.6 1.5h15.1l-3.3 3.1H2.3zM5.6 7.7h15.1l-3.3 3.1H2.3z"/></svg></span><div class="arow__meta"><b>SOL</b><small>Solana</small></div><span class="arow__val">12.10</span></div>
             </div>
             <div class="foot"><a class="linkbtn" href="#" data-toast="The full wallet ships with the app." style="font-size:13px">View all assets <span class="arr">→</span></a></div>
           </div>
@@ -1112,12 +1136,13 @@ a{color:inherit;text-decoration:none}
             <div class="sendfield"><label>You send</label><div class="v">125.00 <button class="cur currency-cycle" type="button" aria-label="Change currency">USDC ▾</button></div></div>
             <div class="sendfield"><label>To</label><div class="v" style="font-size:14px;font-weight:600;justify-content:flex-start;gap:8px"><span class="av av--sm"><img src="public/art/avatar-4.webp" alt=""></span>@Ava</div></div>
             <div class="sendfield"><label>For</label><div class="v" style="font-size:13.5px;font-weight:500">Thanks for lunch! 😊</div></div>
-            <div class="foot"><button class="sendbtn" id="sendBtn" type="button">Send</button></div>
+            <div class="sendmeta"><span>Network fee <b>≈ $0.02</b></span><span>Arrives <b>~2s</b></span><span>Route <b>Sui-first</b></span></div>
+            <div class="foot"><button class="sendbtn" id="sendBtn" type="button">Send 125.00 USDC</button></div>
           </div>
           <div class="fincard">
             <h4>Community fund</h4>
             <div style="display:flex;align-items:center;gap:11px;margin-top:12px">
-              <span style="width:42px;height:42px;border-radius:50%;background:rgba(247,241,232,.1);border:1px solid rgba(247,241,232,.22);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="20" height="20" style="color:var(--paper)"><use href="public/assets/icons/whatsvp-icons.svg#fund"/></svg></span>
+              <span style="width:42px;height:42px;border-radius:11px;background:linear-gradient(150deg,rgba(217,106,74,.16),rgba(217,106,74,.08));display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="20" height="20" style="color:var(--coral)"><use href="public/assets/icons/whatsvp-icons.svg#fund"/></svg></span>
               <div><b style="font-family:var(--disp);font-size:15px;font-weight:600;display:block">Open Builders Fund</b><span class="fw__sub" style="margin-top:2px">12K contributors</span></div>
             </div>
             <span class="fw__sub" style="margin-top:16px">Balance</span>
@@ -1127,6 +1152,7 @@ a{color:inherit;text-decoration:none}
               <div class="track"><div class="fill" data-fill="64"></div></div>
               <div class="pct">64%</div>
             </div>
+            <div class="fundpeople"><span class="avs"><span class="av av--sm"><img src="public/art/avatar-1.webp" alt=""></span><span class="av av--sm"><img src="public/art/avatar-5.webp" alt=""></span><span class="av av--sm"><img src="public/art/avatar-8.webp" alt=""></span><span class="av av--sm"><img src="public/art/avatar-3.webp" alt=""></span></span><span>Aisha, Devon &amp; <b>12K builders</b> funding grants</span></div>
             <div class="foot"><button class="sendbtn" data-toast="20 USDC added to the Open Builders Fund — thank you!">Contribute</button></div>
           </div>
         </div>
@@ -1377,7 +1403,7 @@ qs('#sendBtn').addEventListener('click',()=>{
   const b=qs('#sendBtn'); if(b.disabled) return;
   b.disabled=true; b.style.opacity='.8'; b.textContent='Sending…';
   setTimeout(()=>{ b.textContent='Sent ✓'; toast('Sent 125.00 USDC to @Ava — "Thanks for lunch!"');
-    setTimeout(()=>{ b.textContent='Send'; b.disabled=false; b.style.opacity=''; },REDUCE?300:2200);
+    setTimeout(()=>{ b.textContent='Send 125.00 USDC'; b.disabled=false; b.style.opacity=''; },REDUCE?300:2200);
   },REDUCE?100:900);
 });
 
@@ -1390,6 +1416,7 @@ if(dialog){
   const nftData={
     'Pudgy Penguins':{img:'public/assets/widgets/nft-penguin.webp',sub:'Ethereum community identity',copy:'Carry your Pudgy Penguins profile across rooms, events and contributor cards — one identity, every chain.',action:'Add Pudgy identity',bg:'radial-gradient(120% 90% at 50% 0,#EAF3FE,#B9D6F5)'},
     'Bored Ape Yacht Club':{img:'public/assets/widgets/nft-ape.webp',sub:'Ethereum founder identity',copy:'A founder-pass identity that travels with your guilds, live rooms and settlement history.',action:'Add BAYC identity',bg:'radial-gradient(120% 90% at 50% 0,#FBEEDF,#EBC9A8)'},
+    'monkeDAO':{img:'public/assets/widgets/nft-robot.webp',sub:'Solana community identity',copy:'monkeDAO brings your Solana identity into the city layer — one profile that travels across rooms, events and settlement.',action:'Add monke identity',bg:'radial-gradient(120% 90% at 50% 0,#EFE2FC,#CBA8F0)'},
     'Rootlets on Sui':{img:'public/assets/widgets/nft-owl.webp',sub:'Sui-native culture identity',copy:'Rootlets brings Sui-native culture into the city layer as a portable community signal.',action:'Add Rootlets identity',bg:'radial-gradient(120% 90% at 50% 0,#F1FADB,#CDEB9A)'}
   };
   qsa('[data-nft]').forEach(btn=>btn.addEventListener('click',()=>{
